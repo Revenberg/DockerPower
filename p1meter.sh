@@ -26,7 +26,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     git clone https://github.com/Revenberg/DockerP1logger.git 
     cd ~;cd DockerP1logger;. ./build.sh;cd ~
 
-    git clone https://github.com/Revenberg/DockerGrafana.git 
+    git clone https://github.com/revenberg/DockerGrafana.git 
     cd ~;cd DockerGrafana;. ./build.sh;cd ~
 
     echo $1 > /home/pi/.pswrd

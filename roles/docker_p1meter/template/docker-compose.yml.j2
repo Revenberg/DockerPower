@@ -41,7 +41,7 @@ services:
       - 8080
     
   DockerSolarrs485logger:
-    image: revenberg/DockerSolarrs485logger
+    image: revenberg/dockersolarrs485logger
     container_name: DockerSolarrs485logger
     depends_on:
       - influxdb
@@ -50,7 +50,7 @@ services:
       - influxdb
 
   DockerP1logger:
-    image: revenberg/DockerP1logger
+    image: revenberg/dockerp1logger
     container_name: DockerP1logger
     depends_on:
       - influxdb
@@ -61,7 +61,7 @@ services:
       - /dev/ttyUSB0:/dev/ttyUSB0
 
   DockerWatermeter:
-    image: revenberg/DockerWatermeter
+    image: revenberg/dockerwatermeter
     container_name: DockerWatermeter
     depends_on:
       - influxdb
@@ -70,7 +70,7 @@ services:
       - influxdb
 
   DockerOpenweathermap:
-    image: revenberg/DockerOpenweathermap
+    image: revenberg/dockeropenweathermap
     container_name: DockerOpenweathermap
     depends_on:
       - influxdb
@@ -93,7 +93,7 @@ services:
       - ./data/influxdb/data:/var/lib/influxdb  
 
   grafana:
-    image: revenberg/grafana:latest
+    image: revenberg/dockergrafana:latest
     container_name: grafana
     ports:
       - "3000:3000"
@@ -132,39 +132,3 @@ services:
       - ./data/mqtt/log:/mosquitto/log
     restart: always
     network_mode: host
-
-#  dsmrdb:
-#    # When using Postgres, release 12.x is supported only
-#    # due to the limited availability of client packages, especially for arm32v7
-#    image: postgres:12
-#    restart: always
-#    volumes:
-#      - ./data/dsmrdb:/var/lib/postgresql/data
-#    environment:
-#      - TZ=Europe/Amsterdam
-#      - PG_TZ=Europe/Amsterdam
-#      - POSTGRES_USER=dsmrreader
-#      - POSTGRES_PASSWORD=dsmrreader
-#      - POSTGRES_DB=dsmrreader
-#
-#  dsmr:
-##    build: .
-#    image: xirixiz/dsmr-reader-docker:latest
-#    depends_on:
-#      - dsmrdb
-#    cap_add:
-#      - NET_ADMIN
-#    restart: always
-#    links:
-#      - influxdb:influxdb
-#      - dsmrdb:dsmrdb
-#    volumes:
-#      - ./data/dsmr_backups:/dsmr/backups
-#    environment:
-#      - DJANGO_TIME_ZONE=Europe/Amsterdam
-#      - VIRTUAL_HOST=localhost
-#    ports:
-#      - 80:80
-#      - 443:443
-#    devices:
-#      - /dev/ttyUSB0:/dev/ttyUSB0
