@@ -62,12 +62,15 @@ done
 #echo /home/pi/ansible/hosts
 #ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd '$pswrd' --name ' ansible_ssh_pass'  >> /home/pi/ansible/hosts
 
-cd /home/pi/DokcerPower
+cd /home/pi/DockerPower
 git pull
 cd ~
 
 cp /home/pi/ansible_zigbee/p1meter.sh /home/pi/p1meter.sh
 chmod +x /home/pi/p1meter.sh
+
+cp /home/pi/ansible_zigbee/build.sh /home/pi/build.sh
+chmod +x /home/pi/build.sh
 
 #ansible-playbook  /home/pi/ansible_zigbee/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
 ansible-playbook  /home/pi/ansible_zigbee/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/p1meter.log
