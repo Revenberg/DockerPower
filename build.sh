@@ -1,22 +1,22 @@
 #!/bin/bash
 
 cd ~
-    git clone https://github.com/Revenberg/DockerPower.git 
+git clone https://github.com/Revenberg/DockerPower.git 
 
 git clone https://github.com/Revenberg/DockerSolarrs485logger.git 
-cd ~;cd DockerSolarrs485logger;. ./build.sh;cd ~
+cd ~;cd DockerSolarrs485logger;git pull;. ./build.sh;cd ~
 
 git clone https://github.com/Revenberg/DockerWatermeter.git 
-cd ~;cd DockerWatermeter;. ./build.sh;cd ~
+cd ~;cd DockerWatermeter;git pull;. ./build.sh;cd ~
 
 git clone https://github.com/Revenberg/DockerOpenweathermap.git 
-cd ~;cd DockerOpenweathermap;. ./build.sh;cd ~
+cd ~;cd DockerOpenweathermap;git pull;. ./build.sh;cd ~
 
 git clone https://github.com/Revenberg/DockerP1logger.git 
-cd ~;cd DockerP1logger;. ./build.sh;cd ~
+cd ~;cd DockerP1logger;git pull;. ./build.sh;cd ~
 
 git clone https://github.com/revenberg/DockerGrafana.git 
-cd ~;cd DockerGrafana;. ./build.sh;cd ~
+cd ~;cd DockerGrafana;git pull;. ./build.sh;cd ~
 
 cd ~
 
