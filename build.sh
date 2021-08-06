@@ -1,5 +1,6 @@
 #!/bin/bash
-    
+
+cd ~
 git clone https://github.com/Revenberg/DockerPower.git 
 
 git clone https://github.com/Revenberg/DockerDockerSolarrs485logger.git 
