@@ -2,6 +2,7 @@
 
 cd ~
 git clone https://github.com/Revenberg/DockerPower.git 
+cd ~;cd DockerPower;git pull;cd ~
 
 git clone https://github.com/Revenberg/DockerSolarrs485logger.git 
 cd ~;cd DockerSolarrs485logger;git pull;. ./build.sh;cd ~
