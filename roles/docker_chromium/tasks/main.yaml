@@ -1,0 +1,52 @@
+---
+- name: current date time
+  debug: 
+    msg: "{{lookup('pipe','date \"+%Y-%m-%d %H:%M\"')}}"
+
+- name: install pre chromium
+  apt: 
+    name: [ "xdotool", "unclutter", "sed" ]
+    install_recommends: yes
+
+- name: update /etc/apt/sources.list
+  lineinfile:
+    dest: /etc/apt/sources.list
+    line: "deb http://ppa.launchpad.net/canonical-chromium-builds/stage/ubuntu vivid main"
+    state: present  
+
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver:  keyserver.ubuntu.com
+    id: DB69B232436DAC4B50BDC59E4E1B983C5B393194
+
+- name: apt-get update
+  shell:
+    cmd: "apt-get update"
+
+- name: install pre chromium
+  apt: 
+    name: [ "chromium-browser" ]
+    install_recommends: yes
+
+- name: Copy myscreen.sh
+  copy:
+    src: "myscreen.sh"
+    dest: "/home/pi/myscreen.sh"
+    owner: pi
+    group: pi
+    mode: 0644   
+
+- name: Copy myscreen.service
+  copy:
+    src: "myscreen.service"
+    dest: "/lib/systemd/system/myscreen.service"
+    owner: pi
+    group: pi
+    mode: 0644   
+
+- name: myscreen.service
+  service:
+    name: myscreen.service
+    state: started
+    enabled: yes
+ 

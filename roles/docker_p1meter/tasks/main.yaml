@@ -1,0 +1,169 @@
+--- 
+- name: Install ntfs-3g
+  apt: 
+    name: [ "ntfs-3g"]
+
+- name: create /media/usb
+  file:
+    path: /media/usb
+    recurse: yes
+    mode: 0755
+    owner: pi
+    group: pi
+  
+- name: Mount up device by label DATA
+  mount:
+    path: /media/usb
+    src: LABEL=DATA
+    fstype: ntfs
+    opts: auto,nofail,noatime,user,rw,exec,gid=pi,umask=0000
+    state: mounted
+
+- name: Add the user 'postgres' to a specific uid and a primary group of 'pi'
+  user:
+    name: postgres
+    comment: postgres
+    uid: 999
+#    group: pi
+    groups: pi,dialout
+
+- name: Add the user 'grafana' to a specific uid and a primary group of 'pi'
+  user:
+    name: grafana
+    comment: grafana
+    uid: 472
+#    group: pi
+    groups: pi,dialout
+
+- name: Create symbolic link to /var/docker-compose/data
+  file:
+    src: /media/usb
+    path: /var/docker-compose/data
+    state: link
+    mode: 0755
+    owner: pi
+    group: pi  
+
+- name: Create symbolic link to /data
+  file:
+    src: /var/docker-compose/data
+    path: /data
+    state: link
+    mode: 0755
+    owner: pi
+    group: pi  
+
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 04EE7237B7D453EC
+
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 648ACFD622F3D138
+
+- name: Add buster-backports to /etc/apt/sources.list
+  lineinfile:
+    path: /etc/apt/sources.list
+    line: deb http://deb.debian.org/debian buster-backports main    
+
+- name: apt-get update
+  shell:
+    cmd: "apt-get update"
+
+- name: apt-get update
+  shell:
+    cmd: "apt install libseccomp2/buster-backports"    
+
+- name: create /var/docker-compose
+  file:
+    path: "{{  item }}"
+    recurse: yes
+    mode: 0777
+    owner: postgres
+    group: pi
+  with_items:         
+    - "/var/docker-compose/data/mqtt/config"
+    - "/var/docker-compose/data/mqtt/data"
+    - "/var/docker-compose/data/mqtt/log"
+
+- name: create /var/docker-compose
+  file:
+    path: "{{  item }}"
+    recurse: yes
+    mode: 0755
+    owner: postgres
+    group: pi
+  with_items:         
+#    - "/var/docker-compose/data/mqtt/config"
+#    - "/var/docker-compose/data/mqtt/data"
+#    - "/var/docker-compose/data/mqtt/log"
+#    - "/var/docker-compose/data/nginx/html"
+#    - "/var/docker-compose/data/nginx/sites-enabled"    
+    - "/var/docker-compose/env"
+    - "/var/docker-compose/data/dsmrdb"
+    - "/var/docker-compose/data/dsmr_backups"
+    - "/var/docker-compose/data/influxdb"
+    - "/var/docker-compose/data/grafana/data"
+    - "/var/docker-compose/data/prometheus/config"
+    - "/var/docker-compose/data/prometheus/data"
+    
+- name: copy Docker Compose env files
+  copy:
+    src: "{{ item }}"
+    dest: "/var/docker-compose/env"
+    mode: 0755
+    owner: pi
+    group: pi
+  with_fileglob:
+    - "files/data/grafana/env/*"
+
+- name: add group
+  shell:
+    cmd: "usermod -aG dialout $(whoami)"
+
+- name: copy env files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:
+  - { src: "files/data/grafana/env/env.grafana", dest: "/var/docker-compose/env/env.grafana" }
+  
+- name: copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:
+  - { src: "files/data/mqtt/config/mosquitto.conf", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
+  - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
+  #- { src: "files/data/nginx/html/index.html",      dest: "/var/docker-compose/data/nginx/html/index.html" }
+  #- { src: "files/data/nginx/sites-enabled/default", dest: "/var/docker-compose/data/nginx/sites-enabled/default" }
+  #- { src: "files/data/dsmr/config/supervisord.conf",  dest: "/var/docker-compose/data/dsmr/config/supervisord.conf" }
+  #- { src: "files/data/dsmr/config/bashrc",  dest: "/var/docker-compose/data/dsmr/config/bashrc" }
+  - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
+
+- set_fact:
+    DockerOpenweathermap_apikey: "{{lookup('file', '~/DockerOpenweathermap.apikey') }}"
+
+- name: Create Docker-compose file
+  template:
+    src: "template/docker-compose.yml.j2"
+    dest: "/var/docker-compose/docker-compose.yml"
+    mode: 0755
+    owner: pi
+    group: pi
+
+- name: deploy Docker Compose stack
+  shell:
+    cmd: "docker-compose up -d --force-recreate"
+  args:
+    chdir:  /var/docker-compose
+  become: pi
+
