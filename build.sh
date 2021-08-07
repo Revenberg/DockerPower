@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# version 7-8-2021
+
 cd ~
 git clone https://github.com/Revenberg/DockerPower.git 
 cd ~;cd DockerPower;git pull;cd ~
