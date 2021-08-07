@@ -85,7 +85,7 @@ services:
     container_name: influxdb
     environment:
      - INFLUXDB_INIT_PWD="password"
-     - PRE_CREATE_DB="power"
+     - PRE_CREATE_DB="power;solar;water;weather"
     ports:
      - "8083:8083"
      - "8086:8086"
