@@ -4,11 +4,7 @@
 
 cd ~
 git clone https://github.com/Revenberg/dockerpower.git 
-<<<<<<< HEAD
 cd ~;cd dockerpower;git pull;cd ~
-=======
-cd ~;cd ;git pull;cd ~
->>>>>>> f5a49bc26e284f82a3cdfbe5a24b656b3b4db213
 
 cd ~;git clone https://github.com/Revenberg/dockersolarrs485logger.git 
 . ~/dockersolarrs485logger/build.sh
