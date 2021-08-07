@@ -14,22 +14,22 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     sudo apt-get install docker-compose -y
     mkdir /home/pi/ansible
     
-    git clone https://github.com/Revenberg/DockerPower.git 
+    git clone https://github.com/Revenberg/powercontainers.git 
     
-    git clone https://github.com/Revenberg/DockerSolarrs485logger.git 
-    cd ~;cd DockerSolarrs485logger;. ./build.sh;cd ~
+    git clone https://github.com/Revenberg/dockersolarrs485logger.git 
+    cd ~;cd dockersolarrs485logger;. ./build.sh;cd ~
     
-    git clone https://github.com/Revenberg/DockerWatermeter.git 
-    cd ~;cd DockerWatermeter;. ./build.sh;cd ~
+    git clone https://github.com/Revenberg/dockerwatermeter.git 
+    cd ~;cd dockerwatermeter;. ./build.sh;cd ~
 
-    git clone https://github.com/Revenberg/DockerOpenweathermap.git 
-    cd ~;cd DockerOpenweathermap;. ./build.sh;cd ~
+    git clone https://github.com/Revenberg/dockeropenweathermap.git 
+    cd ~;cd dockeropenweathermap;. ./build.sh;cd ~
 
-    git clone https://github.com/Revenberg/DockerP1logger.git 
-    cd ~;cd DockerP1logger;. ./build.sh;cd ~
+    git clone https://github.com/Revenberg/dockerp1logger.git 
+    cd ~;cd dockerp1logger;. ./build.sh;cd ~
 
-    git clone https://github.com/revenberg/DockerGrafana.git 
-    cd ~;cd DockerGrafana;. ./build.sh;cd ~
+    git clone https://github.com/revenberg/dockergrafana.git 
+    cd ~;cd dockergrafana;. ./build.sh;cd ~
 
     echo $1 > /home/pi/.pswrd
 fi
@@ -64,15 +64,15 @@ done
 #echo /home/pi/ansible/hosts
 #ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd '$pswrd' --name ' ansible_ssh_pass'  >> /home/pi/ansible/hosts
 
-cd /home/pi/DockerPower
+cd /home/pi/powercontainers
 git pull
 cd ~
 
-cp /home/pi/DockerPower/p1meter.sh /home/pi/p1meter.sh
+cp /home/pi/powercontainers/p1meter.sh /home/pi/p1meter.sh
 chmod +x /home/pi/p1meter.sh
 
-cp /home/pi/DockerPower/build.sh /home/pi/build.sh
+cp /home/pi/powercontainers/build.sh /home/pi/build.sh
 chmod +x /home/pi/build.sh
 
-#ansible-playbook  /home/pi/DockerPower/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
-ansible-playbook  /home/pi/DockerPower/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/p1meter.log
+#ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
+ansible-playbook  /home/pi/powercontainers/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/p1meter.log
