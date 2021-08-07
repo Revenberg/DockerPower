@@ -78,7 +78,7 @@ services:
     links:
       - influxdb
     environment:
-      - apikey={{ DockerOpenweathermap_apikey }}
+      - apikey={{ openweathermap_apikey }}
 
   influxdb:
     image: hypriot/rpi-influxdb
@@ -132,4 +132,3 @@ services:
       - ./data/mqtt/log:/mosquitto/log
     restart: always
     network_mode: host
-    
