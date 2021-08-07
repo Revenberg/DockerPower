@@ -2,7 +2,7 @@
 
 # version 2021-08-07 15:20
 
-cd powercontainers;git pull;cd -
+cd ~/powercontainers;git pull;cd -
 
 cp /home/pi/powercontainers/p1meter.sh /home/pi/p1meter.sh
 chmod +x /home/pi/p1meter.sh
