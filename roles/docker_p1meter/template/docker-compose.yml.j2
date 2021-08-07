@@ -40,18 +40,18 @@ services:
     expose:
       - 8080
     
-  DockerSolarrs485logger:
+  solarrs485logger:
     image: revenberg/solarrs485logger
-    container_name: Solarrs485logger
+    container_name: solarrs485logger
     depends_on:
       - influxdb
     restart: always
     links:
       - influxdb
 
-  DockerP1logger:
+  p1logger:
     image: revenberg/p1logger
-    container_name: P1logger
+    container_name: p1logger
     depends_on:
       - influxdb
     restart: always
@@ -60,18 +60,18 @@ services:
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
 
-  DockerWatermeter:
+  watermeter:
     image: revenberg/watermeter
-    container_name: Watermeter
+    container_name: watermeter
     depends_on:
       - influxdb
     restart: always
     links:
       - influxdb
 
-  DockerOpenweathermap:
+  openweathermap:
     image: revenberg/openweathermap
-    container_name: Openweathermap
+    container_name: openweathermap
     depends_on:
       - influxdb
     restart: always
