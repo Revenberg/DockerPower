@@ -13,3 +13,5 @@ chmod +x /home/pi/p1meter.sh
 
 cp /home/pi/dockerpower/build.sh /home/pi/build.sh
 chmod +x /home/pi/build.sh
+
+. ~/p1meter.sh

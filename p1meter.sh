@@ -1,4 +1,6 @@
 #!/bin/bash
+cd ~
+
 if [ ! -f "/home/pi/.pswrd" ]; then
     if [ $# -ne 1 ]; then
         echo $0: usage: $0  password
