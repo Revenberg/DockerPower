@@ -150,7 +150,7 @@
   - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
 
 - set_fact:
-    DockerOpenweathermap_apikey: "{{lookup('file', '~/DockerOpenweathermap.apikey') }}"
+    openweathermap_apikey: "{{lookup('file', '~/openweathermap.apikey') }}"
 
 - name: Create Docker-compose file
   template:
