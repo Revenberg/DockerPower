@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# version 07-08-2021
+# version 2021-08-07 15:20
 
 cd ~
 git clone https://github.com/Revenberg/dockerpower.git 
