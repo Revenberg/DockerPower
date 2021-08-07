@@ -66,11 +66,11 @@ cd /home/pi/DockerPower
 git pull
 cd ~
 
-cp /home/pi/ansible_zigbee/p1meter.sh /home/pi/p1meter.sh
+cp /home/pi/DockerPower/p1meter.sh /home/pi/p1meter.sh
 chmod +x /home/pi/p1meter.sh
 
-cp /home/pi/ansible_zigbee/build.sh /home/pi/build.sh
+cp /home/pi/DockerPower/build.sh /home/pi/build.sh
 chmod +x /home/pi/build.sh
 
-#ansible-playbook  /home/pi/ansible_zigbee/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
-ansible-playbook  /home/pi/ansible_zigbee/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/p1meter.log
+#ansible-playbook  /home/pi/DockerPower/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
+ansible-playbook  /home/pi/DockerPower/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/p1meter.log
