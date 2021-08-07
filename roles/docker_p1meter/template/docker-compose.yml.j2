@@ -41,8 +41,8 @@ services:
       - 8080
     
   DockerSolarrs485logger:
-    image: revenberg/dockersolarrs485logger
-    container_name: DockerSolarrs485logger
+    image: revenberg/solarrs485logger
+    container_name: Solarrs485logger
     depends_on:
       - influxdb
     restart: always
@@ -50,8 +50,8 @@ services:
       - influxdb
 
   DockerP1logger:
-    image: revenberg/dockerp1logger
-    container_name: DockerP1logger
+    image: revenberg/p1logger
+    container_name: P1logger
     depends_on:
       - influxdb
     restart: always
@@ -61,8 +61,8 @@ services:
       - /dev/ttyUSB0:/dev/ttyUSB0
 
   DockerWatermeter:
-    image: revenberg/dockerwatermeter
-    container_name: DockerWatermeter
+    image: revenberg/watermeter
+    container_name: Watermeter
     depends_on:
       - influxdb
     restart: always
@@ -70,8 +70,8 @@ services:
       - influxdb
 
   DockerOpenweathermap:
-    image: revenberg/dockeropenweathermap
-    container_name: DockerOpenweathermap
+    image: revenberg/openweathermap
+    container_name: Openweathermap
     depends_on:
       - influxdb
     restart: always
@@ -93,7 +93,7 @@ services:
       - ./data/influxdb/data:/var/lib/influxdb  
 
   grafana:
-    image: revenberg/dockergrafana:latest
+    image: revenberg/grafana:latest
     container_name: grafana
     ports:
       - "3000:3000"
