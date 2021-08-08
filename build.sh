@@ -16,4 +16,8 @@ chmod +x /home/pi/build.sh
 . ~/dockerp1logger/build.sh true
 . ~/dockergrafana/build.sh true
 
-. ~/p1meter.sh
+cd /var/docker-compose
+
+docker-compose up -d --force-recreate
+
+cd -
