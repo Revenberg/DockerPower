@@ -122,7 +122,7 @@
 - name: copy Grafana dashboards files
   copy:
     src: "{{ item }}"
-    dest: "/data/grafana/dashboards"
+    dest: "/var/docker-compose/data/grafana/dashboards"
     mode: 0755
     owner: pi
     group: pi
