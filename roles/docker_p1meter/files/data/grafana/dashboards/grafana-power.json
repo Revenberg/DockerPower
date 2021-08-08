@@ -1,52 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_ENERGY",
-      "label": "Energy",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "influxdb",
-      "pluginName": "InfluxDB"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar Gauge",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.4.4"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "influxdb",
-      "name": "InfluxDB",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -63,57 +15,73 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
+  "id": 6,
   "links": [],
   "panels": [
     {
-      "datasource": "${DS_ENERGY}",
-      "gridPos": {
-        "h": 5,
-        "w": 21,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "displayMode": "lcd",
-        "fieldOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "defaults": {
-            "decimals": 3,
-            "mappings": [],
-            "max": 6,
-            "min": 0,
-            "thresholds": [
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 5000,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
                 "color": "green",
                 "value": null
               },
               {
-                "color": "yellow",
-                "value": 5
+                "color": "#EAB839",
+                "value": 3680
               },
               {
                 "color": "red",
-                "value": 5.75
+                "value": 4158.4
               }
-            ],
-            "title": "",
-            "unit": "kwatt"
+            ]
           },
-          "override": {},
-          "values": false
+          "unit": "watt"
         },
-        "orientation": "horizontal"
+        "overrides": []
       },
-      "pluginVersion": "6.4.4",
+      "gridPos": {
+        "h": 7,
+        "w": 21,
+        "x": 0,
+        "y": 0
+      },
+      "id": 15,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
       "targets": [
         {
-          "alias": "L1",
-          "groupBy": [],
-          "measurement": "P1 values",
+          "alias": "G[[tag_Meter id]]",
+          "groupBy": [
+            {
+              "params": [
+                "Meter id"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Meter values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -122,49 +90,13 @@
             [
               {
                 "params": [
-                  "INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE"
+                  "p1"
                 ],
                 "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "L2",
-          "groupBy": [],
-          "measurement": "P1 values",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
+              },
               {
-                "params": [
-                  "INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "L3",
-          "groupBy": [],
-          "measurement": "P1 values",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE"
-                ],
-                "type": "field"
+                "params": [],
+                "type": "last"
               }
             ]
           ],
@@ -173,66 +105,606 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Power per phase",
+      "title": "Power per group",
+      "transparent": true,
       "type": "bargauge"
     },
     {
       "cacheTimeout": null,
-      "datasource": "${DS_ENERGY}",
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 3,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "format": "watth",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
       "gridPos": {
-        "h": 5,
+        "h": 3,
         "w": 3,
         "x": 21,
         "y": 0
       },
-      "id": 3,
+      "id": 25,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"AC Lifetimeproduction\")-first(\"AC Lifetimeproduction\") FROM \"SolarEdge\" WHERE $timeFilter fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Produced this period",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Energy",
+      "description": "Generated by solar panels.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "max": 7200,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 6800
+              },
+              {
+                "color": "red",
+                "value": 7000
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 3
+      },
+      "id": 22,
       "links": [],
       "options": {
-        "fieldOptions": {
+        "orientation": "horizontal",
+        "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "defaults": {
-            "decimals": 3,
-            "mappings": [
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "alias": "total",
+          "groupBy": [],
+          "measurement": "SolarEdge",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"AC Power output\") FROM \"SolarEdge\" ",
+          "rawQuery": true,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
               {
-                "id": 0,
-                "op": "=",
-                "text": "N/A",
-                "type": 1,
-                "value": "null"
+                "params": [
+                  "AC Power output"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
               }
-            ],
-            "max": 17250,
-            "min": 0,
-            "nullValueMode": "connected",
-            "thresholds": [
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Solar power generating",
+      "type": "gauge"
+    },
+    {
+      "aliasColors": {
+        "Delivering": "green",
+        "Using": "red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 21,
+        "x": 0,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 21,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Peak",
+          "fill": 0,
+          "transform": "constant"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CURRENT_ELECTRICITY_USAGE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Power",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "SolarEdge",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"AC Power output\") FROM \"SolarEdge\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "AC Power output"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Peak",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT percentile(\"AC Power output\",99.9) FROM \"SolarEdge\" WHERE $timeFilter fill(none)",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Solar power generated",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 1,
+          "format": "watt",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Energy",
+      "description": "Power actually consumed by all devices and appliances in household.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "max": 24000,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 19492
+              },
+              {
+                "color": "red",
+                "value": 21562
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 8
+      },
+      "id": 16,
+      "links": [],
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "alias": "total",
+          "groupBy": [
+            {
+              "params": [
+                "Meter id"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Meter values",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select sum(last) from (SELECT last(\"P1\")  FROM \"Meter values\"  GROUP BY \"Meter id\")",
+          "rawQuery": true,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p1"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Power consuming",
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Energy",
+      "description": "Power used from energy company, or power delivered to energy company. (When we generate more solar power than we can consume the number will be negative)",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
                 "color": "green",
                 "value": null
               },
               {
                 "color": "red",
-                "value": 15000
+                "value": 1
               }
-            ],
-            "unit": "kwatt"
+            ]
           },
-          "override": {},
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 21,
+        "y": 13
+      },
+      "id": 19,
+      "links": [],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
           "values": false
         },
-        "orientation": "horizontal",
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "text": {},
+        "textMode": "auto"
       },
-      "pluginVersion": "6.4.4",
+      "pluginVersion": "7.5.2",
       "targets": [
         {
           "alias": "total",
           "groupBy": [],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT last(\"CURRENT_ELECTRICITY_USAGE\")*1000  - last(\"CURRENT_ELECTRICITY_DELIVERY\")*1000 FROM \"p1\" ",
+          "rawQuery": true,
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
@@ -250,23 +722,943 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Total power",
-      "type": "gauge"
+      "title": "Power usage or delivery",
+      "type": "stat"
     },
     {
+      "aliasColors": {
+        "Delivering": "green",
+        "Using": "red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 21,
+        "x": 0,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 23,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {}
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CURRENT_ELECTRICITY_USAGE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Using",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT -mean(\"CURRENT_ELECTRICITY_USAGE\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CURRENT_ELECTRICITY_USAGE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Delivering",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CURRENT_ELECTRICITY_DELIVERY"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total power usage or delivery",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "kwatt",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Energy",
+      "description": "Peak solar power during this period",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 2,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 21,
+        "y": 16
+      },
+      "id": 26,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT percentile(\"AC Power output\",99.9) FROM \"SolarEdge\" WHERE $timeFilter fill(null)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Peak solar",
+      "type": "stat"
+    },
+    {
+      "datasource": "Energy",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "displayName": "",
+          "mappings": [],
+          "max": 8330,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 5750
+              },
+              {
+                "color": "red",
+                "value": 6490
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 21,
+        "y": 19
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "alias": "L1",
+          "groupBy": [],
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L1_NEGATIVE\") * 1000 FROM \"p1\" ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "L2",
+          "groupBy": [],
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L2_NEGATIVE\") * 1000  FROM \"p1\" ",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "L3",
+          "groupBy": [],
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L3_NEGATIVE\") * 1000 FROM \"p1\" ",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Usage per phase",
+      "type": "bargauge"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                4400
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "max"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "0s",
+        "frequency": "10s",
+        "handler": 1,
+        "message": "Groep overbelast",
+        "name": "Power average per group alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_ENERGY}",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 21,
         "x": 0,
-        "y": 5
+        "y": 23
       },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "G[[tag_Meter id]]",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "Meter id"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Meter values",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"P1\") FROM \"Meter values\" WHERE $timeFilter GROUP BY time($__interval), \"Meter id\" fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p1"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 4400,
+          "visible": true
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Power average per group",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [
+        {
+          "text": "Max",
+          "value": "max"
+        }
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 27
+      },
+      "id": 11,
+      "links": [],
+      "pageSize": null,
+      "pluginVersion": "6.4.4",
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "decimals": null,
+          "pattern": "Max",
+          "thresholds": [
+            "5750",
+            "6497"
+          ],
+          "type": "number",
+          "unit": "watt"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": null,
+          "mappingType": 1,
+          "pattern": "Avg",
+          "thresholds": [],
+          "type": "number",
+          "unit": "watt"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "L1",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE\") * 1000  FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "L2",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE\") * 1000 FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "L3",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "p1",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE\") * 1000 FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "This period",
+      "transform": "timeseries_aggregations",
+      "type": "table-old"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                6400
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "max"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                6400
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "B",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "max"
+            },
+            "type": "query"
+          },
+          {
+            "evaluator": {
+              "params": [
+                6400
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "or"
+            },
+            "query": {
+              "params": [
+                "C",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "max"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "0s",
+        "frequency": "10s",
+        "handler": 1,
+        "message": "Fase overbelast",
+        "name": "Power average per phase alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 21,
+        "x": 0,
+        "y": 32
+      },
+      "hiddenSeries": false,
       "id": 5,
       "legend": {
         "avg": false,
@@ -281,9 +1673,10 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -308,7 +1701,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -345,7 +1738,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -382,7 +1775,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
@@ -404,16 +1797,26 @@
           "tags": []
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 6400,
+          "visible": true
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Power average",
+      "title": "Power average per phase",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
+      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -449,211 +1852,24 @@
       "cacheTimeout": null,
       "columns": [
         {
-          "text": "Avg",
-          "value": "avg"
-        },
-        {
-          "text": "Max",
-          "value": "max"
-        }
-      ],
-      "datasource": "${DS_ENERGY}",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 21,
-        "y": 5
-      },
-      "id": 11,
-      "links": [],
-      "options": {},
-      "pageSize": null,
-      "pluginVersion": "6.4.4",
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "decimals": 3,
-          "pattern": "Max",
-          "thresholds": [
-            "5",
-            "5.75"
-          ],
-          "type": "number",
-          "unit": "kwatt"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 3,
-          "mappingType": 1,
-          "pattern": "Avg",
-          "thresholds": [],
-          "type": "number",
-          "unit": "kwatt"
-        }
-      ],
-      "targets": [
-        {
-          "alias": "L1",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "P1 values",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "L2",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "P1 values",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "L3",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "P1 values",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "This period",
-      "transform": "timeseries_aggregations",
-      "type": "table"
-    },
-    {
-      "cacheTimeout": null,
-      "columns": [
-        {
           "text": "Current",
           "value": "current"
         }
       ],
-      "datasource": "${DS_ENERGY}",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
         "w": 3,
         "x": 21,
-        "y": 10
+        "y": 32
       },
       "id": 9,
       "links": [],
-      "options": {},
       "pageSize": null,
       "repeat": null,
       "showHeader": true,
@@ -664,6 +1880,7 @@
       "styles": [
         {
           "alias": "Value",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -696,7 +1913,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -733,7 +1950,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -770,7 +1987,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
@@ -807,7 +2024,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "D",
@@ -844,7 +2061,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "E",
@@ -881,7 +2098,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "F",
@@ -918,7 +2135,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "P1 values",
+          "measurement": "p1",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "G",
@@ -944,18 +2161,18 @@
       "timeShift": null,
       "title": "Stats",
       "transform": "timeseries_aggregations",
-      "type": "table"
+      "type": "table-old"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 20,
+  "refresh": false,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {
@@ -973,7 +2190,7 @@
     ]
   },
   "timezone": "",
-  "title": "Power usage",
+  "title": "Live power usage",
   "uid": "LIOTB61Zz",
-  "version": 34
+  "version": 110
 }
