@@ -90,7 +90,7 @@
             [
               {
                 "params": [
-                  "p1"
+                  "P1"
                 ],
                 "type": "field"
               },
@@ -390,10 +390,10 @@
             }
           ],
           "hide": true,
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -621,7 +621,7 @@
             [
               {
                 "params": [
-                  "p1"
+                  "P1"
                 ],
                 "type": "field"
               },
@@ -700,10 +700,10 @@
         {
           "alias": "total",
           "groupBy": [],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"CURRENT_ELECTRICITY_USAGE\")*1000  - last(\"CURRENT_ELECTRICITY_DELIVERY\")*1000 FROM \"p1\" ",
+          "query": "SELECT last(\"CURRENT_ELECTRICITY_USAGE\")*1000  - last(\"CURRENT_ELECTRICITY_DELIVERY\")*1000 FROM \"P1 values\" ",
           "rawQuery": true,
           "refId": "D",
           "resultFormat": "time_series",
@@ -793,10 +793,10 @@
             }
           ],
           "hide": true,
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -833,10 +833,10 @@
             }
           ],
           "hide": false,
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT -mean(\"CURRENT_ELECTRICITY_USAGE\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT -mean(\"CURRENT_ELECTRICITY_USAGE\") FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -873,10 +873,10 @@
             }
           ],
           "hide": false,
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -1095,10 +1095,10 @@
         {
           "alias": "L1",
           "groupBy": [],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L1_NEGATIVE\") * 1000 FROM \"p1\" ",
+          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L1_NEGATIVE\") * 1000 FROM \"P1 values\" ",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1121,10 +1121,10 @@
         {
           "alias": "L2",
           "groupBy": [],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L2_NEGATIVE\") * 1000  FROM \"p1\" ",
+          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L2_NEGATIVE\") * 1000  FROM \"P1 values\" ",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -1147,10 +1147,10 @@
         {
           "alias": "L3",
           "groupBy": [],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L3_NEGATIVE\") * 1000 FROM \"p1\" ",
+          "query": "SELECT last(\"INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE\") * 1000 - last(\"INSTANTANEOUS_ACTIVE_POWER_L3_NEGATIVE\") * 1000 FROM \"P1 values\" ",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -1294,7 +1294,7 @@
             [
               {
                 "params": [
-                  "p1"
+                  "P1"
                 ],
                 "type": "field"
               },
@@ -1448,10 +1448,10 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE\") * 1000  FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE\") * 1000  FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1487,10 +1487,10 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE\") * 1000 FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE\") * 1000 FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -1526,10 +1526,10 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE\") * 1000 FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT max(\"INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE\") * 1000 FROM \"P1 values\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -1701,7 +1701,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1738,7 +1738,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -1775,7 +1775,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
@@ -1913,7 +1913,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1950,7 +1950,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -1987,7 +1987,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
@@ -2024,7 +2024,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "D",
@@ -2061,7 +2061,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "E",
@@ -2098,7 +2098,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "F",
@@ -2135,7 +2135,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "p1",
+          "measurement": "P1 values",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "G",
