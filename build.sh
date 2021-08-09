@@ -5,7 +5,7 @@
 if [ -n "$1" ]; then
   ex=$1
 else
-  ex=""
+  ex=
 fi
 
 cd ~/powercontainers;git pull;cd -
