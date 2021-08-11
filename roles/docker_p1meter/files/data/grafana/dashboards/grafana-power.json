@@ -759,30 +759,17 @@
       "type": "stat"
     },
     {
-      "aliasColors": {
-        "Delivering": "green",
-        "Using": "red"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
+      "id": 23763571993,
       "gridPos": {
         "h": 8,
         "w": 21,
         "x": 0,
-        "y": 15
+        "y": 8
       },
-      "hiddenSeries": false,
-      "id": 23,
+      "type": "graph",
+      "title": "Total power usage or delivery",
+      "thresholds": [],
+      "pluginVersion": "8.1.0",
       "legend": {
         "avg": false,
         "current": false,
@@ -792,156 +779,126 @@
         "total": false,
         "values": false
       },
+      "aliasColors": {
+        "Delivering": "green",
+        "Using": "red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "hiddenSeries": false,
       "lines": true,
       "linewidth": 1,
-      "nullPointMode": "null",
+      "nullPointMode": "connected",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
-        {}
+        {
+          "$$hashKey": "object:682"
+        }
       ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": true,
-          "measurement": "power",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"CURRENT_ELECTRICITY_USAGE\")-mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
-          "rawQuery": true,
           "refId": "A",
+          "queryType": "randomWalk",
+          "policy": "default",
           "resultFormat": "time_series",
+          "orderByTime": "ASC",
+          "tags": [],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
           "select": [
             [
               {
+                "type": "field",
                 "params": [
-                  "CURRENT_ELECTRICITY_USAGE"
-                ],
-                "type": "field"
+                  "ACTUAL_ELECTRICITY_POWER_DELIVERED"
+                ]
               },
               {
-                "params": [],
-                "type": "mean"
+                "type": "mean",
+                "params": []
               }
             ]
           ],
-          "tags": []
+          "measurement": "p1"
         },
         {
-          "alias": "Using",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "power",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT -mean(\"CURRENT_ELECTRICITY_USAGE\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
-          "rawQuery": true,
           "refId": "B",
+          "queryType": "randomWalk",
+          "policy": "default",
           "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "CURRENT_ELECTRICITY_USAGE"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Delivering",
+          "orderByTime": "ASC",
+          "tags": [],
           "groupBy": [
             {
+              "type": "time",
               "params": [
                 "$__interval"
-              ],
-              "type": "time"
+              ]
             },
             {
+              "type": "fill",
               "params": [
-                "none"
-              ],
-              "type": "fill"
+                "null"
+              ]
             }
           ],
-          "hide": false,
-          "measurement": "power",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"CURRENT_ELECTRICITY_DELIVERY\") FROM \"p1\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
-          "rawQuery": true,
-          "refId": "C",
-          "resultFormat": "time_series",
           "select": [
             [
               {
+                "type": "field",
                 "params": [
-                  "CURRENT_ELECTRICITY_DELIVERY"
-                ],
-                "type": "field"
+                  "ACTUAL_ELECTRICITY_POWER_RECEIVED"
+                ]
               },
               {
-                "params": [],
-                "type": "mean"
+                "type": "mean",
+                "params": []
               }
             ]
           ],
-          "tags": []
+          "measurement": "p1",
+          "hide": false
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total power usage or delivery",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
       "transparent": true,
-      "type": "graph",
       "xaxis": {
         "buckets": null,
         "mode": "time",
@@ -956,7 +913,8 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": true,
+          "$$hashKey": "object:687"
         },
         {
           "format": "short",
@@ -964,13 +922,15 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": true,
+          "$$hashKey": "object:688"
         }
       ],
       "yaxis": {
         "align": false,
         "alignLevel": null
-      }
+      },
+      "datasource": "power"
     },
     {
       "cacheTimeout": null,
