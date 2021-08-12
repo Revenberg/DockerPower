@@ -22,7 +22,7 @@ services:
     image: revenberg/mqtt2slack
     container_name: mqtt2slack
     depends_on:
-      - influxdb
+      - mqtt
     restart: always
     links:
       - mqtt
@@ -65,7 +65,7 @@ services:
     container_name: p1logger
     depends_on:
       - influxdb
-    restart: always
+    restart: always    
     links:
       - influxdb
     devices:
@@ -76,6 +76,7 @@ services:
     container_name: watermeter
     depends_on:
       - influxdb
+      - mqtt
     restart: always
     links:
       - influxdb
