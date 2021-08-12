@@ -163,6 +163,9 @@
 - set_fact:
     openweathermap_apikey: "{{lookup('file', '~/openweathermap.apikey') }}"
 
+- set_fact:
+    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
+    
 - name: Create Docker-compose file
   template:
     src: "template/docker-compose.yml.j2"

@@ -115,7 +115,7 @@ services:
       - 'traefik.frontend.headers.customRequestHeaders=Authorization:-'
     environment:
     - GF_SECURITY_ADMIN_USER=pi
-    - GF_SECURITY_ADMIN_PASSWORD=pi
+    - GF_SECURITY_ADMIN_PASSWORD={{ pi_password }}
 
   mqtt:
     image: "eclipse-mosquitto:latest"
