@@ -114,8 +114,8 @@ services:
       - 'traefik.http.services.grafana.loadbalancer.server.port=3000'
       - 'traefik.frontend.headers.customRequestHeaders=Authorization:-'
     environment:
-    - GF_SECURITY_ADMIN_USER=pi
-    - GF_SECURITY_ADMIN_PASSWORD={{ pi_password }}
+    - GF_SECURITY_ADMIN_USER=admin
+    - GF_SECURITY_ADMIN_PASSWORD=admin
 
   mqtt:
     image: "eclipse-mosquitto:latest"
