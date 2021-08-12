@@ -577,7 +577,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^weather\\.detailed_status$/",
+          "fields": "/^weather\\\\.detailed_status$/",
           "values": false
         },
         "text": {},
@@ -660,7 +660,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^weather\\.mean$/",
+          "fields": "/^weather\\\\.mean$/",
           "values": false
         },
         "text": {},
