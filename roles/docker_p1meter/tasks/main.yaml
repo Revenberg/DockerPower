@@ -160,10 +160,10 @@
   #- { src: "files/data/dsmr/config/bashrc",  dest: "/var/docker-compose/data/dsmr/config/bashrc" }
   - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
   
-- set_fact:
+- name: get keys
+  set_fact:
     openweathermap_apikey: "{{lookup('file', '~/openweathermap.apikey') }}"
-
-- set_fact:
+    slack_token: "{{lookup('file', '~/slack.token') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
     
 - name: Create Docker-compose file

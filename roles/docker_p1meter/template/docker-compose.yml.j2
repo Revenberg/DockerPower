@@ -18,6 +18,17 @@ services:
       - cadvisor:cadvisor
       - node-exporter:node-exporter
     
+  mqtt2slack:
+    image: revenberg/mqtt2slack
+    container_name: mqtt2slack
+    depends_on:
+      - influxdb
+    restart: always
+    links:
+      - mqtt
+    environment:
+      - slack_token={{ slack_token }}
+  
   node-exporter:
     image: prom/node-exporter:latest
     container_name: monitoring_node_exporter
@@ -68,6 +79,7 @@ services:
     restart: always
     links:
       - influxdb
+      - mqtt
 
   openweathermap:
     image: revenberg/openweathermap

@@ -963,23 +963,18 @@
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "12h"
               ],
               "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
             }
           ],
           "hide": false,
+          "limit": "1",
           "measurement": "solar",
-          "orderByTime": "ASC",
+          "orderByTime": "DESC",
           "policy": "default",
           "query": "SELECT mean(\"AC Current 1 (A)\") FROM \"solar\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
@@ -992,7 +987,7 @@
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "max"
               }
             ]
           ],
@@ -1023,7 +1018,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 10,
+        "w": 9,
         "x": 0,
         "y": 9
       },
@@ -1084,7 +1079,7 @@
             [
               {
                 "params": [
-                  "ELECTRICITY_DELIVERED_TO"
+                  "INSTANTANEOUS_ACTIVE_POWER_CONSUMED"
                 ],
                 "type": "field"
               },
@@ -1123,7 +1118,7 @@
             [
               {
                 "params": [
-                  "ELECTRICITY_DELIVERED_BY"
+                  "ACTUAL_ELECTRICITY_POWER_RECEIVED"
                 ],
                 "type": "field"
               },
@@ -1136,45 +1131,6 @@
                   "*-1"
                 ],
                 "type": "math"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Verbruik - Opgewekt",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "p1",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "queryType": "randomWalk",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "ELECTRICITY"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
               }
             ]
           ],
@@ -1203,7 +1159,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:1510",
-          "format": "kwatt",
+          "format": "watt",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1244,8 +1200,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
-        "w": 11,
-        "x": 10,
+        "w": 9,
+        "x": 9,
         "y": 9
       },
       "hiddenSeries": false,
@@ -1409,7 +1365,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "solar power generated",
+      "title": "Stroom opgewekt",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1452,200 +1408,165 @@
     },
     {
       "cacheTimeout": null,
-      "columns": [
-        {
-          "$$hashKey": "object:489",
-          "text": "Max",
-          "value": "max"
-        }
-      ],
-      "datasource": "solar",
-      "fontSize": "100%",
+      "datasource": "power",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 21,
+        "h": 14,
+        "w": 6,
+        "x": 18,
         "y": 9
       },
       "id": 11,
       "links": [],
-      "pageSize": null,
-      "pluginVersion": "6.4.4",
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
+      "options": {
+        "showHeader": true
       },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": "cell",
-          "colors": [
-            "rgba(50, 172, 45, 0.97)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
-          ],
-          "decimals": null,
-          "pattern": "Max",
-          "thresholds": [
-            "5750",
-            "6497"
-          ],
-          "type": "number",
-          "unit": "watt"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "mappingType": 1,
-          "pattern": "Avg",
-          "thresholds": [],
-          "type": "number",
-          "unit": "watt"
-        }
-      ],
+      "pluginVersion": "8.1.1",
       "targets": [
         {
-          "alias": "Opbrengs solar",
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "1h"
               ],
               "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "solar",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "AC Watts (W)"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "This period",
-      "transform": "timeseries_aggregations",
-      "type": "table-old"
-    },
-    {
-      "cacheTimeout": null,
-      "columns": [
-        {
-          "$$hashKey": "object:522",
-          "text": "Current",
-          "value": "current"
-        }
-      ],
-      "datasource": "power",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 21,
-        "y": 14
-      },
-      "id": 9,
-      "links": [],
-      "pageSize": null,
-      "repeat": null,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": false
-      },
-      "styles": [
-        {
-          "$$hashKey": "object:756",
-          "alias": "Value",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
-          "mappingType": 1,
-          "pattern": "Current",
-          "thresholds": [],
-          "type": "number",
-          "unit": "watt"
-        }
-      ],
-      "targets": [
-        {
-          "alias": "Stroom verbruik",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
             }
           ],
           "measurement": "p1",
-          "orderByTime": "ASC",
+          "orderByTime": "DESC",
           "policy": "default",
           "queryType": "randomWalk",
           "refId": "A",
-          "resultFormat": "time_series",
+          "resultFormat": "table",
           "select": [
             [
               {
                 "params": [
-                  "ELECTRICITY"
+                  "INSTANTANEOUS_ACTIVE_POWER_CONSUMED"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "Stroom verbruik"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ACTUAL_ELECTRICITY_POWER_RECEIVED"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "*-1"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "Stroom teruglevering"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "p1",
+          "orderByTime": "DESC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "B",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "INSTANTANEOUS_ACTIVE_POWER_CONSUMED"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
                 "type": "mean"
+              },
+              {
+                "params": [
+                  "Stroom verbruik"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ACTUAL_ELECTRICITY_POWER_RECEIVED"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "*-1"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "Stroom teruglevering"
+                ],
+                "type": "alias"
               }
             ]
           ],
@@ -1654,9 +1575,16 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Stats",
-      "transform": "timeseries_aggregations",
-      "type": "table-old"
+      "title": "Deze periode",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {
+            "reducers": []
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
   "refresh": "30s",
@@ -1687,5 +1615,5 @@
   "timezone": "",
   "title": "Energie",
   "uid": "LIOTB61Zz",
-  "version": 4
+  "version": 6
 }
