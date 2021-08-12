@@ -31,6 +31,9 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     git clone https://github.com/revenberg/dockergrafana.git 
     cd ~;cd dockergrafana;. ./build.sh;cd ~
 
+    git clone https://github.com/Revenberg/dockermqtt2slack.git
+    cd ~;cd dockermqtt2slack;. ./build.sh;cd ~
+
     echo $1 > /home/pi/.pswrd
 fi
 
