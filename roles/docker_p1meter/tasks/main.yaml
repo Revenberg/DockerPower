@@ -163,7 +163,7 @@
 - name: get keys
   set_fact:
     openweathermap_apikey: "{{lookup('file', '~/openweathermap.apikey') }}"
-    slack_token: "{{lookup('file', '~/slack.token') }}"
+    slack_webhook: "{{lookup('file', '~/slack.webhook') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
     
 - name: Create Docker-compose file

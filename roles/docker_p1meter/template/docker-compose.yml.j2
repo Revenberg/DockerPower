@@ -27,7 +27,7 @@ services:
     links:
       - mqtt
     environment:
-      - slack_token={{ slack_token }}
+      - webhook={{ slack_webhook }}
   
   node-exporter:
     image: prom/node-exporter:latest
