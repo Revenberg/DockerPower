@@ -15,7 +15,7 @@ chmod +x /home/pi/build.sh
 . ~/dockeropenweathermap/build.sh true
 . ~/dockerp1logger/build.sh true
 . ~/dockergrafana/build.sh true
-. /~ockermqtt2slack/build.sh true
+. ~/dockermqtt2slack/build.sh true
 
 cd /var/docker-compose
 
