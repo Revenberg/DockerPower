@@ -51,25 +51,47 @@ services:
     expose:
       - 8080
     
-  solarrs485logger:
-    image: revenberg/solarrs485logger
-    container_name: solarrs485logger
+#  solarrs485logger:
+#    image: revenberg/solarrs485logger
+#    container_name: solarrs485logger
+#    depends_on:
+#      - influxdb
+#    restart: always
+#    links:
+#      - influxdb
+
+#  p1logger:
+#    image: revenberg/p1logger
+#    container_name: p1logger
+#    depends_on:
+#      - influxdb
+#    restart: always    
+#    links:
+#      - influxdb
+#    devices:
+#      - /dev/ttyUSB0:/dev/ttyUSB0
+
+  p1mqtt:
+    image: revenberg/dockerp1mqtt
+    container_name: p1mqtt
+    restart: always
     depends_on:
-      - influxdb
+      - mqtt
     restart: always
     links:
-      - influxdb
-
-  p1logger:
-    image: revenberg/p1logger
-    container_name: p1logger
-    depends_on:
-      - influxdb
-    restart: always    
-    links:
-      - influxdb
+      - mqtt
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
+      
+  solarrs485mqtt:
+    image: revenberg/solarrs485mqtt
+    container_name: solar2mqtt
+    restart: always
+    depends_on:
+      - mqtt
+    restart: always
+    links:
+      - mqtt
 
   watermeter:
     image: revenberg/watermeter
