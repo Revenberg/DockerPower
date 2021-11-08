@@ -48,7 +48,7 @@ do
   echo "    $line:" >> /home/pi/ansible/hosts
   echo "      ansible_user: pi" >> /home/pi/ansible/hosts
 
-  echo "$line:" > /home/pi/ip
+  echo "$line" > /home/pi/ip
 done
 
 #echo /home/pi/ansible/hosts
