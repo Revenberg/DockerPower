@@ -42,6 +42,8 @@ services:
   mqtt-exporter:
     image: kpetrem/mqtt-exporter
     restart: always
+    ports:
+      - 9000:9000
     expose:
       - 9000
     environment:
