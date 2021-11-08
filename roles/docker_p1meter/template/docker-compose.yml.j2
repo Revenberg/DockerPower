@@ -38,6 +38,7 @@ services:
 
   mqtt-exporter:
     image: kpetrem/mqtt-exporter
+    restart: always
     ports:
       - 9000:9000
     environment:
@@ -65,8 +66,6 @@ services:
       - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/p1
-
-    restart: always
     depends_on:
       - mqtt
     restart: always
@@ -84,7 +83,6 @@ services:
       - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/solar
-    restart: always
     depends_on:
       - mqtt
     restart: always
@@ -125,6 +123,7 @@ services:
     environment:
      - INFLUXDB_INIT_PWD="password"
      - PRE_CREATE_DB="power;solar;water;weather"
+    restart: always
     ports:
      - "8083:8083"
      - "8086:8086"
@@ -142,6 +141,7 @@ services:
     links:
       - influxdb:influxdb
       - prometheus:prometheus
+    restart: always
     volumes:
       # Data persistency
       # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
