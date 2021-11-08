@@ -50,26 +50,6 @@ services:
       - /dev/kmsg
     expose:
       - 8080
-    
-#  solarrs485logger:
-#    image: revenberg/solarrs485logger
-#    container_name: solarrs485logger
-#    depends_on:
-#      - influxdb
-#    restart: always
-#    links:
-#      - influxdb
-
-#  p1logger:
-#    image: revenberg/p1logger
-#    container_name: p1logger
-#    depends_on:
-#      - influxdb
-#    restart: always    
-#    links:
-#      - influxdb
-#    devices:
-#      - /dev/ttyUSB0:/dev/ttyUSB0
 
   p1mqtt:
     image: revenberg/dockerp1mqtt    
@@ -104,16 +84,16 @@ services:
     links:
       - mqtt
 
-  watermeter:
-    image: revenberg/watermeter
-    container_name: watermeter
-    depends_on:
-      - influxdb
-      - mqtt
-    restart: always
-    links:
-      - influxdb
-      - mqtt
+#  watermeter:
+#    image: revenberg/watermeter
+#    container_name: watermeter
+#    depends_on:
+#      - influxdb
+#      - mqtt
+#    restart: always
+#    links:
+#      - influxdb
+#      - mqtt
 
   openweathermap:
     image: revenberg/openweathermap
