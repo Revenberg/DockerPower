@@ -43,6 +43,8 @@ services:
       - 9000:9000
     environment:
       - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+      - PROMETHEUS_PREFIX=readings_
+      - TOPIC_LABEL=readings
   
   cadvisor:
     image: braingamer/cadvisor-arm:latest
