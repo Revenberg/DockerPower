@@ -43,6 +43,7 @@ services:
       - 9000:9000
     environment:
       - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_TOPIC=readings
       - PROMETHEUS_PREFIX=readings_
       - TOPIC_LABEL=readings
   
