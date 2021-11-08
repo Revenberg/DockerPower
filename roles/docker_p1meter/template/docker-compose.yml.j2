@@ -53,19 +53,6 @@ services:
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
   
-  mqtt-water-exporter:
-    image: kpetrem/mqtt-exporter
-    restart: always
-    ports:
-      - 9002:9002
-    expose:
-      - 9002
-    environment:
-      - MQTT_ADDRESS={{ ip_address }}
-      - MQTT_TOPIC=watermeter/reading/#
-      - PROMETHEUS_PREFIX=reading_
-      - TOPIC_LABEL=reading
-
   cadvisor:
     image: braingamer/cadvisor-arm:latest
     container_name: monitoring_cadvisor
