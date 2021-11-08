@@ -17,6 +17,7 @@ services:
     links:
       - cadvisor:cadvisor
       - node-exporter:node-exporter
+      - mqtt-exporter:mqtt-exporter
     
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
@@ -31,7 +32,7 @@ services:
   
   node-exporter:
     image: prom/node-exporter:latest
-    container_name: monitoring_node_exporter
+    container_name: node_exporter
     restart: always
     expose:
       - 9100
