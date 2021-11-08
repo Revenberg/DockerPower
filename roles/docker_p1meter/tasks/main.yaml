@@ -72,7 +72,7 @@
   shell:
     cmd: "apt-get update"
 
-- name: apt-get update
+- name: apt-get install libseccomp2/buster-backports
   shell:
     cmd: "apt install libseccomp2/buster-backports"    
 
