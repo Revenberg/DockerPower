@@ -11,7 +11,7 @@ cp /home/pi/powercontainers/build.sh /home/pi/build.sh
 chmod +x /home/pi/build.sh
 
 #. ~/dockersolarrs485logger/build.sh true
-. ~/dockerwatermeter/build.sh true
+#. ~/dockerwatermeter/build.sh true
 #. ~/dockeropenweathermap/build.sh true
 #. ~/dockerp1logger/build.sh true
 . ~/dockergrafana/build.sh true
