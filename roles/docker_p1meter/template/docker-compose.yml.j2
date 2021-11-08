@@ -95,16 +95,22 @@ services:
 #      - influxdb
 #      - mqtt
 
-  openweathermap:
-    image: revenberg/openweathermap
-    container_name: openweathermap
-    depends_on:
-      - influxdb
-    restart: always
-    links:
-      - influxdb
+  openweathermapmqtt:
+    image: revenberg/openweathermapmqtt
+    container_name: openweathermapmqtt
     environment:
       - apikey={{ openweathermap_apikey }}
+      - WEATHER_COUNTRY=Surhuisterveen,NL
+      - WEATHER_LANGUAGE=nl
+      - MQTT_ADDRESS=192.168.2.59
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=readings/weather
+    restart: always
+    depends_on:
+      - mqtt
+    restart: always
+    links:
+      - mqtt      
 
   influxdb:
     image: hypriot/rpi-influxdb
