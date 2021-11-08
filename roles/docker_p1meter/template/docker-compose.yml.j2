@@ -12,7 +12,7 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/data/prometheus'
     expose:
-      - 9090
+      - 9090:9090
     user: "0"
     links:
       - cadvisor:cadvisor
@@ -35,7 +35,7 @@ services:
     container_name: node_exporter
     restart: always
     expose:
-      - 9100
+      - 9100:9100
 
   mqtt-exporter:
     image: kpetrem/mqtt-exporter
