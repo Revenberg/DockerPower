@@ -20,6 +20,7 @@ services:
       - cadvisor:cadvisor
       - node-exporter:node-exporter
       - mqtt-exporter:mqtt-exporter
+      - mqtt-water-exporter:mqtt-water-exporter
     
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
@@ -48,10 +49,23 @@ services:
       - 9000
     environment:
       - MQTT_ADDRESS={{ ip_address }}
-      - MQTT_TOPIC=readings/#
-      - PROMETHEUS_PREFIX=readings_
-      - TOPIC_LABEL=readings
+      - MQTT_TOPIC=reading/#
+      - PROMETHEUS_PREFIX=reading_
+      - TOPIC_LABEL=reading
   
+  mqtt-water-exporter:
+    image: kpetrem/mqtt-exporter
+    restart: always
+    ports:
+      - 9001:9001
+    expose:
+      - 9001
+    environment:
+      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_TOPIC=watermeter/reading/#
+      - PROMETHEUS_PREFIX=reading_
+      - TOPIC_LABEL=reading
+
   cadvisor:
     image: braingamer/cadvisor-arm:latest
     container_name: monitoring_cadvisor
@@ -73,7 +87,7 @@ services:
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
-      - MQTT_TOPIC=readings/p1
+      - MQTT_TOPIC=reading/p1
     depends_on:
       - mqtt
     restart: always
@@ -90,7 +104,7 @@ services:
       - RS485_PORT=8899
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
-      - MQTT_TOPIC=readings/solar
+      - MQTT_TOPIC=reading/solar
     depends_on:
       - mqtt
     restart: always
@@ -117,7 +131,7 @@ services:
       - WEATHER_LANGUAGE=nl
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
-      - MQTT_TOPIC=readings/weather
+      - MQTT_TOPIC=reading/weather
     restart: always
     depends_on:
       - mqtt

@@ -31,7 +31,7 @@ scrape_configs:
       - targets: ['localhost:9090', 'cadvisor:8080', 'node-exporter:9100', "mqtt-exporter:9000"]
     
     metric_relabel_configs:
-    - source_labels: [readings]
+    - source_labels: [reading]
       regex: 'readings_(.*)'
       replacement: '$1'
-      target_label: readings
+      target_label: reading
