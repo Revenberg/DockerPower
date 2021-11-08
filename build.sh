@@ -12,12 +12,13 @@ chmod +x /home/pi/build.sh
 
 #. ~/dockersolarrs485logger/build.sh true
 . ~/dockerwatermeter/build.sh true
-. ~/dockeropenweathermap/build.sh true
+#. ~/dockeropenweathermap/build.sh true
 #. ~/dockerp1logger/build.sh true
 . ~/dockergrafana/build.sh true
 . ~/dockermqtt2slack/build.sh true
 . ~/dockerp1mqtt/build.sh true
 . ~/dockersolarrs485mqtt/build.sh true
+. ~/dockeropenweathermapmqtt true
 
 cd /var/docker-compose
 

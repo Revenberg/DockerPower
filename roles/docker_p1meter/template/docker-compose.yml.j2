@@ -35,7 +35,14 @@ services:
     restart: always
     expose:
       - 9100
-    
+
+  mqtt-exporter:
+    image: kpetrem/mqtt-exporter
+    ports:
+      - 9000:9000
+    environment:
+      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+  
   cadvisor:
     image: braingamer/cadvisor-arm:latest
     container_name: monitoring_cadvisor
@@ -55,7 +62,7 @@ services:
     image: revenberg/dockerp1mqtt    
     container_name: p1mqtt
     environment:
-      - MQTT_ADDRESS=192.168.2.59
+      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/p1
 
@@ -74,7 +81,7 @@ services:
     environment:
       - RS485_ADDRESS=192.168.2.40
       - RS485_PORT=8899
-      - MQTT_ADDRESS=192.168.2.59
+      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/solar
     restart: always
@@ -94,7 +101,7 @@ services:
 #    links:
 #      - influxdb
 #      - mqtt
-
+  
   openweathermapmqtt:
     image: revenberg/openweathermapmqtt
     container_name: openweathermapmqtt
@@ -102,7 +109,7 @@ services:
       - apikey={{ openweathermap_apikey }}
       - WEATHER_COUNTRY=Surhuisterveen,NL
       - WEATHER_LANGUAGE=nl
-      - MQTT_ADDRESS=192.168.2.59
+      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/weather
     restart: always

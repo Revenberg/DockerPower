@@ -16,24 +16,6 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     
     git clone https://github.com/Revenberg/powercontainers.git 
     
-    git clone https://github.com/Revenberg/dockersolarrs485logger.git 
-    cd ~;cd dockersolarrs485logger;. ./build.sh;cd ~
-    
-    git clone https://github.com/Revenberg/dockerwatermeter.git 
-    cd ~;cd dockerwatermeter;. ./build.sh;cd ~
-
-    git clone https://github.com/Revenberg/dockeropenweathermap.git 
-    cd ~;cd dockeropenweathermap;. ./build.sh;cd ~
-
-    git clone https://github.com/Revenberg/dockerp1logger.git 
-    cd ~;cd dockerp1logger;. ./build.sh;cd ~
-
-    git clone https://github.com/revenberg/dockergrafana.git 
-    cd ~;cd dockergrafana;. ./build.sh;cd ~
-
-    git clone https://github.com/Revenberg/dockermqtt2slack.git
-    cd ~;cd dockermqtt2slack;. ./build.sh;cd ~
-
     echo $1 > /home/pi/.pswrd
 fi
 
@@ -58,7 +40,7 @@ echo "rpi:" >> /home/pi/ansible/hosts
 echo "  hosts:" >> /home/pi/ansible/hosts
 
 
-ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | head -n 1 | while read line;
+ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | grep -v '172.' | head -n 1 | while read line;
 do
   echo "    $line:" >> /home/pi/ansible/hosts
   echo "      ansible_user: pi" >> /home/pi/ansible/hosts
