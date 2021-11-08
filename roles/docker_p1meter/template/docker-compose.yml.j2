@@ -57,9 +57,9 @@ services:
     image: kpetrem/mqtt-exporter
     restart: always
     ports:
-      - 9001:9001
+      - 9002:9002
     expose:
-      - 9001
+      - 9002
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=watermeter/reading/#
