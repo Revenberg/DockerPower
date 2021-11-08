@@ -42,7 +42,7 @@ services:
     ports:
       - 9000:9000
     environment:
-      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+      - MQTT_ADDRESS={{ ip_address }}
       - PROMETHEUS_PREFIX=readings_
       - TOPIC_LABEL=readings
   
@@ -65,7 +65,7 @@ services:
     image: revenberg/dockerp1mqtt    
     container_name: p1mqtt
     environment:
-      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+      - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/p1
     depends_on:
@@ -82,7 +82,7 @@ services:
     environment:
       - RS485_ADDRESS=192.168.2.40
       - RS485_PORT=8899
-      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+      - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/solar
     depends_on:
@@ -109,7 +109,7 @@ services:
       - apikey={{ openweathermap_apikey }}
       - WEATHER_COUNTRY=Surhuisterveen,NL
       - WEATHER_LANGUAGE=nl
-      - MQTT_ADDRESS={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}
+      - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=readings/weather
     restart: always

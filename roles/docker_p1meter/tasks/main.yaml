@@ -165,6 +165,7 @@
     openweathermap_apikey: "{{lookup('file', '~/openweathermap.apikey') }}"
     slack_webhook: "{{lookup('file', '~/slack.webhook') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
+    ip_address: "{{lookup('file', '~/ip') }}"
     
 - name: Create Docker-compose file
   template:
