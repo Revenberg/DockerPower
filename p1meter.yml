@@ -8,6 +8,6 @@
   roles: 
 #  - role: changepassword
   - role: docker_local
-  - role: docker_chromium
+#  - role: docker_chromium
   - role: docker_p1meter
   
