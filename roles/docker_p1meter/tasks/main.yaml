@@ -174,7 +174,7 @@
     owner: pi
     group: pi
 
-- name: deploy Docker Compose stack
+- name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
   shell:
     cmd: "docker-compose up -d --force-recreate"
   args:
