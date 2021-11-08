@@ -15,10 +15,10 @@ chmod +x /home/pi/build.sh
 #. ~/dockeropenweathermap/build.sh true
 #. ~/dockerp1logger/build.sh true
 . ~/dockergrafana/build.sh true
-. ~/dockermqtt2slack/build.sh true
+#. ~/dockermqtt2slack/build.sh true
 . ~/dockerp1mqtt/build.sh true
 . ~/dockersolarrs485mqtt/build.sh true
-. ~/dockeropenweathermapmqtt true
+. ~/dockeropenweathermapmqtt/build.sh true
 
 cd /var/docker-compose
 
