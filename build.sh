@@ -19,6 +19,7 @@ chmod +x /home/pi/build.sh
 . ~/dockerp1mqtt/build.sh true
 . ~/dockersolarrs485mqtt/build.sh true
 . ~/dockeropenweathermapmqtt/build.sh true
+. ~/dockermqttexporter/build.sh true
 
 cd /var/docker-compose
 
