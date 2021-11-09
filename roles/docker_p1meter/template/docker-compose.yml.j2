@@ -67,7 +67,7 @@ services:
       - mqtt    
 
   mqtt-exporter-watermeter:
-    image: kpetrem/mqtt-exporter
+    image: revenberg/mqttexporter
     container_name: mqtt-exporter-watermeter
     restart: always
     ports:
@@ -132,18 +132,7 @@ services:
     restart: always
     links:
       - mqtt
-
-#  watermeter:
-#    image: revenberg/watermeter
-#    container_name: watermeter
-#    depends_on:
-#      - influxdb
-#      - mqtt
-#    restart: always
-#    links:
-#      - influxdb
-#      - mqtt
-  
+ 
   openweathermapmqtt:
     image: revenberg/openweathermapmqtt
     container_name: openweathermapmqtt
