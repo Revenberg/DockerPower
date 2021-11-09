@@ -23,8 +23,7 @@ services:
       - mqtt-exporter-watermeter:mqtt-exporter-watermeter
       - mqtt
     depends_on:
-      - mqtt
-    
+      - mqtt    
     
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
@@ -71,9 +70,9 @@ services:
     container_name: mqtt-exporter-watermeter
     restart: always
     ports:
-      - 9002:9002
+      - 9002:9000
     expose:
-      - 9002
+      - 9000
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=watermeter/reading/#
