@@ -21,6 +21,10 @@ services:
       - node-exporter:node-exporter
       - mqtt-exporter:mqtt-exporter
       - mqtt-water-exporter:mqtt-water-exporter
+      - mqtt
+    depends_on:
+      - mqtt
+    
     
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
@@ -39,7 +43,11 @@ services:
     restart: always
     expose:
       - 9100
-
+    depends_on:
+      - mqtt
+    links:
+      - mqtt
+    
   mqtt-exporter:
     image: kpetrem/mqtt-exporter
     container_name: mqtt-exporter
@@ -53,6 +61,10 @@ services:
       - MQTT_TOPIC=reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
+    depends_on:
+      - mqtt
+    links:
+      - mqtt    
 
   mqtt-exporter-watermeter:
     image: kpetrem/mqtt-exporter
@@ -67,6 +79,10 @@ services:
       - MQTT_TOPIC=watermeter/reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading  
+    depends_on:
+      - mqtt
+    links:
+      - mqtt    
 
   cadvisor:
     image: braingamer/cadvisor-arm:latest
@@ -82,7 +98,11 @@ services:
       - /dev/kmsg
     expose:
       - 8080
-
+    depends_on:
+      - mqtt
+    links:
+      - mqtt
+    
   p1mqtt:
     image: revenberg/dockerp1mqtt    
     container_name: p1mqtt
@@ -90,9 +110,9 @@ services:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/p1
+    restart: always
     depends_on:
       - mqtt
-    restart: always
     links:
       - mqtt
     devices:
