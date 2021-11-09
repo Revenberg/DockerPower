@@ -28,7 +28,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['localhost:9090', 'cadvisor:8080', 'node-exporter:9100', "mqtt-exporter:9000", "mqtt-exporter-watermeter:9002"]
+      - targets: ['localhost:9090', 'cadvisor:8080', 'node-exporter:9100', "mqtt-exporter:9000", "192.168.2.59:9002"]
     
     metric_relabel_configs:
     - source_labels: [ reading ]
