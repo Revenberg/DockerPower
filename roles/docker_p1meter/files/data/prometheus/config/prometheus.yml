@@ -22,7 +22,7 @@ scrape_configs:
   - job_name: 'prometheus'
 
     # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 120s
+    scrape_interval: 60s
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
@@ -31,7 +31,8 @@ scrape_configs:
       - targets: ['localhost:9090', 'cadvisor:8080', 'node-exporter:9100', "mqtt-exporter:9000"]
     
     metric_relabel_configs:
-    - source_labels: [reading]
+    - source_labels: [ reading ]
       regex: 'readings_(.*)'
+      action: replace
       replacement: '$1'
       target_label: reading
