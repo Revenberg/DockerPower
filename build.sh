@@ -10,6 +10,12 @@ chmod +x /home/pi/p1meter.sh
 cp /home/pi/powercontainers/build.sh /home/pi/build.sh
 chmod +x /home/pi/build.sh
 
+git clone https://github.com/Revenberg/dockergrafana.git 
+git clone https://github.com/Revenberg/dockerp1mqtt.git 
+git clone https://github.com/Revenberg/dockersolarrs485mqtt.git 
+git clone https://github.com/Revenberg/dockeropenweathermapmqtt.git 
+git clone https://github.com/Revenberg/dockermqttexporter.git 
+
 #. ~/dockersolarrs485logger/build.sh true
 #. ~/dockerwatermeter/build.sh true
 #. ~/dockeropenweathermap/build.sh true
