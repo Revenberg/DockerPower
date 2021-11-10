@@ -65,14 +65,12 @@ services:
     links:
       - mqtt    
 
-  mqtt-exporter-watermeter:
+  mqtt-water:
     image: revenberg/mqttexporter
-    container_name: mqtt-exporter-watermeter
+    container_name: mqtt-water
     restart: always
     ports:
-      - 9002:9000
-    expose:
-      - 9000
+      - 9002:9000    
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=watermeter/reading/#
