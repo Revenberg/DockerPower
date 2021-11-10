@@ -71,10 +71,13 @@ services:
     restart: always
     ports:
       - 9002:9000    
+    expose:
+      - 9002
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=watermeter/reading/#
       - PROMETHEUS_PREFIX=reading_
+      - PROMETHEUS_PORT=9002
       - TOPIC_LABEL=reading  
     depends_on:
       - mqtt
