@@ -145,22 +145,21 @@
   with_items:
   - { src: "files/data/grafana/env/env.grafana", dest: "/var/docker-compose/env/env.grafana" }
   
-- name: copy files
-  copy:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: 0755
-    owner: pi
-    group: pi
-  with_items:
-  - { src: "files/data/mqtt/config/mosquitto.conf", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
-  - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
-  #- { src: "files/data/nginx/html/index.html",      dest: "/var/docker-compose/data/nginx/html/index.html" }
-  #- { src: "files/data/nginx/sites-enabled/default", dest: "/var/docker-compose/data/nginx/sites-enabled/default" }
-  #- { src: "files/data/dsmr/config/supervisord.conf",  dest: "/var/docker-compose/data/dsmr/config/supervisord.conf" }
-  #- { src: "files/data/dsmr/config/bashrc",  dest: "/var/docker-compose/data/dsmr/config/bashrc" }
-  - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
-  - { src: "files/data/alertmanager/config.yml",  dest: "/var/docker-compose/data/alertmanager/config.yml" }
+#- name: copy files
+#  copy:
+#    src: "{{ item.src }}"
+#    dest: "{{ item.dest }}"
+#    mode: 0755
+#    owner: pi
+#    group: pi
+#  with_items:
+#  - { src: "files/data/mqtt/config/mosquitto.conf", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
+#  - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
+#  #- { src: "files/data/nginx/html/index.html",      dest: "/var/docker-compose/data/nginx/html/index.html" }
+#  #- { src: "files/data/nginx/sites-enabled/default", dest: "/var/docker-compose/data/nginx/sites-enabled/default" }
+#  #- { src: "files/data/dsmr/config/supervisord.conf",  dest: "/var/docker-compose/data/dsmr/config/supervisord.conf" }
+#  #- { src: "files/data/dsmr/config/bashrc",  dest: "/var/docker-compose/data/dsmr/config/bashrc" }
+#  - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
   
 - name: get keys
   set_fact:
@@ -176,6 +175,18 @@
     mode: 0755
     owner: pi
     group: pi
+
+- name: Create Docker config files from template
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+    owner: pi
+    group: pi
+  - { src: "files/data/mqtt/config/mosquitto.conf", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
+  - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
+  - { src: "files/data/alertmanager/config.yml",  dest: "/var/docker-compose/data/alertmanager/config.yml" }
+  - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
 
 - name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
   shell:

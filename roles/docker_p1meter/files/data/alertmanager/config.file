@@ -5,3 +5,16 @@ receivers:
     - name: 'pager'
       webhook_configs:
       - url: https://ngrok.io # replace with your PagerTree webhook url
+
+global:
+  resolve_timeout: 1m
+  slack_api_url: 'https://hooks.slack.com/services/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'
+
+route:
+  receiver: 'slack-notifications'
+
+receivers:
+- name: 'slack-notifications'
+  slack_configs:
+  - channel: '#monitoring-instances'
+    send_resolved: true      
