@@ -188,7 +188,7 @@
   - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
   - { src: "files/data/alertmanager/config.yml",  dest: "/var/docker-compose/data/alertmanager/config.yml" }
   - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
-- { src: "files/data/prometheus/config/rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
+  - { src: "files/data/prometheus/config/rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
 
 - name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
   shell:
