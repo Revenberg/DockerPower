@@ -22,9 +22,21 @@ services:
       - mqtt-exporter:mqtt-exporter
       - mqtt-water:mqtt-water
       - mqtt
+      - alertmanager:alertmanager
     depends_on:
       - mqtt    
-    
+
+  alertmanager:
+    image: prom/alertmanager:v0.12.0
+    ports:
+      - 9093:9093
+    volumes:
+      - ./data/prometheus/alertmanager/:/etc/alertmanager/
+    restart: always
+    command:
+      - '-config.file=/etc/alertmanager/config.yml'
+      - '-storage.path=/alertmanager'
+
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
 #    container_name: mqtt2slack
