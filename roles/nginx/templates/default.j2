@@ -15,4 +15,7 @@ server {
     location /prometheus {
       return 301 $scheme://{{ ansible_ssh_host }}:9090;
     }
+    location /alertmanager {
+      return 301 $scheme://{{ ansible_ssh_host }}:9093;
+    }
 }
