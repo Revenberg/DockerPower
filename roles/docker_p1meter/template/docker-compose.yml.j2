@@ -34,8 +34,8 @@ services:
       - ./data/prometheus/alertmanager/:/etc/alertmanager/
     restart: always
     command:
-      - '-config.file=/etc/alertmanager/config.yml'
-      - '-storage.path=/alertmanager'
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
 
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
