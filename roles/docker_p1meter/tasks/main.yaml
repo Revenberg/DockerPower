@@ -177,7 +177,7 @@
 
 - name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
   shell:
-    cmd: "docker-compose up -d --force-recreate"
+    cmd: "docker-compose up -d --force-recreate --remove-orphans"
   args:
     chdir:  /var/docker-compose
   become: pi
