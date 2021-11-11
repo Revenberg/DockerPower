@@ -43,7 +43,7 @@ services:
       - TZ=Europe/Amsterdam
     ports:
       # Frontend port
-      - 8088:8088
+      - 8080:8080
     volumes:
       - ./data/zigbee:/app/data      
     depends_on:
@@ -116,8 +116,6 @@ services:
       - /dev/kmsg
     expose:
       - 8080
-    ports:
-      - 8080:8080
     depends_on:
       - mqtt
     links:
