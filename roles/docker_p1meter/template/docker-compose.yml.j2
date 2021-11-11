@@ -36,8 +36,8 @@ services:
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
-  depends_on:
-    - prometheus
+    depends_on:
+      - prometheus
 
 #  mqtt2slack:
 #    image: revenberg/mqtt2slack
