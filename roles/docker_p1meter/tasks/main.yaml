@@ -99,8 +99,6 @@
 #    - "/var/docker-compose/data/mqtt/config"
 #    - "/var/docker-compose/data/mqtt/data"
 #    - "/var/docker-compose/data/mqtt/log"
-#    - "/var/docker-compose/data/nginx/html"
-#    - "/var/docker-compose/data/nginx/sites-enabled"    
     - "/var/docker-compose/env"
     - "/var/docker-compose/data/dsmrdb"
     - "/var/docker-compose/data/dsmr_backups"
@@ -110,6 +108,7 @@
     - "/var/docker-compose/data/prometheus/data"
     - "/var/docker-compose/data/grafana/dashboards"
     - "/var/docker-compose/data/alertmanager"
+    - "/var/docker-compose/data/zigbee"
 
 - name: copy Docker Compose env files
   copy:
@@ -155,11 +154,8 @@
   with_items:
   - { src: "files/data/mqtt/config/mosquitto.conf", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
   - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
-#  #- { src: "files/data/nginx/html/index.html",      dest: "/var/docker-compose/data/nginx/html/index.html" }
-#  #- { src: "files/data/nginx/sites-enabled/default", dest: "/var/docker-compose/data/nginx/sites-enabled/default" }
 #  #- { src: "files/data/dsmr/config/supervisord.conf",  dest: "/var/docker-compose/data/dsmr/config/supervisord.conf" }
 #  #- { src: "files/data/dsmr/config/bashrc",  dest: "/var/docker-compose/data/dsmr/config/bashrc" }
-#  - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
   - { src: "files/data/prometheus/config/rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
   
 - name: get keys
