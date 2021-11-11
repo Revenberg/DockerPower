@@ -39,16 +39,21 @@ services:
     depends_on:
       - prometheus
 
-#  mqtt2slack:
-#    image: revenberg/mqtt2slack
-#    container_name: mqtt2slack
-#    depends_on:
-#      - mqtt
-#    restart: always
-#    links:
-#      - mqtt
-#    environment:
-#      - webhook={{ slack_webhook }}
+  zigbee:
+    image: koenkk/zigbee2mqtt
+    environment:
+      - TZ=Europe/Amsterdam
+    ports:
+      # Frontend port
+      - 8080:8080
+    volumes:
+      - ./data/zigbee:/app/data
+      - /run/udev:/run/udev:ro
+    depends_on:
+      - mqtt
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"        
+    restart: always
   
   node-exporter:
     image: prom/node-exporter:latest
