@@ -10,15 +10,15 @@ server {
       proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
     }
     location /grafana {
-      return 301 $scheme://{{ ansible_ssh_host }}:3000;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:3000;
     }
     location /prometheus {
-      return 301 $scheme://{{ ansible_ssh_host }}:9090;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:9090;
     }
     location /alertmanager {
-      return 301 $scheme://{{ ansible_ssh_host }}:9093;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:9093;
     }
     location /zigbee {
-      return 301 $scheme://{{ ansible_ssh_host }}:8080;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:8080;
     }
 }
