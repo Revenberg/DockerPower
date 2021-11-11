@@ -3,10 +3,12 @@
   debug: 
     msg: "{{lookup('pipe','date \"+%Y-%m-%d %H:%M\"')}}"
 
-- set_fact:
+- name: "get password from {{ pswrdfile }} "
+  set_fact:
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
 
-- set_fact:
+- name: password_hash sha512
+  set_fact:
     pi_passwrd: "{{ pi_password | password_hash('sha512' ) }}"
 
 - name: Set a new password for the default "pi" account

@@ -18,4 +18,7 @@ server {
     location /alertmanager {
       return 301 $scheme://{{ ansible_ssh_host }}:9093;
     }
+    location /zigbee {
+      return 301 $scheme://{{ ansible_ssh_host }}:8088;
+    }
 }
