@@ -187,6 +187,7 @@
   with_items:
   - { src: "files/data/alertmanager/config.yml",  dest: "/var/docker-compose/data/alertmanager/config.yml" }
   - { src: "files/data/prometheus/config/prometheus.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
+  - { src: "files/data/zigbee/configuration.yaml",  dest: "/var/docker-compose/data/zigbee/configuration.yaml" }
 
 - name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
   shell:

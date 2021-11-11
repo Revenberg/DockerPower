@@ -38,7 +38,7 @@ services:
       - '--storage.path=/alertmanager'
 
   zigbee:
-    image: koenkk/zigbee2mqtt
+    image: koenkk/zigbee2mqtt:latest
     environment:
       - TZ=Europe/Amsterdam
     ports:
@@ -47,6 +47,9 @@ services:
     volumes:
       - ./data/zigbee:/app/data
       - /run/udev:/run/udev:ro
+    group_add:
+      - dialout
+    user: 1000:1000
     depends_on:
       - mqtt
     devices:
