@@ -12,6 +12,8 @@ serial:
   port: /dev/ttyACM0
   baudrate: 115200
   rtscts: false
+frontend:
+  port: 8088  
 advanced:
   #log_level: debug
   log_rotation: true
