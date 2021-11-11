@@ -52,6 +52,8 @@ services:
     user: 1000:1000
     depends_on:
       - mqtt
+    links:
+      - mqtt      
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"        
     restart: always
