@@ -36,8 +36,6 @@ services:
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
-    depends_on:
-      - prometheus
 
   zigbee:
     image: koenkk/zigbee2mqtt
