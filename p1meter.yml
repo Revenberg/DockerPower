@@ -9,6 +9,5 @@
   - role: changepassword
   - role: docker_local
   - role: nginx
-#  - role: docker_chromium
   - role: docker_p1meter
   
