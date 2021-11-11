@@ -7,7 +7,7 @@ server {
     listen 80 default_server;
     server_name _;
     location / {
-      return 301 $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
     }
     location /grafana {
       return 301 $scheme://{{ ansible_ssh_host }}:3000;
