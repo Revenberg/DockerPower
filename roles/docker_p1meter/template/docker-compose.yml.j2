@@ -98,6 +98,7 @@ services:
       - PROMETHEUS_PREFIX=reading_
       - PROMETHEUS_PORT=9002
       - TOPIC_LABEL=reading
+      - LOG_LEVEL=DEBUG
     depends_on:
       - mqtt
     links:
