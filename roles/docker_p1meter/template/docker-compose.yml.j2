@@ -189,18 +189,18 @@ services:
     links:
       - mqtt
 
-#  influxdb:
-#    image: hypriot/rpi-influxdb:latest
-#    container_name: influxdb
-#    environment:
-#     - INFLUXDB_INIT_PWD="password"
-#     - PRE_CREATE_DB="power;solar;water;weather"
-#    restart: always
-#    ports:
-#     - "8083:8083"
-#     - "8086:8086"
-#    volumes:
-#      - /data/influxdb/data:/var/lib/influxdb
+  influxdb:
+    image: hypriot/rpi-influxdb:latest
+    container_name: influxdb
+    environment:
+     - INFLUXDB_INIT_PWD="password"
+     - PRE_CREATE_DB="power;solar;water;weather"
+    restart: always
+    ports:
+     - "8083:8083"
+     - "8086:8086"
+    volumes:
+      - /data/influxdb/data:/var/lib/influxdb
 
   grafana:
     image: revenberg/grafana:latest
@@ -211,7 +211,7 @@ services:
       - './env/env.grafana'
     user: "0"
     links:
-#      - influxdb:influxdb
+      - influxdb:influxdb
       - prometheus:prometheus
     restart: always
     volumes:
