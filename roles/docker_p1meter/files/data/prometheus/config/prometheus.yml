@@ -44,5 +44,4 @@ alerting:
     - static_configs:
       - targets:
         # Alertmanager's default port is 9093
-        - localhost:9093
-        
+        - {{ ip_address }}:9093
