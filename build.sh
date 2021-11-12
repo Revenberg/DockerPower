@@ -15,7 +15,7 @@ git clone https://github.com/Revenberg/dockerp1mqtt.git
 git clone https://github.com/Revenberg/dockersolarrs485mqtt.git 
 git clone https://github.com/Revenberg/dockeropenweathermapmqtt.git 
 git clone https://github.com/Revenberg/dockermqttexporter.git 
-git clone  https://github.com/Revenberg/zigbeemqttexporter.git
+git clone  https://github.com/Revenberg/dockerzigbeemqttexporter.git
 
 #. ~/dockersolarrs485logger/build.sh true
 #. ~/dockerwatermeter/build.sh true
@@ -27,7 +27,7 @@ git clone  https://github.com/Revenberg/zigbeemqttexporter.git
 . ~/dockersolarrs485mqtt/build.sh true
 . ~/dockeropenweathermapmqtt/build.sh true
 . ~/dockermqttexporter/build.sh true
-. ~/zigbeemqttexporter/build.sh true
+. ~/dockerzigbeemqttexporter/build.sh true
 cd /var/docker-compose
 
 docker-compose up -d --force-recreate
