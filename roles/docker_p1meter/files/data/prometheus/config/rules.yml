@@ -96,7 +96,7 @@ groups:
   - alert: DeurSchuur
     # Condition for alerting
     expr: zigbee2mqtt_Schuur_reading_contact == 0
-    for: 2m
+    for: 10m
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Instance {{ $labels.instance }} open'
