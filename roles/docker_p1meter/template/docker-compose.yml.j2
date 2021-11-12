@@ -21,6 +21,7 @@ services:
       - node-exporter:node-exporter
       - mqtt-exporter:mqtt-exporter
       - mqtt-water:mqtt-water
+      - zigbeemqttexporter:zigbeemqttexporter
       - mqtt
       - alertmanager:alertmanager
     depends_on:
