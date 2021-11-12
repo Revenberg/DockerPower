@@ -102,6 +102,27 @@ services:
     links:
       - mqtt
 
+services:
+  zigbeemqttexporter:
+    image: revenberg/mqttexporter
+    container_name: zigbeemqttexporter
+    restart: always
+    ports:
+      - 9004:9004
+    expose:
+      - 9004
+    environment:
+      - MQTT_ADDRESS=192.168.2.80
+      - MQTT_TOPIC=zigbee2mqtt/#
+      - MQTT_IGNORED_TOPICS=bridge
+      - PROMETHEUS_PREFIX=reading_
+      - TOPIC_LABEL=reading
+      - LOG_LEVEL=DEBUG  
+    depends_on:
+      - mqtt
+    links:
+      - mqtt
+      
   cadvisor:
     image: braingamer/cadvisor-arm:latest
     container_name: monitoring_cadvisor
