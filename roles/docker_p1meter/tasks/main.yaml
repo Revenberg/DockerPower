@@ -165,7 +165,7 @@
     slack_webhook: "{{lookup('file', '~/slack.webhook') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
     ip_address: "{{lookup('file', '~/ip') }}"
-    
+    ext_ip: "{{lookup('file', '~/ext_ip') }}"
 - name: Create Docker-compose file
   template:
     src: "template/docker-compose.yml.j2"

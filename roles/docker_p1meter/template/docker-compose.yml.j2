@@ -37,7 +37,7 @@ services:
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
-
+      - "--web.external-url=http://{{ ext_ip }}:9093"
   zigbee:
     image: koenkk/zigbee2mqtt:latest
     environment:

@@ -42,7 +42,6 @@ ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd $pswrd --name
 echo "rpi:" >> /home/pi/ansible/hosts
 echo "  hosts:" >> /home/pi/ansible/hosts
 
-
 ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | grep -v '172.' | head -n 1 | while read line;
 do
   echo "    $line:" >> /home/pi/ansible/hosts
@@ -50,6 +49,8 @@ do
 
   echo "$line" > /home/pi/ip
 done
+
+curl ifconfig.me > ~/ext_ip
 
 #echo /home/pi/ansible/hosts
 #ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd '$pswrd' --name ' ansible_ssh_pass'  >> /home/pi/ansible/hosts
