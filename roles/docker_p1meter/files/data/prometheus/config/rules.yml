@@ -100,7 +100,7 @@ groups:
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Instance {{ $labels.instance }} open'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 10 minuten.'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
