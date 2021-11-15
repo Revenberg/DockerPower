@@ -9,4 +9,5 @@ receivers:
 - name: 'slack-notifications'
   slack_configs:
   - channel: '#monitoring-instances'
+    text: 'http://{{ ext_ip }}:3000/d/IY_TzAggk/deuren {{ .GroupLabels.alertname }} {{ .GroupLabels.app }}'
     send_resolved: true      
