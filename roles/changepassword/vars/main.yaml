@@ -1,2 +1,2 @@
 ---
-pswrdfile: {{ passwordfile }}
+pswrdfile: "{{ passwordfile }}"
