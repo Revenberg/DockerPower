@@ -16,7 +16,6 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 
     sudo apt-get install git ansible sshpass -y
     sudo apt-get install docker-compose -y
-    mkdir /home/pi/ansible
     
     git clone https://github.com/Revenberg/powercontainers.git 
 
@@ -25,13 +24,14 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         git pull
         cd ~
         echo $1 > /home/pirate/.pswrd
-        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --vault-password-file /home/pirate/.pswrd  --connection=local | tee ~/zigbee2mqtt.log
+        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local | tee ~/zigbee2mqtt.log
         echo "Reconnect as pi and your password"
         echo $1 > /home/pi/.pswrd            
         rm /home/pirate/.pswrd
         sleep 30
         exit 255
     fi    
+    mkdir /home/pi/ansible
     echo $1 > /home/pi/.pswrd   
 fi
 

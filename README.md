@@ -17,8 +17,8 @@ Request API key https://openweathermap.org/api
 put the key in ~/openweathermap.apikey
 
 [install/run] 1
-wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/p1meter.sh && chmod +x p1meter.sh ;./p1meter.sh
+wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/p1meter.sh && chmod +x p1meter.sh ;./p1meter.sh << password>>
 
 [install/run] 2
-wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/zigbee2mqtt.sh && chmod +x zigbee2mqtt.sh ;./zigbee2mqtt.sh
+wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/zigbee2mqtt.sh && chmod +x zigbee2mqtt.sh ;./zigbee2mqtt.sh << password>>
 
