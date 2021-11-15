@@ -19,6 +19,18 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     
     git clone https://github.com/Revenberg/powercontainers.git 
     
+    if [ "$(whoami)" == "pirate" ]; then
+        cd /home/pirate/powercontainers
+        git pull
+        cd ~
+        echo $1 > /home/pirate/.pswrd
+        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --vault-password-file /home/pirate/.pswrd  --connection=local | tee ~/zigbee2mqtt.log
+        echo "Reconnect as pi and your password"
+        echo $1 > /home/pi/.pswrd            
+        rm /home/pirate/.pswrd
+        sleep 30
+        exit 255
+    fi        
     echo $1 > /home/pi/.pswrd
 fi
 

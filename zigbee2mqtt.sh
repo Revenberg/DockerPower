@@ -7,7 +7,8 @@ sudo apt full-upgrade -y
 if [ ! -f "/home/pi/.pswrd" ]; then
     if [ $# -ne 1 ]; then
         echo $0: usage: $0  password
-        exit 0
+        sleep 30
+        exit 255
     fi     
 
     sudo apt-get update
@@ -28,6 +29,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         echo "Reconnect as pi and your password"
         echo $1 > /home/pi/.pswrd            
         rm /home/pirate/.pswrd
+        sleep 30
         exit 255
     fi    
     echo $1 > /home/pi/.pswrd   
