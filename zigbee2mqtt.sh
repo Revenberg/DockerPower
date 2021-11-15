@@ -9,15 +9,15 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         echo $0: usage: $0  password
         sleep 30
         exit 255
-    fi     
+    fi
 
     sudo apt-get update -y
     sudo apt-get autoremove -y
 
     sudo apt-get install git ansible sshpass -y
     sudo apt-get install docker-compose -y
-    
-    git clone https://github.com/Revenberg/powercontainers.git 
+
+    git clone https://github.com/Revenberg/powercontainers.git
 
     if [ "$(whoami)" == "pirate" ]; then
         cd /home/pirate/powercontainers
@@ -26,13 +26,14 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         echo $1 > /home/pirate/.pswrd
         ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee ~/zigbee2mqtt.log
         echo "Reconnect as pi and your password"
-        cp $0 /home/pi/         
+        sudo cp $0 /home/pi/
+        sudo chown pi:pi /home/pi/$0
         sudo chsh -s /bin/bash pi
         sleep 30
         exit 255
-    fi    
-    mkdir /home/pi/ansible  
-    echo $1 > /home/pi/.pswrd   
+    fi
+    mkdir /home/pi/ansible
+    echo $1 > /home/pi/.pswrd
 fi
 
 mkdir /home/pi/.ssh 2>/dev/null
