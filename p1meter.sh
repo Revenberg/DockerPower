@@ -10,8 +10,8 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         exit 0
     fi     
 
-    sudo apt-get update
-    sudo apt-get autoremove
+    sudo apt-get update -y
+    sudo apt-get autoremove -y
 
     sudo apt-get install git ansible sshpass -y
     sudo apt-get install docker-compose -y    
