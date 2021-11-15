@@ -23,7 +23,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         git pull
         cd ~
         echo $1 > /home/pirate/.pswrd
-        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local | tee ~/zigbee2mqtt.log
+        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --extra-vars "passwordfile=/home/pirate/.pswrd" --connection=local | tee ~/zigbee2mqtt.log
         echo "Reconnect as pi and your password"
         echo $1 > /home/pi/.pswrd            
         rm /home/pirate/.pswrd

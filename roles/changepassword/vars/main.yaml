@@ -1,2 +1,2 @@
 ---
-pswrdfile: ~/.pswrd
+pswrdfile: {{ passwordfile }}

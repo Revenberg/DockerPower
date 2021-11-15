@@ -6,7 +6,6 @@
     ansible_python_interpreter: /usr/bin/python3
 
   roles: 
-  - role: changepassword
   - role: docker_local
   - role: nginx
   - role: docker_p1meter
