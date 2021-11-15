@@ -38,6 +38,11 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     echo $1 > /home/pi/.pswrd
 fi
 
+if [ ! -d "/home/pi/powercontainers" ]; then
+    git clone https://github.com/Revenberg/powercontainers.git
+fi
+
+mkdir /home/pi/ansible 2>/dev/null
 mkdir /home/pi/.ssh 2>/dev/null
 
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
