@@ -1,0 +1,12 @@
+---
+- hosts: rpi
+  become_user: root
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  roles: 
+  - role: changepassword
+  - role: docker_local
+  - role: docker_zigbee2mqtt
+  

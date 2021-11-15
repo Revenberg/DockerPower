@@ -44,7 +44,7 @@ services:
       - TZ=Europe/Amsterdam
     ports:
       # Frontend port
-      - 8080:8080
+      - 8088:8088
     volumes:
       - /data/zigbee:/app/data
     depends_on:
@@ -113,7 +113,7 @@ services:
     expose:
       - 9004
     environment:
-      - MQTT_ADDRESS=192.168.2.80
+      - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=zigbee2mqtt/#
       - MQTT_IGNORED_TOPICS=bridge
       - PROMETHEUS_PREFIX=reading_
@@ -189,19 +189,6 @@ services:
     restart: always
     links:
       - mqtt
-
-#  influxdb:
-#    image: hypriot/rpi-influxdb:latest
-#    container_name: influxdb
-#    environment:
-#     - INFLUXDB_INIT_PWD="password"
-#     - PRE_CREATE_DB="power;solar;water;weather"
-#    restart: always
-#    ports:
-#     - "8083:8083"
-#     - "8086:8086"
-#    volumes:
-#      - /data/influxdb/data:/var/lib/influxdb
 
   grafana:
     image: revenberg/grafana:latest
