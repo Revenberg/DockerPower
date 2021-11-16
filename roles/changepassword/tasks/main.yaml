@@ -17,5 +17,5 @@
     name: "pi"
     password: "{{ pi_passwrd }}"
     update_password: always
-    groups: sudo,docker    
+    groups: docker    
     append: yes
