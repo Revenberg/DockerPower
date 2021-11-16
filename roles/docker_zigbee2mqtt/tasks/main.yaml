@@ -67,22 +67,6 @@
   - { src: "template/docker-compose.yml.j2",                  dest: "/var/docker-compose/docker-compose.yml" }    
   - { src: "files/data/zigbee/configuration.yaml.j2",         dest: "/var/docker-compose/data/zigbee/configuration.yaml" }
 
-- name: docker-machine create
-  shell:
-    cmd: "docker-machine create"
-  args:
-    chdir:  /var/docker-compose
-  become: pi
-  ignore_errors: yes
-
-- name: docker-machine start default
-  shell:
-    cmd: "docker-machine start default"
-  args:
-    chdir:  /var/docker-compose
-  become: pi  
-  ignore_errors: yes
-
 - name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
   shell:
     cmd: "docker-compose up -d --force-recreate --remove-orphans"
