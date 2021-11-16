@@ -28,7 +28,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         sudo cp $0 /home/pi/
         sudo chown pi:pi /home/pi/$0
         sudo chsh -s /bin/bash pi
-        sudo echo $1 > /home/pi/.pswrd
+        sudo mv /home/pirate/.pswrd /home/pi/.pswrd
         sudo chown pi:pi /home/pi/.pswrd
         sleep 30
         exit 255

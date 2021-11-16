@@ -27,8 +27,8 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee ~/zigbee2mqtt.log
         echo "Reconnect as pi and your password"
         sudo cp $0 /home/pi/
-        sudo chown pi:pi /home/pi/$0
-        sudo echo $1 > /home/pi/.pswrd
+        sudo chown pi:pi /home/pi/$0        
+        sudo mv /home/pirate/.pswrd /home/pi/.pswrd
         sudo chown pi:pi /home/pi/.pswrd
         sudo chsh -s /bin/bash pi
         sleep 30
