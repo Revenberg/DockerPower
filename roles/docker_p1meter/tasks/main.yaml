@@ -148,11 +148,11 @@
   
 - name: get keys
   set_fact:
-    openweathermap_apikey: "{{lookup('file', '~/openweathermap.apikey') }}"
-    slack_webhook: "{{lookup('file', '~/slack.webhook') }}"
+    openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
+    slack_webhook: "{{lookup('file', '/home/pi/slack.webhook') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
-    ip_address: "{{lookup('file', '~/ip') }}"
-    ext_ip: "{{lookup('file', '~/ext_ip') }}"
+    ip_address: "{{lookup('file', '/home/pi/ip') }}"
+    ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
 
 - name: Create Docker files from template
   template:

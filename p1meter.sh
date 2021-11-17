@@ -23,7 +23,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         git pull
         cd ~
         echo $1 > /home/pirate/.pswrd
-        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee ~/zigbee2mqtt.log
+        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/zigbee2mqtt.log
         echo "Reconnect as pi and your password"
         sudo cp $0 /home/pi/
         sudo chown pi:pi /home/pi/$0
@@ -51,7 +51,7 @@ sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | while read line;
 do
-    ssh-keyscan -H $line >> ~/.ssh/known_hosts
+    ssh-keyscan -H $line >> /home/pi/.ssh/known_hosts
 done
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 
@@ -73,7 +73,7 @@ do
   echo "$line" > /home/pi/ip
 done
 
-curl ifconfig.me > ~/ext_ip
+curl ifconfig.me > /home/pi/ext_ip
 
 #echo /home/pi/ansible/hosts
 #ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd '$pswrd' --name ' ansible_ssh_pass'  >> /home/pi/ansible/hosts
@@ -91,5 +91,5 @@ chmod +x /home/pi/build.sh
 cp /home/pi/powercontainers/build.sh /home/pi/run.sh
 chmod +x /home/pi/run.sh
 
-#ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
-ansible-playbook  /home/pi/powercontainers/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/p1meter.log
+#ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/ansible.log
+ansible-playbook  /home/pi/powercontainers/p1meter.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/p1meter.log

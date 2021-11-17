@@ -2,7 +2,7 @@
 
 # version 2021-08-07 15:20
 
-cd ~/powercontainers;git pull;cd -
+cd /home/pi/powercontainers;git pull;cd -
 
 cp /home/pi/powercontainers/p1meter.sh /home/pi/p1meter.sh
 chmod +x /home/pi/p1meter.sh
@@ -17,17 +17,17 @@ git clone https://github.com/Revenberg/dockeropenweathermapmqtt.git
 git clone https://github.com/Revenberg/dockermqttexporter.git 
 git clone  https://github.com/Revenberg/dockerzigbeemqttexporter.git
 
-#. ~/dockersolarrs485logger/build.sh true
-#. ~/dockerwatermeter/build.sh true
-#. ~/dockeropenweathermap/build.sh true
-#. ~/dockerp1logger/build.sh true
-. ~/dockergrafana/build.sh true
-#. ~/dockermqtt2slack/build.sh true
-. ~/dockerp1mqtt/build.sh true
-. ~/dockersolarrs485mqtt/build.sh true
-. ~/dockeropenweathermapmqtt/build.sh true
-. ~/dockermqttexporter/build.sh true
-. ~/dockerzigbeemqttexporter/build.sh true
+#. /home/pi/dockersolarrs485logger/build.sh true
+#. /home/pi/dockerwatermeter/build.sh true
+#. /home/pi/dockeropenweathermap/build.sh true
+#. /home/pi/dockerp1logger/build.sh true
+. /home/pi/dockergrafana/build.sh true
+#. /home/pi/dockermqtt2slack/build.sh true
+. /home/pi/dockerp1mqtt/build.sh true
+. /home/pi/dockersolarrs485mqtt/build.sh true
+. /home/pi/dockeropenweathermapmqtt/build.sh true
+. /home/pi/dockermqttexporter/build.sh true
+. /home/pi/dockerzigbeemqttexporter/build.sh true
 cd /var/docker-compose
 
 docker-compose up -d --force-recreate

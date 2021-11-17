@@ -54,7 +54,7 @@
 - name: get keys
   set_fact:
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
-    ip_address: "{{lookup('file', '~/ip') }}"
+    ip_address: "{{lookup('file', '/home/pi/ip') }}"
 
 - name: Create Docker files from template
   template:
