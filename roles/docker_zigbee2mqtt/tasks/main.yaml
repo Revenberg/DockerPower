@@ -72,5 +72,4 @@
     cmd: "docker-compose up -d --force-recreate --remove-orphans"
   args:
     chdir:  /var/docker-compose
-  become: pi
-
+  
