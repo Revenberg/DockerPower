@@ -17,13 +17,6 @@
     - docker
     append: yes
 
-- name: Install Docker
-  shell:
-    cmd: "newgrp -"
-  become_user: pi
-  become: yes
-
-
 - name: install libffi-dev libssl-dev
   apt:
     name: [ "libffi-dev", "libssl-dev" ]
