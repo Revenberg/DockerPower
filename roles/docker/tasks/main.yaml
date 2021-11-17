@@ -50,6 +50,7 @@
   docker_container:
     name: mydata
     image: portainer/portainer:linux-arm
+    container_default_behavior: no_defaults
     ports: 
       - "9000:9000"
     volumes:
