@@ -87,7 +87,7 @@ services:
 
   portainer:
     image: portainer/portainer-ce    
-    name: portainer
+    container_name: portainer
     environment:
       admin-password-file: "{{ pswrdfile }}"
       host: "{{ ip_address }}"
