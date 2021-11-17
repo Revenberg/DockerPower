@@ -9,11 +9,12 @@
     cmd: "curl -sSL https://get.docker.com | sh"
   when: not p.stat.exists
 
-- name: Add the user 'pi' with a bash shell, appending the group 'docker' and 'developers' to the user's groups
+- name: Add the user 'pi' with a bash shell, appending the group 'docker' to the user's groups
   user:
     name: pi
     shell: /bin/bash
-    groups: docker
+    groups: 
+    - docker
     append: yes
 
 - name: install libffi-dev libssl-dev
