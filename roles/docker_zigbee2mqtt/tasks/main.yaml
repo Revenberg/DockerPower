@@ -1,26 +1,26 @@
 --- 
-- name: Add an apt key by id from a keyserver
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 04EE7237B7D453EC
+#- name: Add an apt key by id from a keyserver
+#  apt_key:
+#    keyserver: keyserver.ubuntu.com
+#    id: 04EE7237B7D453EC
+#
+#- name: Add an apt key by id from a keyserver
+#  apt_key:
+#    keyserver: keyserver.ubuntu.com
+#    id: 648ACFD622F3D138
 
-- name: Add an apt key by id from a keyserver
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 648ACFD622F3D138
+#- name: Add buster-backports to /etc/apt/sources.list
+#  lineinfile:
+#    path: /etc/apt/sources.list
+#    line: deb http://deb.debian.org/debian buster-backports main    
 
-- name: Add buster-backports to /etc/apt/sources.list
-  lineinfile:
-    path: /etc/apt/sources.list
-    line: deb http://deb.debian.org/debian buster-backports main    
+#- name: apt-get update
+#  shell:
+#    cmd: "apt-get update"
 
-- name: apt-get update
-  shell:
-    cmd: "apt-get update"
-
-- name: apt-get install libseccomp2/buster-backports
-  shell:
-    cmd: "apt install libseccomp2/buster-backports"    
+#- name: apt-get install libseccomp2/buster-backports
+#  shell:
+#    cmd: "apt install libseccomp2/buster-backports"    
 
 - name: create /var/docker-compose
   file:
@@ -31,7 +31,7 @@
     owner: pi
     group: pi
   with_items:         
-    - "/var/docker-compose/data/mqtt/config"
+    - "/var/docker-compose/data/mqtt/config"    
     - "/var/docker-compose/data/mqtt/data"
     - "/var/docker-compose/data/mqtt/log"
     - "/var/docker-compose/data/zigbee"

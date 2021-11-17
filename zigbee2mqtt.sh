@@ -17,29 +17,33 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     sudo apt-get install git ansible sshpass -y
     sudo apt-get install docker-compose -y
 
-    git clone https://github.com/Revenberg/powercontainers.git
-
-    if [ "$(whoami)" == "pirate" ]; then
-        cd /home/pirate/powercontainers
-        git pull
-        cd ~
-        echo $1 > /home/pirate/.pswrd
-        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee ~/zigbee2mqtt.log
-        echo "Reconnect as pi and your password"
-        sudo cp $0 /home/pi/
-        sudo chown pi:pi /home/pi/$0        
-        sudo mv /home/pirate/.pswrd /home/pi/.pswrd
-        sudo chown pi:pi /home/pi/.pswrd
-        sudo chsh -s /bin/bash pi
-        sleep 30
-        exit 255
-    fi
+#    git clone https://github.com/Revenberg/powercontainers.git
+#    
+#    if [ "$(whoami)" == "pirate" ]; then
+#        cd /home/pirate/powercontainers
+#        git pull
+#        cd ~
+#        echo $1 > /home/pirate/.pswrd
+#        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee ~/zigbee2mqtt.log
+#        echo "Reconnect as pi and your password"
+#        sudo cp $0 /home/pi/
+#        sudo chown pi:pi /home/pi/$0        
+#        sudo mv /home/pirate/.pswrd /home/pi/.pswrd
+#        sudo chown pi:pi /home/pi/.pswrd
+#        sudo chsh -s /bin/bash pi
+#        sleep 30
+#        exit 255
+#    fi
     mkdir /home/pi/ansible
     echo $1 > /home/pi/.pswrd
 fi
 
 if [ ! -d "/home/pi/powercontainers" ]; then
     git clone https://github.com/Revenberg/powercontainers.git
+else
+    cd powercontainers
+    git pull
+    cd ~
 fi
 
 mkdir /home/pi/ansible 2>/dev/null
