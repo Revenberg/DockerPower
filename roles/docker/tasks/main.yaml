@@ -35,6 +35,10 @@
 - name: Install docker-compose
   shell:
     cmd: "pip3 -v install docker-compose"    
+
+- name: systemctl enable docker
+  shell:
+    cmd: "systemctl enable docker"    
     
 - name: create /var/docker-compose
   file:
