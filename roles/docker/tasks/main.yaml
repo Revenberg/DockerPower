@@ -32,14 +32,10 @@
     name: [ "python-configparser" ]
     state: absent
 
-#  shell:
-#    cmd: "pip3 -v install docker-compose"    
-
 - name: Install docker-compose
-  pip:
-    name: docker-compose
-    executable: pip3
-
+  shell:
+    cmd: "pip3 -v install docker-compose"    
+    
 - name: create /var/docker-compose
   file:
     path: "{{  item }}"
