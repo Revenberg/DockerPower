@@ -32,9 +32,13 @@
     name: [ "python-configparser" ]
     state: absent
 
+#  shell:
+#    cmd: "pip3 -v install docker-compose"    
+
 - name: Install docker-compose
-  shell:
-    cmd: "pip3 -v install docker-compose"    
+  pip:
+    name: docker-compose
+    executable: pip3.3
 
 - name: create /var/docker-compose
   file:
@@ -60,8 +64,8 @@
     state: present
     recreate: yes
     env:
-      - admin-password-file: "{{ pswrdfile }}"
-      - host: "{{ ip_address }}"
+      admin-password-file: "{{ pswrdfile }}"
+      host: "{{ ip_address }}"
     ports: 
       - "80:9000"
       - "9443:9443"
