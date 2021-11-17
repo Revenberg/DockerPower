@@ -17,6 +17,13 @@
     - docker
     append: yes
 
+- name: Install Docker
+  shell:
+    cmd: "newgrp -"
+  become_user: pi
+  become: yes
+
+
 - name: install libffi-dev libssl-dev
   apt:
     name: [ "libffi-dev", "libssl-dev" ]
@@ -47,9 +54,9 @@
   with_items:         
     - "/var/docker-compose/data/portainer"    
 
-- name: Create a data container
+- name: Create portainer container
   docker_container:
-    name: mydata
+    name: portainer
     image: portainer/portainer:linux-arm
     container_default_behavior: no_defaults
     state: present
