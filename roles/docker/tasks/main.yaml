@@ -56,7 +56,7 @@
 
 - name: get keys
   set_fact:
-    ip_address: "{{lookup('file', '~/ip') }}"
+    ip_address: "{{lookup('file', '/home/pi/ip') }}"
   
 #portainer/portainer:linux-arm
 - name: Create portainer container
