@@ -50,25 +50,4 @@
     group: pi
   with_items:         
     - "/var/docker-compose/data/portainer"    
-
-- name: get keys
-  set_fact:
-    ip_address: "{{lookup('file', '/home/pi/ip') }}"
   
-#portainer/portainer:linux-arm
-- name: Create portainer container
-  docker_container:
-    name: portainer
-    image: portainer/portainer-ce    
-    container_default_behavior: no_defaults
-    state: present
-    recreate: yes
-    env:
-      admin-password-file: "{{ pswrdfile }}"
-      host: "{{ ip_address }}"
-    ports: 
-      - "80:9000"
-      - "9443:9443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
-      - /data/portainer_data:/data 
