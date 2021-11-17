@@ -51,6 +51,8 @@
     name: mydata
     image: portainer/portainer:linux-arm
     container_default_behavior: no_defaults
+    state: present
+    recreate: yes
     ports: 
       - "80:9000"
     volumes:
