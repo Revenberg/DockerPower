@@ -1,4 +1,9 @@
 ---
+- name: Check for docker in /run
+  stat:
+    path: /run/docker
+  register: p
+
 - name: Install Docker
   shell:
     cmd: "curl -sSL https://get.docker.com | sh"
