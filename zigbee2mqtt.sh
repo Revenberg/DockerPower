@@ -40,6 +40,7 @@ fi
 
 if [ ! -d "/home/pi/powercontainers" ]; then
     git clone https://github.com/Revenberg/powercontainers.git
+    git config pull.rebase false
 else
     cd powercontainers
     git pull
