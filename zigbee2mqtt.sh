@@ -83,16 +83,16 @@ curl ifconfig.me > ~/ext_ip
 
 cd /home/pi/powercontainers
 git pull
-cd ~
+cd /home/pi
 
-cp /home/pi/powercontainers/zigbee2mqtt.sh /home/pi/zigbee2mqtt.sh
-chmod +x /home/pi/zigbee2mqtt.sh
+cp /home/pi/powercontainers/zigbee2mqtt.sh /home/pi/zigbee2mqtt.sh;
+chmod +x /home/pi/zigbee2mqtt.sh;
 
-cp /home/pi/powercontainers/build.sh /home/pi/build.sh
-chmod +x /home/pi/build.sh
+cp /home/pi/powercontainers/build.sh /home/pi/build.sh;
+chmod +x /home/pi/build.sh;
 
-cp /home/pi/powercontainers/build.sh /home/pi/run.sh
-chmod +x /home/pi/run.sh
+cp /home/pi/powercontainers/build.sh /home/pi/run.sh;
+chmod +x /home/pi/run.sh;
 
 #ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/ansible.log
 ansible-playbook  /home/pi/powercontainers/zigbee2mqtt.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee ~/zigbee2mqtt.log
