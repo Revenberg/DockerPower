@@ -54,10 +54,11 @@
   with_items:         
     - "/var/docker-compose/data/portainer"    
 
+#portainer/portainer:linux-arm
 - name: Create portainer container
   docker_container:
     name: portainer
-    image: portainer/portainer:linux-arm
+    image: portainer/portainer-ce    
     container_default_behavior: no_defaults
     state: present
     recreate: yes
