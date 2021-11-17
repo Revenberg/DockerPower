@@ -38,6 +38,7 @@
 - name: Install docker-compose
   pip:
     name: docker-compose
+    executable: pip3.9
 
 - name: create /var/docker-compose
   file:
