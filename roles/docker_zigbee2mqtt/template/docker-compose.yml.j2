@@ -80,7 +80,7 @@ services:
     user: "1000:1000"
     volumes:
       - /var/docker-compose/data/mqtt/config:/mosquitto/config
-      - /var/docker-compose/data/mqtt/var/docker-compose/data/data:/mosquitto/data
+      - /var/docker-compose/data/mqtt/data:/mosquitto/data
       - /var/docker-compose/data/mqtt/log:/mosquitto/log
     restart: always
     network_mode: host
