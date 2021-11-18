@@ -22,15 +22,6 @@
 #  shell:
 #    cmd: "apt install libseccomp2/buster-backports"    
 
-- name: Create symbolic link to /data
-  file:
-    src: /data
-    path: /var/docker-compose/data
-    state: link
-    mode: 0755
-    owner: pi
-    group: pi  
-
 - name: create /var/docker-compose
   file:
     path: "{{  item }}"
