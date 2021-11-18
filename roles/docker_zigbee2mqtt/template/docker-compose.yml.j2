@@ -9,7 +9,7 @@ services:
       # Frontend port
       - 8088:8088
     volumes:
-      - /var/docker-compose/zigbee:/app/data
+      - /var/docker-compose/data/zigbee:/app/data
     depends_on:
       - mqtt
     links:
@@ -79,9 +79,9 @@ services:
       - 9001:9001
     user: "1000:1000"
     volumes:
-      - /var/docker-compose/mqtt/config:/mosquitto/config
-      - /var/docker-compose/mqtt/var/docker-compose/data:/mosquitto/data
-      - /var/docker-compose/mqtt/log:/mosquitto/log
+      - /var/docker-compose/data/mqtt/config:/mosquitto/config
+      - /var/docker-compose/data/mqtt/var/docker-compose/data/data:/mosquitto/data
+      - /var/docker-compose/data/mqtt/log:/mosquitto/log
     restart: always
     network_mode: host
 
