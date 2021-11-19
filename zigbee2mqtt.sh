@@ -40,7 +40,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 
     git clone https://github.com/Revenberg/powercontainers.git
     cd ~/powercontainers
-    git config pull.rebase false
+    git config --global pull.rebase false
     cd -
 else
     cd ~/ powercontainers
