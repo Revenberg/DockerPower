@@ -50,4 +50,8 @@
     group: pi
   with_items:         
     - "/var/docker-compose/data/portainer"    
-  
+
+- name: 'prepare default daemon configuration'
+  copy:
+    src: 'daemon.json'
+    dest: '/etc/docker/daemon.json'
