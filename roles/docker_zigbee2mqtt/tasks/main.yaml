@@ -79,7 +79,8 @@
   with_items:
   - { src: "files/data/mqtt/config/mosquitto.conf", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
   - { src: "files/data/mqtt/config/passwords.mqtt", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
-  
+  - { src: "{{ pswrdfile }}",                       dest: "/data/portainer_data/.pswrd" }
+
 - name: get keys
   set_fact:
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"

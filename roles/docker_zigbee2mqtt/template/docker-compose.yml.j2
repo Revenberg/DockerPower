@@ -90,7 +90,7 @@ services:
     image: portainer/portainer-ce
     container_name: portainer
     command:
-      - "--admin-password-file={{ pswrdfile }}"
+      - "--admin-password-file=/data/.passwrd"
     ports:
       - 9000:9000
       - 9443:9443
