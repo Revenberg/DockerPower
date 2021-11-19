@@ -50,7 +50,7 @@ services:
       - mqtt
 
   cadvisor:
-    image: braingamer/cadvisor-arm:latest
+    image: zcube/cadvisor
     container_name: monitoring_cadvisor
     privileged: true
     restart: always
@@ -59,6 +59,11 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    command:
+      - '--docker_only'
+      - '--disable_metrics=disk,diskIO,tcp,udp,percpu,sched,process'
+      - '--housekeeping_interval=10s'
     devices:
       - /dev/kmsg
     expose:

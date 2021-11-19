@@ -13,7 +13,7 @@
   include_tasks: cmdline.yml
   vars:
     key: cgroup_enable
-    value: cpu
+    value: cpuset
     update: false
 
 - name: cmdline.yml update cgroup_memory
