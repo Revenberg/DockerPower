@@ -36,6 +36,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 #    fi
     mkdir /home/pi/ansible
     echo $1 > /home/pi/.pswrd
+    git config pull.rebase true
     ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/zigbee2mqtt.log
 fi
 
