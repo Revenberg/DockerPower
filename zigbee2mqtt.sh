@@ -36,17 +36,16 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 #    fi
     mkdir /home/pi/ansible
     echo $1 > /home/pi/.pswrd
-    git config pull.rebase true
     ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/zigbee2mqtt.log
-fi
 
-if [ ! -d "/home/pi/powercontainers" ]; then
     git clone https://github.com/Revenberg/powercontainers.git
+    cd ~/powercontainers
     git config pull.rebase false
+    cd -
 else
-    cd powercontainers
+    cd ~/ powercontainers
     git pull
-    cd ~
+    cd -
 fi
 
 mkdir /home/pi/ansible 2>/dev/null
