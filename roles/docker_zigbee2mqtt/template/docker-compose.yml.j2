@@ -1,6 +1,6 @@
 version: '3.7'
 
-services:  
+services:
   zigbee:
     image: koenkk/zigbee2mqtt:latest
     environment:
@@ -32,12 +32,12 @@ services:
       - MQTT_IGNORED_TOPICS=bridge
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
-      - LOG_LEVEL=DEBUG  
+      - LOG_LEVEL=DEBUG
     depends_on:
       - mqtt
     links:
       - mqtt
-      
+
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node_exporter
@@ -87,16 +87,16 @@ services:
     network_mode: host
 
   portainer:
-    image: portainer/portainer-ce    
+    image: portainer/portainer-ce
     container_name: portainer
-    environment:
-      admin-password-file: "{{ pswrdfile }}"
-      host: "{{ ip_address }}"
-    ports: 
+    command:
+      "--admin-password-file: {{ pswrdfile }}"
+      "--host: {{ ip_address }}"
+    ports:
       - 9000:9000
       - 9443:9443
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
-      - /data/portainer_data:/data 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data/portainer_data:/data
     restart: always
     network_mode: host
