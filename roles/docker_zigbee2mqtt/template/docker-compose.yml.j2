@@ -93,7 +93,7 @@ services:
       admin-password-file: "{{ pswrdfile }}"
       host: "{{ ip_address }}"
     ports: 
-      - 80:9000
+      - 9000:9000
       - 9443:9443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock 
