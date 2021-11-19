@@ -9,17 +9,24 @@
     update: false
     # will add the argument if the key-value-pair doesn't exist
 
-- include_tasks: cmdline.yml
+- name: cmdline.yml update cgroup_enable
+  include_tasks: cmdline.yml
   vars:
     key: cgroup_enable
     value: cpu
     update: false
 
-- include_tasks: cmdline.yml
+- name: cmdline.yml update cgroup_memory
+  include_tasks: cmdline.yml
   vars:
     key: cgroup_memory
     value: 1
     update: true
+  register: cmdline
+
+- name: Reboot
+  shell: reboot
+  when: cmdline.changed
 
 #- name: Add an apt key by id from a keyserver
 #  apt_key:
