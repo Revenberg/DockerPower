@@ -7,7 +7,6 @@
 
   roles: 
   - role: docker_local
-  - role: changepassword
   - role: docker
   - role: docker_zigbee2mqtt
   
