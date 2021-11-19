@@ -68,10 +68,6 @@ services:
       - /dev/kmsg
     expose:
       - 8080
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
 
   mqtt:
     image: "eclipse-mosquitto:latest"
