@@ -96,6 +96,6 @@ services:
       - 9443:9443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /data/portainer_data:/data
+      - /var/docker-compose/data/portainer_data:/data
     restart: always
     network_mode: host
