@@ -64,6 +64,7 @@
     - "/var/docker-compose/data/mqtt/data"
     - "/var/docker-compose/data/mqtt/log"
     - "/var/docker-compose/data/zigbee"
+    - "/var/docker-compose/data/portainer_data"
 
 - name: add group
   shell:
