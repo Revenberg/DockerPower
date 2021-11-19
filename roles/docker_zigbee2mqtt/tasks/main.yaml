@@ -1,4 +1,26 @@
 --- 
+- set_fact:
+    cmdline_txt_path: /boot/cmdline.txt
+
+- include_tasks: cmdline.yml
+  vars:
+    key: cgroup_enable
+    value: memory
+    update: false
+    # will add the argument if the key-value-pair doesn't exist
+
+- include_tasks: cmdline.yml
+  vars:
+    key: cgroup_enable
+    value: cpu
+    update: false
+
+- include_tasks: cmdline.yml
+  vars:
+    key: cgroup_memory
+    value: 1
+    update: true
+
 #- name: Add an apt key by id from a keyserver
 #  apt_key:
 #    keyserver: keyserver.ubuntu.com
