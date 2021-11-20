@@ -28,25 +28,5 @@
   shell: reboot
   when: cmdline.changed
 
-- name: create /var/docker-compose/mqtt 
-  file:
-    path: "{{  item }}"
-    recurse: yes
-    mode: 0755
-    owner: pi
-    group: pi
-  with_items:         
-    - "/var/docker-compose/data/zigbee"
-
-- name: Template zigbee files
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: 0755
-    owner: pi
-    group: pi
-  with_items:
-  - { src: "configuration.yaml.j2",         dest: "/var/docker-compose/data/zigbee/configuration.yaml" }
-
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
