@@ -2,7 +2,7 @@
 - name: Create /var/docker-compose/docker-compose.yml
   copy:
     src: "docker-compose.yaml"
-    dest: "/var/docker-compose/docker-compose.yml"
+    dest: "/var/docker-compose/fragments/_docker-compose.yml"
     mode: 0755
     owner: pi
     group: pi
