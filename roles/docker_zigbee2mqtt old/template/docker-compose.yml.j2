@@ -3,18 +3,6 @@ version: '3.7'
 services:
 
 
-
-  node-exporter:
-    image: prom/node-exporter:latest
-    container_name: node_exporter
-    restart: always
-    expose:
-      - 9100
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
-
   cadvisor:
     image: zcube/cadvisor
     container_name: monitoring_cadvisor

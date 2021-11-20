@@ -13,6 +13,7 @@
   - role: docker_zigbee
   - role: docker_zigbeemqttexporter
   - role: docker_node_exporter
+  - role: portainer
 
   - role: docker_compose
   
