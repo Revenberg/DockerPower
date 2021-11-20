@@ -1,0 +1,107 @@
+groups:
+- name: AllInstances
+  rules:
+  - alert: InstanceDown
+    # Condition for alerting
+    expr: up == 0
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} down'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+#- name: Power
+#  rules:
+#  - alert: PowerL1
+#    # Condition for alerting
+#    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L1 > 1
+#    for: 1m
+#    # Annotation - additional informational labels to store more information
+#    annotations:
+#      title: 'Power {{ $labels.instance }} up'
+#      description: '{{ $labels.instance }} of job {{ $labels.job }} has been up 1 for more than 1 minute.'
+#    # Labels - additional labels to be attached to the alert
+#    labels:
+#      severity: 'critical'      
+#  - alert: PowerL2
+#    # Condition for alerting
+#    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L2 > 1
+#    for: 1m
+#    # Annotation - additional informational labels to store more information
+#    annotations:
+#      title: 'Power {{ $labels.instance }} up'
+#      description: '{{ $labels.instance }} of job {{ $labels.job }} has been up 1 for more than 1 minute.'
+#    # Labels - additional labels to be attached to the alert
+#    labels:
+#      severity: 'critical'      
+#  - alert: PowerL3
+#    # Condition for alerting
+#    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L3 > 1
+#    for: 1m
+#    # Annotation - additional informational labels to store more information
+#    annotations:
+#      title: 'Power {{ $labels.instance }} up'
+#      description: '{{ $labels.instance }} of job {{ $labels.job }} has been up 1 for more than 1 minute.'
+#    # Labels - additional labels to be attached to the alert
+#    labels:
+#      severity: 'critical'                  
+- name: Deuren
+  rules:
+  - alert: DeurOpenHeit_en_mem
+    # Condition for alerting
+    expr: zigbee2mqtt_Heit_en_mem_reading_contact == 0
+    for: 2m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} open'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+  - alert: DeurJelmar
+    # Condition for alerting
+    expr: zigbee2mqtt_Jelmar_reading_contact == 0
+    for: 2m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} open'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+  - alert: DeurRoan
+    # Condition for alerting
+    expr: zigbee2mqtt_Roan_reading_contact == 0
+    for: 2m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} open'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+  - alert: DeurSenne
+    # Condition for alerting
+    expr: zigbee2mqtt_Senne_reading_contact == 0
+    for: 2m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} open'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+  - alert: DeurSchuur
+    # Condition for alerting
+    expr: zigbee2mqtt_Schuur_reading_contact == 0
+    for: 10m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Instance {{ $labels.instance }} open'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 10 minuten.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+  

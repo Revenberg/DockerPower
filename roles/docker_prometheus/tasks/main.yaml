@@ -1,0 +1,25 @@
+--- 
+- name: create /var/docker-compose/mqtt 
+  file:
+    path: "{{  item }}"
+    recurse: yes
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:         
+  - "/var/docker-compose/data/prometheus/config"
+  - "/var/docker-compose/data/prometheus/data"
+
+- name: Template zigbee files
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:
+  - { src: "rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
+  - { src: "prometheus.yml.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
+  
+- name: add to docker-compose
+  include_tasks: docker-compose.yaml
