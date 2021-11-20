@@ -11,6 +11,7 @@
   
   - role: docker_mqtt
   - role: docker_zigbee
-  
+  - role: docker_zigbeemqttexporter
+
   - role: docker_compose
   
