@@ -21,3 +21,8 @@
     mode: 0755
     owner: pi
     group: pi
+
+- name: Recursively remove directory /var/docker-compose/fragments
+  ansible.builtin.file:
+    path: /var/docker-compose/fragments
+    state: absent
