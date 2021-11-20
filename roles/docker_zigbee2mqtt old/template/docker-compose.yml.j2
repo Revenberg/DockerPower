@@ -2,25 +2,7 @@ version: '3.7'
 
 services:
 
-  zigbeemqttexporter:
-    image: revenberg/zigbeemqttexporter
-    container_name: zigbeemqttexporter
-    restart: always
-    ports:
-      - 9004:9004
-    expose:
-      - 9004
-    environment:
-      - MQTT_ADDRESS={{ ip_address }}
-      - MQTT_TOPIC=zigbee2mqtt/#
-      - MQTT_IGNORED_TOPICS=bridge
-      - PROMETHEUS_PREFIX=reading_
-      - TOPIC_LABEL=reading
-      - LOG_LEVEL=DEBUG
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
+
 
   node-exporter:
     image: prom/node-exporter:latest
