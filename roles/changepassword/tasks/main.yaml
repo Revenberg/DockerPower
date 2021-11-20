@@ -17,5 +17,7 @@
     name: "pi"
     password: "{{ pi_passwrd }}"
     update_password: always
-#    groups: docker    
-#    append: yes
+
+- name: add group
+  shell:
+    cmd: "usermod -aG dialout $(whoami)"

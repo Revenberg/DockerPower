@@ -1,3 +1,13 @@
 --- 
+- name: copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:
+  - { src: "{{ pswrdfile }}",                       dest: "/var/docker-compose/data/portainer_data/.pswrd" }
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
