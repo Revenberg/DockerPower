@@ -8,6 +8,7 @@
     group: pi
   with_items:
   - { src: "{{ pswrdfile }}",                       dest: "/var/docker-compose/data/portainer_data/.pswrd" }
+  - { src: "{{ pswrdfile }}",                       dest: "/data/.pswrd" }
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
