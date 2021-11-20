@@ -18,3 +18,7 @@
   args:
     chdir:  /var/docker-compose
   
+- name: Recursively remove directory /var/docker-compose/fragments
+  ansible.builtin.file:
+    path: /var/docker-compose/fragments
+    state: absent  
