@@ -16,8 +16,8 @@
 
 - name: Create Docker files from template
   template:
-    src: "docker-compose-zigbee.yaml.j2"
-    dest: "/var/docker-compose/fragments/docker-compose-zigbee.yaml"
+    src: "docker-compose-zigbeemqttexporter.yaml.j2"
+    dest: "/var/docker-compose/fragments/docker-compose-zigbeemqttexporter.yaml"
     mode: 0755
     owner: pi
     group: pi
