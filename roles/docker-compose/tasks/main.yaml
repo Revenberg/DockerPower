@@ -1,0 +1,20 @@
+---
+- name: Create /var/docker-compose/docker-compose.yml
+  copy:
+    src: "docker-compose.yaml"
+    dest: "/var/docker-compose/docker-compose.yml"
+    mode: 0755
+    owner: pi
+    group: pi
+
+- name: Assemble from fragments from a directory
+  ansible.builtin.assemble:
+    src: /var/docker-compose/fragments
+    dest: /var/docker-compose/docker-compose.yml
+
+- name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
+  shell:
+    cmd: "docker-compose up -d --force-recreate --remove-orphans"
+  args:
+    chdir:  /var/docker-compose
+  

@@ -8,5 +8,5 @@
   roles: 
   - role: docker_local
   - role: docker
-  - role: docker_zigbee2mqtt
+  - role: docker_mqtt
   
