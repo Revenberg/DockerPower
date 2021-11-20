@@ -8,6 +8,9 @@
   roles: 
   - role: docker_local
   - role: docker
+  
   - role: docker_mqtt
+  - role: docker_zigbee
+  
   - role: docker_compose
   
