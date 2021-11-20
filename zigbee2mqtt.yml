@@ -9,4 +9,5 @@
   - role: docker_local
   - role: docker
   - role: docker_mqtt
+  - role: docker_compose
   
