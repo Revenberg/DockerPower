@@ -19,5 +19,4 @@
   - role: docker_alertmanager
   - role: docker_prometheus
   
-  - role: docker_compose
-  
+  - role: docker_compose  
