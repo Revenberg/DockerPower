@@ -39,15 +39,5 @@
   with_fileglob:
     - "files/dashboards/*"
   
-- name: Template prometheus files
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: 0755
-    owner: pi
-    group: pi
-  with_items:
-  - { src: "prometheus.yml.j2",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
-  
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
