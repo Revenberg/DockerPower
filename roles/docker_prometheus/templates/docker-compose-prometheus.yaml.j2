@@ -1,12 +1,25 @@
-alertmanager:
-    image: prom/alertmanager:latest
-    ports:
-      - 9093:9093
-    volumes:
-      - /data/alertmanager/:/etc/alertmanager/
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: monitoring_prometheus
     restart: always
+    volumes:
+      - /data/prometheus/config:/etc/prometheus/
+      - /data/prometheus/data:/data/prometheus
     command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/alertmanager'
-      - "--web.external-url=http://{{ ext_ip }}:9093"
-  
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/data/prometheus'
+    expose:
+      - 9090
+    ports:
+      - 9090:9090
+    user: "0"
+    links:
+      - cadvisor:cadvisor
+      - node-exporter:node-exporter
+      - mqtt-exporter:mqtt-exporter
+      - mqtt-water:mqtt-water
+      - zigbeemqttexporter:zigbeemqttexporter
+      - mqtt
+      - alertmanager:alertmanager
+    depends_on:
+      - mqtt
