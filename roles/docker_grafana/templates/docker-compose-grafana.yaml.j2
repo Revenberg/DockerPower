@@ -1,0 +1,25 @@
+  grafana:
+    image: revenberg/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    env_file:
+      - './env/env.grafana'
+    user: "0"
+    links:
+#      - influxdb:influxdb
+      - prometheus:prometheus
+    restart: always
+    volumes:
+      # Data persistency
+      # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
+      - /data/grafana/data:/var/lib/grafana
+      - /data/grafana/dashboards:/etc/grafana/provisioning/dashboards/
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.grafana.rule=PathPrefix(`/grafana{regex:$$|/.*}`)'
+      - 'traefik.http.services.grafana.loadbalancer.server.port=3000'
+      - 'traefik.frontend.headers.customRequestHeaders=Authorization:-'
+    environment:
+    - GF_SECURITY_ADMIN_USER=pi
+    - GF_SECURITY_ADMIN_PASSWORD={{ pi_password }}
