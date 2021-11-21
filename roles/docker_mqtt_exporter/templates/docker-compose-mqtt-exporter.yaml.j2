@@ -3,14 +3,15 @@
     container_name: mqtt-exporter
     restart: always
     ports:
-      - 9000:9000
+      - 9010:9010
     expose:
-      - 9000
+      - 9010
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
+      - PROMETHEUS_PORT=9010
     depends_on:
       - mqtt
     links:
