@@ -13,8 +13,8 @@
     volumes:
       # Data persistency
       # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
-      - /data/grafana/data:/var/lib/grafana
-      - /data/grafana/dashboards:/etc/grafana/provisioning/dashboards/
+      - /var/docker-compose/data/grafana/data:/var/lib/grafana
+      - /var/docker-compose/data/grafana/dashboards:/etc/grafana/provisioning/dashboards/
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.grafana.rule=PathPrefix(`/grafana{regex:$$|/.*}`)'
