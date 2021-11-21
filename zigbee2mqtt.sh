@@ -54,7 +54,7 @@ mkdir /home/pi/.ssh 2>/dev/null
 
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
-ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | grep -v '169.254' | grep -v '172.1' | while read line;
+ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | grep -v '169.254' | grep -v '172.' | while read line;
 do
     ssh-keyscan -H $line >> /home/pi/.ssh/known_hosts
 done
@@ -70,7 +70,7 @@ ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd $pswrd --name
 echo "rpi:" >> /home/pi/ansible/hosts
 echo "  hosts:" >> /home/pi/ansible/hosts
 
-ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | grep -v '172.' | head -n 1 | while read line;
+ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | grep -v '169.254' | grep -v '172.' | while read line;
 do
   echo "    $line:" >> /home/pi/ansible/hosts
   echo "      ansible_user: pi" >> /home/pi/ansible/hosts
