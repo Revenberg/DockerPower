@@ -12,12 +12,18 @@
     src: /var/docker-compose/fragments
     dest: /var/docker-compose/docker-compose.yml
 
-- name: deploy Docker Compose stack (first time takes a lot of time, hour or more)
+- name: deploy Docker Compose stack (down)
+  shell:
+    cmd: "docker-compose down"
+  args:
+    chdir:  /var/docker-compose
+
+- name: deploy Docker Compose stack up (first time takes a lot of time, hour or more)
   shell:
     cmd: "docker-compose up -d --force-recreate --remove-orphans"
   args:
     chdir:  /var/docker-compose
-  
+
 - name: Recursively remove directory /var/docker-compose/fragments
   ansible.builtin.file:
     path: /var/docker-compose/fragments
