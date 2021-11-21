@@ -4,7 +4,7 @@
     ports:
       - "3000:3000"
     env_file:
-      - './env/env.grafana'
+      - '/var/docker-compose/data/grafana/env/env.grafana'
     user: "0"
     links:
 #      - influxdb:influxdb
