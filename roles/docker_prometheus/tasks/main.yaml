@@ -10,7 +10,7 @@
   - "/var/docker-compose/data/prometheus/config"
   - "/var/docker-compose/data/prometheus/data"
 
-- name: Template zigbee files
+- name: Template prometheus files
   template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -18,8 +18,8 @@
     owner: pi
     group: pi
   with_items:
-  - { src: "rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
-  - { src: "prometheus.yml.yml",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
+  - { src: "rules.yml.js",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
+  - { src: "prometheus.yml.js",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
