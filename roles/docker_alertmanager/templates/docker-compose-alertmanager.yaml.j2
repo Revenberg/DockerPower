@@ -3,7 +3,7 @@
     ports:
       - 9093:9093
     volumes:
-      - /data/alertmanager/:/etc/alertmanager/
+      - /var/docker-compose/data/alertmanager/:/etc/alertmanager/
     restart: always
     command:
       - '--config.file=/etc/alertmanager/config.yml'

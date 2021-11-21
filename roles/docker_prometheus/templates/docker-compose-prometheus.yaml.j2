@@ -3,8 +3,8 @@
     container_name: monitoring_prometheus
     restart: always
     volumes:
-      - /data/prometheus/config:/etc/prometheus/
-      - /data/prometheus/data:/data/prometheus
+      - /var/docker-compose/data/prometheus/config:/etc/prometheus/
+      - /var/docker-compose/data/prometheus/data:/data/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/data/prometheus'
