@@ -15,7 +15,7 @@
   - role: docker_cadvisor
   - role: docker_node_exporter
   - role: docker_mqtt_exporter
-  - role: docker_portainer
+#  - role: docker_portainer
   - role: docker_alertmanager
   - role: docker_prometheus
   
