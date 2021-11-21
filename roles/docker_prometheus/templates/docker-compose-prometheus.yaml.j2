@@ -6,7 +6,7 @@
       - /var/docker-compose/data/prometheus/config:/etc/prometheus/
       - /var/docker-compose/data/prometheus/data:/data/prometheus
     command:
-      - '--config.file=/etc/config/prometheus.yml'
+      - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/data/prometheus'
     expose:
       - 9090
