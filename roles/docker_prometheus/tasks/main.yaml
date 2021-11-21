@@ -18,8 +18,8 @@
     owner: pi
     group: pi
   with_items:
-  - { src: "rules.yml.js",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
-  - { src: "prometheus.yml.js",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
+  - { src: "rules.yml.j2",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
+  - { src: "prometheus.yml.j2",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
