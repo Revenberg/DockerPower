@@ -22,7 +22,7 @@
   args:
     chdir:  /var/docker-compose
 
-    - name: deploy Docker Compose stack (down)
+- name: deploy Docker Compose stack (down)
   shell:
     cmd: "docker-compose down"
   args:
