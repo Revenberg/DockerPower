@@ -20,15 +20,25 @@
 #    group: pi
     groups: pi,dialout
 
-- name: copy env files
+- name: copy Docker Compose env files
   copy:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
+    src: "{{ item }}"
+    dest: "/var/docker-compose/env"
     mode: 0755
     owner: pi
     group: pi
-  with_items:
-  - { src: "files/env/env.grafana", dest: "/var/docker-compose/grafana/env/env.grafana" }
+  with_fileglob:
+    - "files/env/*"
+
+#- name: copy env files
+#  copy:
+#    src: "{{ item.src }}"
+#    dest: "{{ item.dest }}"
+#    mode: 0755
+#    owner: pi
+#    group: pi
+#  with_items:
+#  - { src: "files/env/env.grafana", dest: "/var/docker-compose/grafana/env/env.grafana" }
 
 - name: copy Grafana dashboards files
   copy:
