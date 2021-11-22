@@ -41,6 +41,9 @@ allow_anonymous true
 
 connection br-me-to-rpipower
 address mqtthost:1883
+bridge_insecure true
+cleansession false
+start_type automatic
 topic # both 0
 {% endif %}
 
