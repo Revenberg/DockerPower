@@ -21,6 +21,6 @@
       - 'traefik.http.routers.grafana.rule=PathPrefix(`/grafana{regex:$$|/.*}`)'
       - 'traefik.http.services.grafana.loadbalancer.server.port=3000'
       - 'traefik.frontend.headers.customRequestHeaders=Authorization:-'
-    environment:
+#    environment:
 #    - GF_SECURITY_ADMIN_USER=admin
 #    - GF_SECURITY_ADMIN_PASSWORD=admin
