@@ -14,8 +14,15 @@
     mode: 0755
     owner: pi
     group: pi
+
     
-- name: deploy Docker Compose stack (down)
+- name: docker-compose pull
+  shell:
+    cmd: "docker-compose pull"
+  args:
+    chdir:  /var/docker-compose
+
+    - name: deploy Docker Compose stack (down)
   shell:
     cmd: "docker-compose down"
   args:
