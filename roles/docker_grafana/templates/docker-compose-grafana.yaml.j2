@@ -15,11 +15,12 @@
       # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
       - /var/docker-compose/data/grafana/data:/var/lib/grafana
       - /var/docker-compose/data/grafana/dashboards:/etc/grafana/provisioning/dashboards/
+      - /home/pi/:/usr/share/.pswrd
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.grafana.rule=PathPrefix(`/grafana{regex:$$|/.*}`)'
       - 'traefik.http.services.grafana.loadbalancer.server.port=3000'
       - 'traefik.frontend.headers.customRequestHeaders=Authorization:-'
     environment:
-    - GF_SECURITY_ADMIN_USER=pi
-    - GF_SECURITY_ADMIN_PASSWORD={{ pi_password }}
+    - GF_SECURITY_ADMIN_USER=admin
+    - GF_SECURITY_ADMIN_PASSWORD=admin
