@@ -1,5 +1,5 @@
 --- 
-- name: create /var/docker-compose/mqtt 
+- name: create /var/docker-compose/grafana 
   file:
     path: "{{  item }}"
     recurse: yes
