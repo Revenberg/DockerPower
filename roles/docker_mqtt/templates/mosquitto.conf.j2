@@ -34,5 +34,15 @@ log_timestamp true
 # If the password.mqtt file is empty, this has no effect.
 allow_anonymous true
 
+{% if mqtthost != ""  %}
+# =========================================================
+# Bridges
+# =========================================================
+
+connection br-me-to-rpipower
+address mqtthost:1883
+topic # both 0
+{% fi %}
+
 # DO NOT CHANGE THIS LINE BELOW!!!
 #password_file /config/passwords.mqtt
