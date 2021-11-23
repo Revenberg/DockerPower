@@ -20,6 +20,7 @@
   - role: docker_portainer
   - role: docker_alertmanager
   - role: docker_prometheus
-  - role: docker_grafana
+  - role: docker_grafana  
+  - role: docker_graphite
   
   - role: docker_compose  
