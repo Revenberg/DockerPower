@@ -22,5 +22,5 @@
   - role: docker_prometheus
   - role: docker_grafana  
   - role: docker_graphite
-  
+  - role: docker_mqtt2graphite
   - role: docker_compose  
