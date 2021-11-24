@@ -21,7 +21,6 @@
   - role: docker_alertmanager
   - role: docker_prometheus
   - role: docker_grafana  
-  - role: docker_graphite
-  - role: docker_mqtt2graphite
+  - role: docker_influxdb
   
   - role: docker_compose  
