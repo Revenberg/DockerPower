@@ -8,3 +8,9 @@
       - MQTT_TOPIC=#
       - CARBON_SERVER={{ ip_address }}
       - CARBON_PORT=2003
+    depends_on:
+      - mqtt
+      - graphite
+    links:
+      - mqtt
+      - graphite
