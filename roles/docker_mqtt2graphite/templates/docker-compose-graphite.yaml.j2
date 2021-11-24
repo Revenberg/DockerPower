@@ -1,0 +1,10 @@
+  mqtt2graphite:
+    image: revenberg/mqtt2graphite:latest
+    container_name: mqtt2graphite
+    restart: always
+    environment:
+      - LOG_LEVEL=DEBUG
+      - MQTT_ADDRESS=192.168.2.71
+      - MQTT_TOPIC=#
+      - CARBON_SERVER=192.168.2.71
+      - CARBON_PORT=2003
