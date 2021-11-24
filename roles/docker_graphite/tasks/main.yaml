@@ -9,7 +9,6 @@
     group: pi
   with_items:         
   - "/var/docker-compose/data/graphite/var/graphite"
-  - "/var/docker-compose/data/graphite/opt/graphite"
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

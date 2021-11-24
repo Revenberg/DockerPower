@@ -7,7 +7,6 @@
       - 8125:8125/udp
       - 8126:8126
     volumes:
-      - /var/docker-compose/data/graphite/opt/graphite:/opt/graphite
       - /var/docker-compose/data/graphite/var/log:/var/log
     restart: always
     network_mode: host
