@@ -22,3 +22,5 @@ wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/p1meter.
 [install/run] 2
 wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/zigbee2mqtt.sh && chmod +x zigbee2mqtt.sh ;./zigbee2mqtt.sh << password>>
 
+[prometheus]
+wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/prometheus.sh && chmod +x prometheus.sh ;./prometheus.sh << password>>
