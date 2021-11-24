@@ -4,7 +4,7 @@
     restart: always
     environment:
       - LOG_LEVEL=DEBUG
-      - MQTT_ADDRESS=192.168.2.71
+      - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=#
-      - CARBON_SERVER=192.168.2.71
+      - CARBON_SERVER={{ ip_address }}
       - CARBON_PORT=2003
