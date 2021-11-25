@@ -12,7 +12,7 @@
       - INFLUXDB_PORT=2003
     depends_on:
       - mqtt
-      - graphite
+      - influxdb
     links:
       - mqtt
       - influxdb
