@@ -9,7 +9,7 @@
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=#
       - INFLUXDB_ADDRESS={{ ip_address }}
-      - INFLUXDB_PORT=2003
+      - INFLUXDB_PORT=8086
     depends_on:
       - mqtt
       - influxdb
