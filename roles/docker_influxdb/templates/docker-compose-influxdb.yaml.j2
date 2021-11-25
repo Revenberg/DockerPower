@@ -7,8 +7,8 @@
       - "8090:8090"
       - "2003:2003"
     env_file:
-      - 'env.influxdb'
+      - '/var/docker-compose/data/influxdb/env.influxdb'
     volumes:
       # Data persistency
       # sudo mkdir -p /srv/docker/influxdb/data
-      - /var/docker-compose/data/influxdb/data/env.influxdb:/var/lib/influxdb
+      - /var/docker-compose/data/influxdb/data/lib/influxdb:/var/lib/influxdb
