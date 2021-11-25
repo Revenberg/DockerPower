@@ -1,16 +1,16 @@
-  mqtt2graphite:
-    image: revenberg/mqtt2graphite:latest
-    container_name: mqtt2graphite
+  mqtt2influxdb:
+    image: revenberg/mqtt2influxdb:latest
+    container_name: mqtt2influxdb
     restart: always
     environment:
       - LOG_LEVEL=DEBUG
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=#
-      - CARBON_SERVER={{ ip_address }}
-      - CARBON_PORT=2003
+      - INFLUXDB_ADDRESS={{ ip_address }}
+      - CARBON_ADDRESS=2003
     depends_on:
       - mqtt
       - graphite
     links:
       - mqtt
-      - graphite
+      - influxdb
