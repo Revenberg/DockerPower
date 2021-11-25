@@ -22,5 +22,6 @@
   - role: docker_prometheus
   - role: docker_grafana  
   - role: docker_influxdb
+  - role: docker_mqtt2influxdb
   
   - role: docker_compose  
