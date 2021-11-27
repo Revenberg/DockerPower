@@ -1,0 +1,18 @@
+--- 
+- name: create /var/docker-compose/data/influxdb-export/data/backup
+  file:
+    path: "{{  item }}"
+    recurse: yes
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:         
+  - "/var/docker-compose/data/influxdb-export/data/backup"
+
+- name: get keys
+  set_fact:
+    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
+    ip_address: "{{lookup('file', '/home/pi/ip') }}"
+
+- name: add to docker-compose
+  include_tasks: docker-compose.yaml

@@ -1,0 +1,19 @@
+  influxdb-export:
+    image: revenberg/influxdb-export:latest
+    container_name: influxdb-export
+    restart: always
+    ports:
+      - 9003:9003
+    expose:
+      - 9003
+    volumes:
+      # Data persistency
+      # sudo mkdir -p /var/docker-compose/data/influxdb-export/data/backup
+      - /var/docker-compose/data/influxdb-export/data/backup:/data/backup
+    environment:
+      - LOG_LEVEL=DEBUG
+      - MQTT_ADDRESS=192.168.2.71
+      - MQTT_TOPIC=reading/#
+      - INFLUXDB_ADDRESS=192.168.2.71
+      - INFLUXDB_PORT=8086
+      - PROMETHEUS_PORT=9003
