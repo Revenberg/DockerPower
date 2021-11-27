@@ -16,8 +16,8 @@
 
 - name: Create Docker files from template
   template:
-    src: "docker-compose-mqtt-exporter.yaml.j2"
-    dest: "/var/docker-compose/fragments/docker-compose-mqtt-exporter.yaml"
+    src: "docker-compose-mqtt-water.yaml.j2"
+    dest: "/var/docker-compose/fragments/docker-compose-mqtt-water.yaml"
     mode: 0755
     owner: pi
     group: pi
