@@ -249,21 +249,9 @@ grafana_datasources:
   - name: power
     type: influxdb
     access: proxy
-    database: power
+    database: mqtt
     url: http://localhost:8086
     editable: true
-  - name: sunandmoon
-    type: fetzerch-sunandmoon-datasource
-    jsonData:
-      latitude: 53.179851
-      longitude: 6.1682691
-    editable: true
-#  - name: "Sun and Moon"
-#    type: fetzerch-sunandmoon-datasource
-#    jsonData:
-#      latitude: 53.179851
-#      longitude: 6.1682691
-#    editable: true
 
 # API keys to configure
 grafana_api_keys:
