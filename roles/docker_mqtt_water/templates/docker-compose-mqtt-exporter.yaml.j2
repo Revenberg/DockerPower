@@ -1,0 +1,19 @@
+  mqtt-water:
+    image: revenberg/mqtt-exporter:latest
+    container_name: mqtt-water
+    restart: always
+    ports:
+      - 9002:9002
+    expose:
+      - 9002
+    environment:
+      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_TOPIC=watermeter/reading/#
+      - PROMETHEUS_PREFIX=reading_
+      - PROMETHEUS_PORT=9002
+      - TOPIC_LABEL=reading
+      - LOG_LEVEL=DEBUG
+    depends_on:
+      - mqtt
+    links:
+      - mqtt
