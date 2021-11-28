@@ -1,0 +1,27 @@
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 80 default_server;
+    server_name _;
+
+    index index.html;
+
+    location /grafana_def {
+      proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
+    }
+    location /grafana {
+      proxy_pass $scheme://{{ ansible_ssh_host }}:3000;
+    }
+    location /prometheus {
+      proxy_pass $scheme://{{ ansible_ssh_host }}:9090;
+    }
+    location /alertmanager {
+      proxy_pass $scheme://{{ ansible_ssh_host }}:9093;
+    }
+    location /zigbee {
+      proxy_pass $scheme://{{ ansible_ssh_host }}:8080;
+    }
+}

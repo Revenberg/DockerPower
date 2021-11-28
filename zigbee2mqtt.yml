@@ -25,5 +25,6 @@
   - role: docker_mqtt_water
   - role: docker_mqtt2influxdb
   - role: docker_influxdb_export
+  - role: docker_nginx
   
   - role: docker_compose  
