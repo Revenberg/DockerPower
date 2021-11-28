@@ -7,7 +7,19 @@ server {
     listen 80 default_server;
     server_name _;
 
-    index index.html;
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
 
     location /grafana_def {
       proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
@@ -24,4 +36,6 @@ server {
     location /zigbee {
       proxy_pass $scheme://{{ ansible_ssh_host }}:8080;
     }
+
+
 }
