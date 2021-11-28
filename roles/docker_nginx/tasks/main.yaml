@@ -8,6 +8,7 @@
     group: pi
   with_items:         
   - "/var/docker-compose/data/nginx/templates"
+  - "/var/docker-compose/data/nginx/html"
 
 - name: get keys
   set_fact:
@@ -22,7 +23,8 @@
     owner: pi
     group: pi
   with_items:
-  - { src: "default.j2", dest: "/var/docker-compose/data/nginx/templates/default.j2" }
+  - { src: "default.j2", dest: "/var/docker-compose/data/nginx/templates/default" }
+  - { src: "index.html.j2", dest: "/var/docker-compose/data/nginx/html/index.html" }
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

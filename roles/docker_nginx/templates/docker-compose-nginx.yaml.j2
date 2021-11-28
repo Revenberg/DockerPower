@@ -2,8 +2,9 @@
     image: nginx
     volumes:
     - /var/docker-compose/data/nginx/templates:/etc/nginx/templates
+    - /var/docker-compose/data/nginx/html:/usr/share/nginx/html:ro
     ports:
-    - "8080:80"
+    - "80:80"
     environment:
     - NGINX_PORT=80
 
