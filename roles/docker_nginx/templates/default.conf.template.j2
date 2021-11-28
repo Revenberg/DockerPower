@@ -25,16 +25,27 @@ server {
       proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
     }
     location /grafana {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:3000;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:3000/;
     }
+
+    # Proxy Grafana Live WebSocket connections.
+    location /api/live {
+      rewrite  ^/(.*)  /$1 break;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+      proxy_set_header Host $http_host;
+      proxy_pass http://localhost:3000/;
+    }
+
     location /prometheus {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:9090;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:9090/;
     }
     location /alertmanager {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:9093;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:9093/;
     }
     location /zigbee {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:8080;
+      proxy_pass $scheme://{{ ansible_ssh_host }}:8080/;
     }
 
 
