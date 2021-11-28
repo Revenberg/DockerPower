@@ -23,7 +23,7 @@
     owner: pi
     group: pi
   with_items:
-  - { src: "default.conf.j2", dest: "/var/docker-compose/data/nginx/templates/default.conf" }
+  - { src: "default.conf.template.j2", dest: "/var/docker-compose/data/nginx/templates/default.conf.template" }
   - { src: "index.html.j2", dest: "/var/docker-compose/data/nginx/html/index.html" }
 
 - name: add to docker-compose
