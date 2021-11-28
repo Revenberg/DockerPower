@@ -25,19 +25,19 @@ server {
       proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
     }
 
-  location /grafana/ {
-   proxy_pass http://localhost:3000/;
-  }
-
-  # Proxy Grafana Live WebSocket connections.
-  location /grafana/api/live {
-    rewrite  ^/grafana/(.*)  /$1 break;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
-    proxy_set_header Host $http_host;
+    location /grafana/ {
     proxy_pass http://localhost:3000/;
-  }
+    }
+
+    # Proxy Grafana Live WebSocket connections.
+    location /grafana/api/live {
+      rewrite  ^/grafana/(.*)  /$1 break;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+      proxy_set_header Host $http_host;
+      proxy_pass http://localhost:3000/;
+    }
 
     location /prometheus {
       proxy_pass $scheme://{{ ansible_ssh_host }}:9090/;
