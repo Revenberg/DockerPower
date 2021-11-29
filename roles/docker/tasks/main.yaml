@@ -55,3 +55,8 @@
   copy:
     src: 'daemon.json'
     dest: '/etc/docker/daemon.json'
+
+- name: remove /var/docker-compose/prometheus
+  ansible.builtin.file:
+    path: /var/docker-compose/prometheus
+    state: absent  
