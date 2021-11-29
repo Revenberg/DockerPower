@@ -21,7 +21,9 @@
 
 - set_fact:
     var_targets: "{{ command_output1.stdout }}"
-    #var_links: "{{ command_output2.stdout }}"
+
+- set_fact:
+    var_links: "{{ command_output2.stdout }}"
 
 - name: copy files
   copy:
