@@ -22,7 +22,7 @@ server {
     }
 
     location /grafana_def {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
+      proxy_pass http://{{ ansible_ssh_host }}:3000/d/5nkT6iRRz/energieverbruik?orgId=1&refresh=1m;
     }
 
     location /grafana/ {
@@ -40,13 +40,13 @@ server {
     }
 
     location /prometheus {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:9090/;
+      proxy_pass http://{{ ansible_ssh_host }}:9090/;
     }
     location /alertmanager {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:9093/;
+      proxy_pass http://{{ ansible_ssh_host }}:9093/;
     }
     location /zigbee {
-      proxy_pass $scheme://{{ ansible_ssh_host }}:8080/;
+      proxy_pass http://{{ ansible_ssh_host }}:8080/;
     }
 
 
