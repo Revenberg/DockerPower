@@ -1,12 +1,12 @@
---- 
-- name: create /var/docker-compose/mqtt 
+---
+- name: create /var/docker-compose/mqtt
   file:
     path: "{{  item }}"
     recurse: yes
     mode: 0755
     owner: pi
     group: pi
-  with_items:         
+  with_items:
   - "/var/docker-compose/data/prometheus/config"
   - "/var/docker-compose/data/prometheus/data"
 
@@ -20,8 +20,8 @@
 
 
 - set_fact:
-  var_targets: "{{ command_output1.stdout }}"
-  var_links: "{{ command_output2.stdout }}"
+    var_targets: "{{ command_output1.stdout }}"
+    #var_links: "{{ command_output2.stdout }}"
 
 - name: copy files
   copy:
@@ -32,7 +32,7 @@
     group: pi
   with_items:
   - { src: "rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
-  
+
 - name: Template prometheus files
   template:
     src: "{{ item.src }}"
@@ -42,7 +42,7 @@
     group: pi
   with_items:
   - { src: "prometheus.yml.j2",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
-  
+
 - name: set source prometheus
   include_tasks: prometheus.yaml
 
