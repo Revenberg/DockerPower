@@ -19,9 +19,9 @@
   register: command_output2
 
 
-  - set_fact:
-    targets: "{{ command_output1.stdout }}"
-    links: "{{ command_output2.stdout }}"
+- set_fact:
+  targets: "{{ command_output1.stdout }}"
+  links: "{{ command_output2.stdout }}"
 
 - name: copy files
   copy:
