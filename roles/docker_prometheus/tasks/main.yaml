@@ -11,7 +11,7 @@
   - "/var/docker-compose/data/prometheus/data"
 
 - name: get targets
-  command: 'cat prometheus | sed -e "s/$/\", /" | sed -e "s/^/\"/" | tr -d "\n"'
+  command: 'cat prometheus | sed -e "s/$/\\", /" | sed -e "s/^/\\"/" | tr -d "\n"'
   register: command_output1
 
 - name: get links
