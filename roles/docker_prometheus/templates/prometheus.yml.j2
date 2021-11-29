@@ -29,7 +29,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: [ {{ targets }} ]
+      - targets: [ {{ var_targets }} ]
       
     metric_relabel_configs:
     - source_labels: [ reading ]

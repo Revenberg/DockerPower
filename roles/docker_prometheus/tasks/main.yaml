@@ -20,10 +20,8 @@
 
 
 - set_fact:
-  targets: "{{ command_output1.stdout }}"
-
-- set_fact:
-  links: "{{ command_output2.stdout }}"
+  var_targets: "{{ command_output1.stdout }}"
+  var_links: "{{ command_output2.stdout }}"
 
 - name: copy files
   copy:
