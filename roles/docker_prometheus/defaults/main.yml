@@ -1,2 +1,3 @@
 ---
 pswrdfile: /home/pi/.pswrd
+prometheus: "localhost:9090"

@@ -12,14 +12,6 @@
       - 9090
     ports:
       - 9090:9090
-    user: "0"
+    user: "0" 
     links:
-      - cadvisor:cadvisor
-      - node-exporter:node-exporter
-      - mqtt-exporter:mqtt-exporter
-      - zigbeemqttexporter:zigbeemqttexporter
-      - mqtt-water:mqtt-water
-      - mqtt
-      - alertmanager:alertmanager
-    depends_on:
-      - mqtt
+{{ links }}

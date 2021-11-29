@@ -10,6 +10,19 @@
   - "/var/docker-compose/data/prometheus/config"
   - "/var/docker-compose/data/prometheus/data"
 
+- name: get targets
+  command: "cat prometheus | sed -e 's/$/", /' | sed -e 's/^/"/' | tr -d '\n'"
+  register: command_output1
+
+- name: get targets
+  command: "cat prometheus | cut -d':' -f1  | sed -e 's/^/      - /' | sed 's /(.*/) /1:/1 '"
+  register: command_output2
+
+
+  - set_fact:
+    targets: "{{ command_output1.stdout }}"
+    links: "{{ command_output2.stdout }}"
+
 - name: copy files
   copy:
     src: "{{ item.src }}"
