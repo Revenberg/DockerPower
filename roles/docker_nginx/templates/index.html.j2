@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome to nginx!</title>
+<title>Boven</title>
 <style>
 html { color-scheme: light dark; }
 body { width: 35em; margin: 0 auto;
@@ -10,15 +10,18 @@ font-family: Tahoma, Verdana, Arial, sans-serif; }
 </style>
 </head>
 <body>
-<h1>Welcome to NEW !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
-
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
-
-<p><em>Thank you for using nginx.</em></p>
+<h1>Boven</h1>
+<a href="http://{{ ansible_ssh_host }}:9093">alertmanager</a><br/>
+<a href="http://{{ ansible_ssh_host }}:8080">cadvisor</a><br/>
+<a href="http://{{ ansible_ssh_host }}:3000">grafana</a><br/>
+<a href="http://{{ ansible_ssh_host }}:9003">influxdb-export</a><br/>
+<a href="http://{{ ansible_ssh_host }}:9010">mqtt-exporter</a><br/>
+<a href="http://{{ ansible_ssh_host }}:9002">mqtt-water</a><br/>
+<a href="http://{{ ansible_ssh_host }}:80">nginx</a><br/>
+<a href="http://{{ ansible_ssh_host }}:9091">portainer</a><br/>
+<a href="http://{{ ansible_ssh_host }}:9090">prometheus</a><br/>
+<a href="http://{{ ansible_ssh_host }}:8088">zigbee</a><br/>
+<a href="http://{{ ansible_ssh_host }}:9004">zigbeemqttexporter</a><br/>
+    
 </body>
 </html>
