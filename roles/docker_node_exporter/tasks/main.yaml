@@ -1,3 +1,6 @@
 --- 
+- name: set source prometheus
+  include_tasks: prometheus.yml
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

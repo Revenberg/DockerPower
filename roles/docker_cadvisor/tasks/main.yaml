@@ -2,6 +2,9 @@
 - set_fact:
     cmdline_txt_path: /boot/cmdline.txt
 
+- name: set source prometheus
+  include_tasks: prometheus.yml
+
 - include_tasks: cmdline.yml
   vars:
     key: cgroup_enable

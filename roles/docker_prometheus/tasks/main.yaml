@@ -30,5 +30,8 @@
   with_items:
   - { src: "prometheus.yml.j2",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
   
+- name: set source prometheus
+  include_tasks: prometheus.yml
+    
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

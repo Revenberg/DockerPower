@@ -1,0 +1,6 @@
+---
+- name: Add a line to prometheus file
+  ansible.builtin.lineinfile:
+    path: /var/docker-compose/prometheus
+    line: "{{ prometheus }}"
+    create: yes
