@@ -10,7 +10,7 @@
     - "/var/docker-compose/data/zigbeemqttexporter"
 
 - name: set source prometheus
-  include_tasks: prometheus.yml
+  include_tasks: prometheus.yaml
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

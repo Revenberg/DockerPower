@@ -3,7 +3,7 @@
     cmdline_txt_path: /boot/cmdline.txt
 
 - name: set source prometheus
-  include_tasks: prometheus.yml
+  include_tasks: prometheus.yaml
 
 - include_tasks: cmdline.yml
   vars:
