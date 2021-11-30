@@ -12,6 +12,7 @@
   - role: docker_mqtt
     vars:
       mqtthost: rpipower
+  - role: docker_p1mqtt
   - role: docker_zigbee
   - role: docker_zigbeemqttexporter
   - role: docker_cadvisor
