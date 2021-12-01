@@ -12,6 +12,7 @@
   with_items:         
   - "/var/docker-compose/data/rclone/config/"
   - "/var/docker-compose/data/rclone/logs/"
+  - "/var/docker-compose/data/scripts/"
 
 - name: Template alertmanager files
   template:
@@ -22,6 +23,7 @@
     group: pi
   with_items:
   - { src: "rclone.conf.j2", dest: "/var/docker-compose/data/rclone/config/rclone.conf" }
+  - { src: "rclone.conf.j2", dest: "/var/docker-compose/data/rclone/scripts/synchronisch.sh" }
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

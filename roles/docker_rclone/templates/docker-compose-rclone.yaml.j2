@@ -6,10 +6,11 @@
       - PUID=998
       - PGID=100
     volumes:
-      - /var/docker-compose/data/rclone/rclone.conf:/root/.rclone.conf
+      - /var/docker-compose/data/rclone/config/rclone.conf:/root/.rclone.conf
       - /var/docker-compose/data/rclone/logs:/logs
-      - /var/docker-compose/data/backup:/DropBox
+      - /var/docker-compose/data/backup:/Dropbox
+      - /var/docker-compose/data/scripts:/scripts
     ports:
       - "5574:5574"
-    command: sync DropBox:/ /DropBox --log-level INFO --auto-confirm --error-on-no-transfer --check-first
+    command: copy /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
     restart: always
