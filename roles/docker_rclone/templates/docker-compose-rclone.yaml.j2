@@ -8,10 +8,9 @@
     volumes:
       - /var/docker-compose/data/rclone/config/rclone.conf:/root/.rclone.conf
       - /var/docker-compose/data/rclone/logs:/logs
-      - /var/docker-compose/data/backup:/Dropbox
-      - /var/docker-compose/data/scripts:/scripts
+      - /var/docker-compose/data/backup:/Dropbox      
     ports:
       - "5574:5574"
-    entrypoint: ["/bin/sh","-c", "/scripts/synchronisch.sh"]
-    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
+    entrypoint: ["/bin/sh","-c", "/root/synchronisch.sh"]
+    command: copy /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
     restart: always
