@@ -1,5 +1,5 @@
   rclone-dropbox:
-    image: rclone/rclone
+    image: rclone/rclone:beta
     container_name: rclone-dropbox    
     environment:
       - PHP_TZ=Europe/Amsterdam
@@ -11,5 +11,5 @@
       - /var/docker-compose/data/backup:/Dropbox
     ports:
       - "5574:5574"
-    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first --poll-interval 15
+    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
     restart: always
