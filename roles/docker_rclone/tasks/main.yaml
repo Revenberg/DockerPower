@@ -25,11 +25,3 @@
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
-
-- name: Recursively remove files /var/docker-compose/prometheus
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: absent  
-  with_items:         
-  - "/var/docker-compose/prometheus.links"
-  - "/var/docker-compose/prometheus.targets"
