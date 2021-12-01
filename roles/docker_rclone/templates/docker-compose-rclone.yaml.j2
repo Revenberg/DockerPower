@@ -1,0 +1,15 @@
+  rclone-dropbox:
+    image: rclone/rclone
+    container_name: rclone-dropbox    
+    environment:
+      - PHP_TZ=Europe/Amsterdam
+      - PUID=998
+      - PGID=100
+    volumes:
+      - /var/docker-compose/data/rclone:/config/rclone
+      - /var/docker-compose/data/rclone:/logs
+      - /var/docker-compose/data/backup:/DropBox
+    ports:
+      - "5574:5574"
+    command: sync DropBox:/ /DropBox --log-level INFO --auto-confirm --error-on-no-transfer --check-first
+    restart: always
