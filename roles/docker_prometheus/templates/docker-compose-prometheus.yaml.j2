@@ -9,9 +9,9 @@
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/data/prometheus'
     expose:
-      - 9090
+      - {{ containter_expose_port }}
     ports:
-      - 9090:9090
+      - {{ containter_expose_port }}:9090
     user: "0" 
     links:
 {{ var_links }}
