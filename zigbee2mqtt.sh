@@ -2,7 +2,7 @@
 cd ~
 
 sudo apt update -y
-sudo apt full-upgrade -y
+#sudo apt full-upgrade -y
 
 if [ ! -f "/home/pi/.pswrd" ]; then
     if [ $# -ne 1 ]; then
