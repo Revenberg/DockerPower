@@ -1,2 +1,3 @@
 ---
-prometheus: "influxdb-export:9003"
+prometheus_client_host: "influxdb-export"
+prometheus_client_port: 9003

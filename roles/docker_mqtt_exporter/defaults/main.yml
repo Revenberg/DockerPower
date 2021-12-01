@@ -1,3 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
-prometheus: "mqtt-exporter:9010"
+
+prometheus_client_host: "mqtt-exporter"
+prometheus_client_port: 9010

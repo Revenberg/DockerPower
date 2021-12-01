@@ -1,3 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
-prometheus: "zigbeemqttexporter:9004"
+
+prometheus_client_host: "zigbeemqttexporter"
+prometheus_client_port: 9004

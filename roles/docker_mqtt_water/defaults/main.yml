@@ -1,3 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
-prometheus: "mqtt-water:9002"
+
+prometheus_client_host: "mqtt-water"
+prometheus_client_port: 9002
