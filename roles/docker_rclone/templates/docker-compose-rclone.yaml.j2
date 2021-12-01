@@ -9,8 +9,7 @@
       - /var/docker-compose/data/rclone/config/rclone.conf:/root/.rclone.conf
       - /var/docker-compose/data/rclone/logs:/logs
       - /var/docker-compose/data/backup:/Dropbox
-      - /var/docker-compose/data/scripts:/scripts
     ports:
       - "5574:5574"
-    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
+    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first --poll-interval 15
     restart: always
