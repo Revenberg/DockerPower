@@ -28,7 +28,7 @@
 
 - name: Recursively remove files /var/docker-compose/prometheus
   ansible.builtin.file:
-    path: "{{ items }}"
+    path: "{{ item }}"
     state: absent  
   with_items:         
   - "/var/docker-compose/prometheus.links"
