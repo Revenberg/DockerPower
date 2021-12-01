@@ -13,4 +13,5 @@
     ports:
       - "5574:5574"
     entrypoint: ["/bin/sh","-c", "/scripts/synchronisch.sh"]
+    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
     restart: always
