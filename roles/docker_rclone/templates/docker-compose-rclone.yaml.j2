@@ -12,5 +12,5 @@
       - /var/docker-compose/data/scripts:/scripts
     ports:
       - "5574:5574"
-    command: /scripts/synchronisch.sh
+    entrypoint: ["/bin/sh","-c", "/scripts/synchronisch.sh"]
     restart: always
