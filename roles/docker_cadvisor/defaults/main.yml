@@ -1,5 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
 
-prometheus_client_host: "cadvisor"
-prometheus_client_port: 8080
+containter_name: "cadvisor"
+containter_expose_port: 8080

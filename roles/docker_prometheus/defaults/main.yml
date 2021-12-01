@@ -1,5 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
 
-prometheus_client_host: "localhost"
-prometheus_client_port: 9090
+containter_name: "localhost"
+containter_expose_port: 9090

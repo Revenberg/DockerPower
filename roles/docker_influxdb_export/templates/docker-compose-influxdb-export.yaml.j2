@@ -1,11 +1,11 @@
-  influxdb-export:
+  {{ containter_name }}:
     image: revenberg/influxdb-export:latest
-    container_name: influxdb-export
+    container_name: {{ containter_name }}
     restart: always
     ports:
-      - 9003:9003
+      - {{ containter_expose_port }}:{{ containter_expose_port }}
     expose:
-      - 9003
+      - {{ containter_expose_port }}
     volumes:
       # Data persistency
       - /var/docker-compose/data/backup:/data/backup
@@ -13,4 +13,4 @@
       - LOG_LEVEL=DEBUG      
       - INFLUXDB_ADDRESS=192.168.2.71
       - INFLUXDB_PORT=8086
-      - PROMETHEUS_PORT=9003
+      - PROMETHEUS_PORT={{ containter_expose_port }}

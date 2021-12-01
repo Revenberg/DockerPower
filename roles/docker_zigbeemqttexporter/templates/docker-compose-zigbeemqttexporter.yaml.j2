@@ -1,11 +1,11 @@
-  zigbeemqttexporter:
+  {{ containter_name }}:
     image: revenberg/zigbeemqttexporter
-    container_name: zigbeemqttexporter
+    container_name: {{ containter_name }}
     restart: always
     ports:
-      - 9004:9004
+      - {{ containter_expose_port }}:{{ containter_expose_port }}
     expose:
-      - 9004
+      - {{ containter_expose_port }}
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=zigbee2mqtt/#

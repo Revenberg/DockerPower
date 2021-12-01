@@ -1,9 +1,9 @@
-  node-exporter:
+  {{ containter_name }}:
     image: prom/node-exporter:latest
-    container_name: node_exporter
+    container_name: {{ containter_name }}
     restart: always
     expose:
-      - 9100
+      - {{ containter_expose_port }}
     depends_on:
       - mqtt
     links:

@@ -1,17 +1,17 @@
-  mqtt-exporter:
+  {{ containter_name }}:
     image: kpetrem/mqtt-exporter:latest
-    container_name: mqtt-exporter
+    container_name: {{ containter_name }}
     restart: always
     ports:
-      - 9010:9010
+      - {{ containter_expose_port }}:{{ containter_expose_port }}
     expose:
-      - 9010
+      - {{ containter_expose_port }}
     environment:
       - MQTT_ADDRESS={{ ip_address }}
       - MQTT_TOPIC=reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
-      - PROMETHEUS_PORT=9010
+      - PROMETHEUS_PORT={{ containter_expose_port }}
     depends_on:
       - mqtt
     links:

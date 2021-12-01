@@ -1,5 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
 
-prometheus_client_host: "node-exporter"
-prometheus_client_port: 9100
+containter_name: "node-exporter"
+containter_expose_port: 9100

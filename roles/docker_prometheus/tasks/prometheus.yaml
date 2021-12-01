@@ -2,5 +2,5 @@
 - name: Add a line to prometheus file
   ansible.builtin.lineinfile:
     path: /var/docker-compose/prometheus.targets
-    line: '"{{ prometheus_client_host }}:{{ prometheus_client_port }}",'
+    line: '"{{ containter_name }}:{{ containter_expose_port }}",'
     create: yes

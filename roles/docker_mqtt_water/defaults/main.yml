@@ -1,5 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
 
-prometheus_client_host: "mqtt-water"
-prometheus_client_port: 9002
+containter_name: "mqtt-water"
+containter_expose_port: 9002

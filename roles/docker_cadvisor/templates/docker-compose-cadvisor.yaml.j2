@@ -1,6 +1,6 @@
-  cadvisor:
+  {{ containter_name }}:
     image: zcube/cadvisor
-    container_name: monitoring_cadvisor
+    container_name: {{ containter_name }}
     privileged: true
     restart: always
     volumes:
@@ -16,4 +16,4 @@
     devices:
       - /dev/kmsg
     expose:
-      - 8080
+      - {{ containter_expose_port }}
