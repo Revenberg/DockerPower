@@ -2,7 +2,7 @@
 - name: get facts
   include_tasks: get_facts.yaml
 
-- name: create /var/docker-compose/data/rclone/config
+- name: create /var/docker-compose/data/rclone/
   file:
     path: "{{  item }}"
     recurse: yes
@@ -10,7 +10,8 @@
     owner: pi
     group: pi
   with_items:         
-  - "/var/docker-compose/data/rclone/config"
+  - "/var/docker-compose/data/rclone/config/"
+  - "/var/docker-compose/data/rclone/logs/"
 
 - name: Template alertmanager files
   template:
@@ -20,7 +21,7 @@
     owner: pi
     group: pi
   with_items:
-  - { src: "rclone.j2", dest: "/var/docker-compose/data/rclone/config/rclone" }
+  - { src: "rclone.conf.j2", dest: "/var/docker-compose/data/rclone/config/rclone.conf" }
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

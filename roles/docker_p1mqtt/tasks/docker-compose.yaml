@@ -16,8 +16,8 @@
 
 - name: Create Docker files from template
   template:
-    src: "docker-compose-alertmanager.yaml.j2"
-    dest: "/var/docker-compose/fragments/docker-compose-alertmanager.yaml"
+    src: "docker-compose-p1mqtt.yaml.j2"
+    dest: "/var/docker-compose/fragments/docker-compose-p1mqtt.yaml"
     mode: 0755
     owner: pi
     group: pi

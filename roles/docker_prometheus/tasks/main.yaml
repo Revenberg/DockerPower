@@ -10,6 +10,9 @@
   - "/var/docker-compose/data/prometheus/config"
   - "/var/docker-compose/data/prometheus/data"
 
+- name: set source prometheus
+  include_tasks: prometheus.yaml
+
 - name: get prometheus links and targets
   set_fact:
     var_targets: "{{lookup('file', '/var/docker-compose/prometheus.targets') }}"
@@ -42,9 +45,6 @@
     group: pi
   with_items:
   - { src: "prometheus.yml.j2",  dest: "/var/docker-compose/data/prometheus/config/prometheus.yml" }
-
-- name: set source prometheus
-  include_tasks: prometheus.yaml
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

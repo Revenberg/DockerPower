@@ -6,8 +6,8 @@
       - PUID=998
       - PGID=100
     volumes:
-      - /var/docker-compose/data/rclone:/config/rclone
-      - /var/docker-compose/data/rclone:/logs
+      - /var/docker-compose/data/rclone/config:/config/
+      - /var/docker-compose/data/rclone/logs:/logs
       - /var/docker-compose/data/backup:/DropBox
     ports:
       - "5574:5574"
