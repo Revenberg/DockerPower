@@ -14,7 +14,7 @@
   - "/var/docker-compose/data/rclone/logs/"
   - "/var/docker-compose/data/scripts/"
 
-- name: Template alertmanager files
+- name: Template rclone files
   template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
