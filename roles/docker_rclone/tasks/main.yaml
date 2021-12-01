@@ -12,7 +12,7 @@
   with_items:         
   - "/var/docker-compose/data/rclone/config/"
   - "/var/docker-compose/data/rclone/logs/"
-  - "/var/docker-compose/data/scripts/"
+  - "/var/docker-compose/data/rclone/scripts/"
 
 - name: Template rclone files
   template:
