@@ -23,7 +23,7 @@
     group: pi
   with_items:
   - { src: "rclone.conf.j2", dest: "/var/docker-compose/data/rclone/config/rclone.conf" }
-  - { src: "rclone.conf.j2", dest: "/var/docker-compose/data/rclone/scripts/synchronisch.sh" }
+  - { src: "synchronisch.sh.j2", dest: "/var/docker-compose/data/rclone/scripts/synchronisch.sh" }
   
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
