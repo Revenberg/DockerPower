@@ -12,5 +12,5 @@
       - /var/docker-compose/data/scripts:/scripts
     ports:
       - "5574:5574"
-    command: copy /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
+    command: sync /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
     restart: always
