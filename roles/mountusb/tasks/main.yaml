@@ -1,0 +1,31 @@
+---
+- name: Install ntfs-3g
+  apt: 
+    name: [ "ntfs-3g"]
+
+- name: create /media/usb
+  file:
+    path: /media/usb
+    recurse: yes
+    mode: 0755
+    owner: pi
+    group: pi
+  
+- name: Mount up device by label DATA
+  mount:
+    path: /media/usb
+    src: "LABEL={{ data }}"
+    fstype: ntfs
+    opts: auto,nofail,noatime,user,rw,exec,gid=pi,umask=0000
+  register: mount
+
+- name: Create symbolic link to /var/docker-compose/data
+  file:
+    src: /media/usb
+    path: /var/docker-compose/data
+    state: link
+    mode: 0755
+    owner: pi
+    group: pi  
+  when: mount.changed
+        
