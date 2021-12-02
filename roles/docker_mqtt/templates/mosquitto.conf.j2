@@ -34,7 +34,7 @@ log_timestamp true
 # If the password.mqtt file is empty, this has no effect.
 allow_anonymous true
 
-{% if mqtthost != ""  %}
+{% if mqtthost is defined and mqtthost != ""  %}
 # =========================================================
 # Bridges
 # =========================================================
