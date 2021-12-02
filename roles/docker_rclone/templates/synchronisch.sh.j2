@@ -5,6 +5,6 @@ export RCLONE_CONFIG
 
 while :
 do 
-    pause 60
     rclone copy /Dropbox DropBox:Apps/rev_rpi_rclone/backup --log-level INFO --auto-confirm --error-on-no-transfer --check-first
+    sleep 1m
 done
