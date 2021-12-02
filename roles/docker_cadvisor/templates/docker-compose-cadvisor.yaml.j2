@@ -15,5 +15,7 @@
       - '--housekeeping_interval=10s'
     devices:
       - /dev/kmsg
+    ports:
+      - {{ containter_expose_port }}:{{ containter_expose_port }}
     expose:
       - {{ containter_expose_port }}
