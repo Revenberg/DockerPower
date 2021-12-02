@@ -14,9 +14,10 @@
 - name: Mount up device by label DATA
   mount:
     path: /media/usb
-    src: "LABEL={{ data }}"
+    src: LABEL="{{ data }}"
     fstype: ntfs
     opts: auto,nofail,noatime,user,rw,exec,gid=pi,umask=0000
+  ignore_errors: True
   register: mount
 
 - name: Create symbolic link to /var/docker-compose/data
