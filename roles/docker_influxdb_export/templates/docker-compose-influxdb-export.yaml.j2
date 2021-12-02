@@ -8,7 +8,7 @@
       - {{ containter_expose_port }}
     volumes:
       # Data persistency
-      - /var/docker-compose/data/backup:/data/backup
+      - /var/docker-compose/data/backup/{{ ip_address }}:/data/backup
     environment:
       - LOG_LEVEL=DEBUG      
       - INFLUXDB_ADDRESS={{ ip_address }}
