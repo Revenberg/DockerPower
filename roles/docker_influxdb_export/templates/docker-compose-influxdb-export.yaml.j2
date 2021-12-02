@@ -10,7 +10,7 @@
       # Data persistency
       - /var/docker-compose/data/backup/{{ ip_address }}:/data/backup
     environment:
-      - LOG_LEVEL=DEBUG      
+      - LOG_LEVEL=WARN      
       - INFLUXDB_ADDRESS={{ ip_address }}
       - INFLUXDB_PORT=8086
       - PROMETHEUS_PORT={{ containter_expose_port }}

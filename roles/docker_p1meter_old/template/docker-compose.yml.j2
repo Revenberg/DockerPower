@@ -97,7 +97,7 @@ services:
       - PROMETHEUS_PREFIX=reading_
       - PROMETHEUS_PORT=9002
       - TOPIC_LABEL=reading
-      - LOG_LEVEL=DEBUG
+      - LOG_LEVEL=WARN
     depends_on:
       - mqtt
     links:
@@ -117,7 +117,7 @@ services:
       - MQTT_IGNORED_TOPICS=bridge
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
-      - LOG_LEVEL=DEBUG  
+      - LOG_LEVEL=WARN  
     depends_on:
       - mqtt
     links:
