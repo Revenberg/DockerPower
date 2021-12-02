@@ -20,6 +20,7 @@
   - role: docker_mqtt_water
   - role: docker_openweathermapmqtt
   - role: docker_zigbee
+  - role: docker_solar2mqtt
   
   - role: docker_zigbeemqttexporter
   - role: docker_cadvisor
