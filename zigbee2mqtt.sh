@@ -44,7 +44,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/zigbee2mqtt.log
 
 else
-    cd ~/ powercontainers
+    cd ~/powercontainers
     git pull
     cd -
 fi
