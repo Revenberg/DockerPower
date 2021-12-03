@@ -8,9 +8,9 @@
 - name: Print a debug message
   ansible.builtin.debug:
     msg: "{{ ttyUSB0 }}"
-  when: ttyUSB0.stat is defined
+  when: ttyUSB0.stat.exists 
 
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
-  when: ttyUSB0.stat is defined
+  when: ttyUSB0.stat.exists
