@@ -1,3 +1,16 @@
 --- 
+
+- name: Get stats of /dev/ttyUSB0
+  ansible.builtin.stat:
+    path: /dev/ttyUSB0
+  register: ttyUSB0
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "{{ ttyUSB0 }}"
+  when: ttyUSB0.stat is defined
+
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
+  when: ttyUSB0.stat is defined

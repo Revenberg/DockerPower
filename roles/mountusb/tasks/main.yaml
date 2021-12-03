@@ -29,4 +29,4 @@
     owner: pi
     group: pi  
   when: mount.changed
-        
+  ignore_errors: True
