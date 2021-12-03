@@ -100,3 +100,5 @@ chmod +x /home/pi/run.sh;
 ansible-playbook  /home/pi/powercontainers/zigbee2mqtt.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/zigbee2mqtt.log
 
 #ping -n 1 -w 1 rpipower | grep 'bytes of data' | cut -d'(' -f2 | cut -d')' -f1
+
+docker ps -a
