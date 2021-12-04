@@ -21,5 +21,11 @@
   - { src: "default.conf.template.j2", dest: "/var/docker-compose/data/nginx/templates/default.conf.template" }
   - { src: "index.html.j2", dest: "/var/docker-compose/data/nginx/html/index.html" }
 
+- name: get_facts
+  include_tasks: get_facts.yaml
+
+- name: get_facts
+  include_tasks: get_facts.yaml
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

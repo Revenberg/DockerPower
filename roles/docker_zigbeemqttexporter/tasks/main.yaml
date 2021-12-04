@@ -12,5 +12,8 @@
 - name: set source prometheus
   include_tasks: prometheus.yaml
 
+- name: get_facts
+  include_tasks: get_facts.yaml
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

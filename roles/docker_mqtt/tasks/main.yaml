@@ -22,5 +22,8 @@
   - { src: "mosquitto.conf.j2", dest: "/var/docker-compose/data/mqtt/config/mosquitto.conf" }
   - { src: "passwords.mqtt.j2", dest: "/var/docker-compose/data/mqtt/config/passwords.mqtt" }
 
+- name: get_facts
+  include_tasks: get_facts.yaml
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

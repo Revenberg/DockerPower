@@ -1,0 +1,8 @@
+---
+- name: get keys
+  set_fact:
+    slack_webhook: "{{lookup('file', '/home/pi/slack.webhook') }}"
+    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
+    ip_address: "{{lookup('file', '/home/pi/ip') }}"
+    ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
+    openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"

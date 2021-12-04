@@ -10,7 +10,6 @@
   - role: mountusb
 
   - role: docker
-  - role: docker_get_facts
   
   - role: docker_mqtt
 #    vars:

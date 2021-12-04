@@ -11,6 +11,9 @@
   when: ttyUSB0.stat.exists 
 
 
+- name: get_facts
+  include_tasks: get_facts.yaml
+
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
   when: ttyUSB0.stat.exists
