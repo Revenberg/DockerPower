@@ -9,11 +9,6 @@
   with_items:         
     - "/var/docker-compose/fragments"
 
-- name: get keys
-  set_fact:
-    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
-    ip_address: "{{lookup('file', '/home/pi/ip') }}"
-
 - name: Create Docker files from template
   template:
     src: "docker-compose-alertmanager.yaml.j2"

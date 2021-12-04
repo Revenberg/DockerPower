@@ -10,12 +10,6 @@
   - "/var/docker-compose/data/nginx/templates"
   - "/var/docker-compose/data/nginx/html"
 
-- name: get keys
-  set_fact:
-    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
-    ip_address: "{{lookup('file', '/home/pi/ip') }}"
-    ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
-
 - name: Template nginx files
   template:
     src: "{{ item.src }}"

@@ -1,7 +1,4 @@
 --- 
-- name: get facts
-  include_tasks: get_facts.yaml
-
 - name: create /var/docker-compose/data/rclone/
   file:
     path: "{{  item }}"

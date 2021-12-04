@@ -146,14 +146,6 @@
 #  #- { src: "files/data/dsmr/config/bashrc",  dest: "/var/docker-compose/data/dsmr/config/bashrc" }
   - { src: "files/data/prometheus/config/rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
   
-- name: get keys
-  set_fact:
-    openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
-    slack_webhook: "{{lookup('file', '/home/pi/slack.webhook') }}"
-    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
-    ip_address: "{{lookup('file', '/home/pi/ip') }}"
-    ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
-
 - name: Create Docker files from template
   template:
     src: "{{ item.src }}"
