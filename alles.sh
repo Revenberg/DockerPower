@@ -24,7 +24,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 #        git pull
 #        cd ~
 #        echo $1 > /home/pirate/.pswrd
-#        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/zigbee2mqtt.log
+#        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/alles.log
 #        echo "Reconnect as pi and your password"
 #        sudo cp $0 /home/pi/
 #        sudo chown pi:pi /home/pi/$0        
@@ -41,7 +41,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 
     mkdir /home/pi/ansible
     echo $1 > /home/pi/.pswrd
-    ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/zigbee2mqtt.log
+    ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/alles.log
 
 else
     cd ~/powercontainers
@@ -87,8 +87,8 @@ cd /home/pi/powercontainers
 git pull
 cd /home/pi
 
-cp /home/pi/powercontainers/zigbee2mqtt.sh /home/pi/zigbee2mqtt.sh;
-chmod +x /home/pi/zigbee2mqtt.sh;
+cp /home/pi/powercontainers/alles.sh /home/pi/alles.sh;
+chmod +x /home/pi/alles.sh;
 
 cp /home/pi/powercontainers/build.sh /home/pi/build.sh;
 chmod +x /home/pi/build.sh;
@@ -97,7 +97,7 @@ cp /home/pi/powercontainers/build.sh /home/pi/run.sh;
 chmod +x /home/pi/run.sh;
 
 #ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/ansible.log
-ansible-playbook  /home/pi/powercontainers/zigbee2mqtt.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/zigbee2mqtt.log
+ansible-playbook  /home/pi/powercontainers/alles.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/alles.log
 
 #ping -n 1 -w 1 rpipower | grep 'bytes of data' | cut -d'(' -f2 | cut -d')' -f1
 

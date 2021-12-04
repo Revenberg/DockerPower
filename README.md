@@ -16,11 +16,5 @@ put the key in: /home/pi/slack.webhook
 Request API key https://openweathermap.org/api 
 put the key in /home/pi/openweathermap.apikey
 
-[install/run] 1
-wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/p1meter.sh && chmod +x p1meter.sh ;./p1meter.sh << password>>
-
-[install/run] 2
-wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/zigbee2mqtt.sh && chmod +x zigbee2mqtt.sh ;./zigbee2mqtt.sh << password>>
-
-[prometheus]
-wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/prometheus.sh && chmod +x prometheus.sh ;./prometheus.sh << password>>
+[install/run]
+wget https://raw.githubusercontent.com/Revenberg/powercontainers/master/alles.sh && chmod +x alles.sh ;./alles.sh << password>>
