@@ -17,6 +17,7 @@
     src: LABEL=DATA
     fstype: ntfs
     opts: auto,nofail,noatime,user,rw,exec,gid=pi,umask=0000
+    state: mounted
   ignore_errors: True
   register: mount
 
