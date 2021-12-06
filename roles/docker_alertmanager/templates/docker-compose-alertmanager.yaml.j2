@@ -1,12 +1,12 @@
-  alertmanager:
+  {{ containter_name }}:
     image: prom/alertmanager:latest
     ports:
-      - 9093:9093
+      - {{ containter_expose_port }}:9093
     volumes:
       - /var/docker-compose/data/alertmanager/:/etc/alertmanager/
     restart: always
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
-      - "--web.external-url=http://{{ ext_ip }}:9093"
+      - "--web.external-url=http://{{ ext_ip }}:{{ containter_expose_port }}"
   

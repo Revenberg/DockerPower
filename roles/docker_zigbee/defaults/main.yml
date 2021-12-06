@@ -1,2 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
+
+containter_name: "zigbee"
+containter_expose_port: 9088

@@ -1,2 +1,5 @@
 ---
 pswrdfile: /home/pi/.pswrd
+
+containter_name: "alertmanager"
+containter_expose_port: 8080
