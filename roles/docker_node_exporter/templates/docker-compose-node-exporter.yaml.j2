@@ -2,6 +2,8 @@
     image: prom/node-exporter:latest
     container_name: {{ containter_name }}
     restart: always
+    ports:
+      - {{ containter_expose_port }}:9100
     expose:
       - {{ containter_expose_port }}
     depends_on:

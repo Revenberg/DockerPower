@@ -56,7 +56,7 @@ groups:
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Deur Heit en mem open'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+      description: 'Deur Heit en mem open meer 2 minuten.'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
@@ -67,7 +67,7 @@ groups:
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Deur Jelmar open'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+      description: 'Deur Jelmar open meer dan 2 minuten.'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
@@ -78,7 +78,7 @@ groups:
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Deur Roan open'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+      description: 'Deur Roan open meer dan 2 minuten.'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
@@ -89,7 +89,7 @@ groups:
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Deur Senne open'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 2 minuten.'
+      description: 'Deur Senne open meer dan 2 minuten.'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
@@ -100,7 +100,7 @@ groups:
     # Annotation - additional informational labels to store more information
     annotations:
       title: 'Deur Schuur open'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} is open voor meer dan 10 minuten.'
+      description: 'Deur Schuur open meer dan 10 minuten.'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
