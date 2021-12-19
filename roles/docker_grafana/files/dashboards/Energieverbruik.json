@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 8,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -92,7 +92,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -175,7 +175,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -258,7 +258,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -340,7 +340,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -359,117 +359,174 @@
       "type": "gauge"
     },
     {
+      "cacheTimeout": null,
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
-          },
-          "mappings": [],
+          ],
+          "max": 4,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "rgba(50, 172, 45, 0.97)",
                 "value": null
               },
               {
-                "color": "red",
-                "value": 80
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 2
               }
             ]
-          }
+          },
+          "unit": "kwatt"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
-        "w": 8,
+        "h": 5,
+        "w": 4,
         "x": 16,
         "y": 0
       },
-      "id": 6,
+      "id": 42,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "mode": "single"
-        }
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
       },
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "reading_watermeter_reading_current_value/1000",
-          "interval": "",
-          "legendFormat": "Watermeter",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "reading_GAS_READING",
+          "expr": "reading_AC_Watts_W",
+          "format": "time_series",
           "hide": false,
           "interval": "",
-          "legendFormat": "Gas",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "reading_Generated_All_time",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Solar",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "reading_ELECTRICITY_DELIVERED_TO_CLIENT_LOW_TARIFF",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Electra laag tarief",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "reading_ELECTRICITY_DELIVERED_TO_CLIENT_NORMAL_TARIFF",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Electra normaal tarief",
-          "refId": "E"
+          "intervalFactor": 2,
+          "legendFormat": "AC Watts",
+          "refId": "A",
+          "step": 1800
         }
       ],
-      "title": "Meterstanden",
-      "type": "timeseries"
+      "title": "AC Watts",
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 40,
+          "min": -10,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "semi-dark-blue",
+                "value": 0
+              },
+              {
+                "color": "#629e51",
+                "value": 15
+              },
+              {
+                "color": "#EAB839",
+                "value": 25
+              },
+              {
+                "color": "#e24d42",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 44,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "reading_Inverter_Temperature_c",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Inverter Temperatuur",
+      "type": "gauge"
     },
     {
       "cacheTimeout": null,
@@ -537,7 +594,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -620,7 +677,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -703,7 +760,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -786,7 +843,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -802,6 +859,119 @@
       ],
       "title": "Gasverbruik",
       "type": "gauge"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 5
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "reading_watermeter_reading_current_value/1000",
+          "interval": "",
+          "legendFormat": "Watermeter",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "reading_GAS_READING",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Gas",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "reading_Generated_All_time",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Solar",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "reading_ELECTRICITY_DELIVERED_TO_CLIENT_LOW_TARIFF",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Electra laag tarief",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "reading_ELECTRICITY_DELIVERED_TO_CLIENT_NORMAL_TARIFF",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Electra normaal tarief",
+          "refId": "E"
+        }
+      ],
+      "title": "Meterstanden",
+      "type": "timeseries"
     },
     {
       "datasource": "Prometheus",
@@ -983,7 +1153,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 4,
         "x": 8,
         "y": 10
@@ -1005,7 +1175,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -1060,7 +1230,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 4,
         "x": 12,
         "y": 10
@@ -1082,7 +1252,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -1094,6 +1264,154 @@
       ],
       "title": "Wind snelheid",
       "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dateTimeAsIso"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 8,
+        "y": 15
+      },
+      "id": 38,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "reading_sunrise",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Zonsopgang",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dateTimeAsIso"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 15
+      },
+      "id": 35,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "reading_sunset",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Zonondergang",
+      "type": "stat"
     },
     {
       "datasource": "Prometheus",
@@ -1151,7 +1469,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 15
       },
       "id": 41,
       "options": {
@@ -1215,154 +1533,6 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "dateTimeAsIso"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 8,
-        "y": 16
-      },
-      "id": 38,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "reading_sunrise",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Zonsopgang",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "dateTimeAsIso"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 12,
-        "y": 16
-      },
-      "id": 35,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "reading_sunset",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Zonondergang",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
             "fixedColor": "rgb(31, 120, 193)",
             "mode": "fixed"
           },
@@ -1399,7 +1569,7 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 19
+        "y": 18
       },
       "id": 29,
       "interval": null,
@@ -1420,7 +1590,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -1475,7 +1645,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 19
+        "y": 18
       },
       "id": 21,
       "interval": null,
@@ -1496,7 +1666,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -1554,7 +1724,7 @@
         "h": 3,
         "w": 4,
         "x": 16,
-        "y": 19
+        "y": 24
       },
       "id": 27,
       "interval": null,
@@ -1575,7 +1745,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -1706,7 +1876,7 @@
         "h": 3,
         "w": 4,
         "x": 20,
-        "y": 19
+        "y": 24
       },
       "id": 19,
       "interval": null,
@@ -1727,7 +1897,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.2.5",
       "targets": [
         {
           "exemplar": true,
@@ -1742,7 +1912,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 31,
+  "schemaVersion": 32,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1756,5 +1926,5 @@
   "timezone": "",
   "title": "Energieverbruik",
   "uid": "5nkT6iRRz",
-  "version": 22
+  "version": 18
 }
