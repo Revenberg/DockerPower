@@ -99,6 +99,11 @@ chmod +x /home/pi/run.sh;
 #ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/ansible.log
 ansible-playbook  /home/pi/powercontainers/alles.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/alles.log
 
-#ping -n 1 -w 1 rpipower | grep 'bytes of data' | cut -d'(' -f2 | cut -d')' -f1
+ret=$?
+if [ $ret -ne 0 ]; then
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+else
+    #ping -n 1 -w 1 rpipower | grep 'bytes of data' | cut -d'(' -f2 | cut -d')' -f1
 
-docker ps -a
+    docker ps -a
+fi
