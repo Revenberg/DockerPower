@@ -16,7 +16,7 @@ groups:
   rules:
   - alert: PowerL1
     # Condition for alerting
-    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L1 > 1
+    expr: reading_INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED > 1
     for: 1m
     # Annotation - additional informational labels to store more information
     annotations:
@@ -27,7 +27,7 @@ groups:
       severity: 'critical'
   - alert: PowerL2
     # Condition for alerting
-    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L2 > 1
+    expr: reading_INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED > 1
     for: 1m
     # Annotation - additional informational labels to store more information
     annotations:
@@ -38,7 +38,7 @@ groups:
       severity: 'critical'
   - alert: PowerL3
     # Condition for alerting
-    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L3 > 1
+    expr: reading_INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED > 1
     for: 1m
     # Annotation - additional informational labels to store more information
     annotations:
