@@ -1,5 +1,5 @@
 --- 
-- name: create /var/docker-compose/mqtt 
+- name: create /var/docker-compose/alertmanager 
   file:
     path: "{{  item }}"
     recurse: yes

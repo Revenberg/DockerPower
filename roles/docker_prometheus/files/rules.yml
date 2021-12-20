@@ -12,41 +12,54 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
-#- name: Power
-#  rules:
-#  - alert: PowerL1
-#    # Condition for alerting
-#    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L1 > 1
-#    for: 1m
-#    # Annotation - additional informational labels to store more information
-#    annotations:
-#      title: 'Power {{ $labels.instance }} up'
-#      description: '{{ $labels.instance }} of job {{ $labels.job }} has been up 1 for more than 1 minute.'
-#    # Labels - additional labels to be attached to the alert
-#    labels:
-#      severity: 'critical'      
-#  - alert: PowerL2
-#    # Condition for alerting
-#    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L2 > 1
-#    for: 1m
-#    # Annotation - additional informational labels to store more information
-#    annotations:
-#      title: 'Power {{ $labels.instance }} up'
-#      description: '{{ $labels.instance }} of job {{ $labels.job }} has been up 1 for more than 1 minute.'
-#    # Labels - additional labels to be attached to the alert
-#    labels:
-#      severity: 'critical'      
-#  - alert: PowerL3
-#    # Condition for alerting
-#    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L3 > 1
-#    for: 1m
-#    # Annotation - additional informational labels to store more information
-#    annotations:
-#      title: 'Power {{ $labels.instance }} up'
-#      description: '{{ $labels.instance }} of job {{ $labels.job }} has been up 1 for more than 1 minute.'
-#    # Labels - additional labels to be attached to the alert
-#    labels:
-#      severity: 'critical'                  
+- name: Power
+  rules:
+  - alert: PowerL1
+    # Condition for alerting
+    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L1 > 1
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Power L1 high'
+      description: 'L1 high power consumpotion for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'      
+  - alert: PowerL2
+    # Condition for alerting
+    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L2 > 1
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Power L2 high'
+      description: 'L2 high power consumpotion for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'      
+  - alert: PowerL3
+    # Condition for alerting
+    expr: reading_INSTANTANEOUS_ACTIVECURRENT_L3 > 1
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Power L3 high'
+      description: 'L3 high power consumpotion for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'                  
+- name: Solar
+  rules:
+  - alert: Solar
+    # Condition for alerting
+    expr: reading_AC_Watts_W > 0
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Solar is providing power'
+      description: 'Solar is providing power'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'        
 - name: Deuren
   rules:
   - alert: DeurOpenHeit_en_mem

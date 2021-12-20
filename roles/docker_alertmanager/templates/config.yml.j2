@@ -9,6 +9,7 @@ receivers:
 - name: 'slack-notifications'
   slack_configs:
   - channel: '#monitoring-instances'
-    title: 'http://{{ ext_ip }}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}'
-    text: "<!channel> \n{% raw %}summary: {{ .CommonAnnotations.summary }}\ndescription: {{ .CommonAnnotations.description }}{% endraw %}"
+    title: '{{ .Annotations.title }} http://{{ ext_ip }}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}'
+    text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}http://{{ ext_ip }}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}"
     send_resolved: true      
+
