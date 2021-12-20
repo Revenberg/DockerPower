@@ -1,11 +1,11 @@
 ---
-- name: Add a line to prometheus file
+- name: Add a line to prometheus file links
   ansible.builtin.lineinfile:
     path: /var/docker-compose/prometheus.links
     line: "      - {{ containter_name }}"
     create: yes
 
-- name: Add a line to prometheus file
+- name: Add a line to prometheus file target
   ansible.builtin.lineinfile:
     path: /var/docker-compose/prometheus.targets
     line: '"{{ containter_name }}:{{ containter_expose_port }}",'
