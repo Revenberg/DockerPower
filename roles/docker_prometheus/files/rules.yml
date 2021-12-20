@@ -24,7 +24,7 @@ groups:
       description: 'L1 high power consumpotion for more than 1 minute.'
     # Labels - additional labels to be attached to the alert
     labels:
-      severity: 'critical'      
+      severity: 'critical'
   - alert: PowerL2
     # Condition for alerting
     expr: reading_INSTANTANEOUS_ACTIVECURRENT_L2 > 1
@@ -35,7 +35,7 @@ groups:
       description: 'L2 high power consumpotion for more than 1 minute.'
     # Labels - additional labels to be attached to the alert
     labels:
-      severity: 'critical'      
+      severity: 'critical'
   - alert: PowerL3
     # Condition for alerting
     expr: reading_INSTANTANEOUS_ACTIVECURRENT_L3 > 1
@@ -46,7 +46,7 @@ groups:
       description: 'L3 high power consumpotion for more than 1 minute.'
     # Labels - additional labels to be attached to the alert
     labels:
-      severity: 'critical'                  
+      severity: 'critical'
 - name: Solar
   rules:
   - alert: Solar
@@ -59,7 +59,7 @@ groups:
       description: 'Solar is providing power'
     # Labels - additional labels to be attached to the alert
     labels:
-      severity: 'critical'        
+      severity: 'critical'
 - name: Deuren
   rules:
   - alert: DeurOpenHeit_en_mem
@@ -117,4 +117,3 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
-  
