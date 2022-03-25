@@ -30,7 +30,7 @@
   - role: docker_influxdb
   - role: docker_mqtt2influxdb
   - role: docker_influxdb_export
-  - role: docker_rclone
+#  - role: docker_rclone
   
   - role: docker_prometheus
     
