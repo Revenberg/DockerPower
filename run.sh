@@ -1,3 +1,3 @@
 cd ~
 ./build.sh
-./p1meter.sh
+./alles.sh
