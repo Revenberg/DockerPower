@@ -1,13 +1,14 @@
   {{ containter_name }}:
-    image: docker.io/sealife/fritzbox-exporter:latest
+    image: kehrhardt/fritzbox_exporter:latest
     container_name: {{ containter_name }}
     privileged: true
     restart: unless-stopped
     ports:
-      - {{ containter_expose_port }}:8765
+      - {{ containter_expose_port }}:9042
     expose:
       - {{ containter_expose_port }}
     environment:
-      FRITZ_HOST: {{ gateway_ip_address }}
-      FRITZ_USER: monitoring
-      FRITZ_PASS: {{ FRITZ_PASS }}
+      GATEWAY_URL: http://{{ gateway_ip_address }}:49000
+      USERNAME: monitoring
+      PASSWORD: {{ FRITZ_PASS }}
+      LISTEN_ADDRESS: 0.0.0.0:9042

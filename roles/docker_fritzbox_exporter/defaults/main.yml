@@ -2,4 +2,4 @@
 pswrdfile: /home/pi/.pswrd
 
 containter_name: "fritzbox_exporter"
-containter_expose_port: 8765
+containter_expose_port: 9042
