@@ -80,7 +80,7 @@ do
   echo "$line" > /home/pi/ip
 done
 
-/sbin/ip route | awk '/default/ { print $3 }' | head -n 1 > home/pi/gateway
+/sbin/ip route | awk '/default/ { print $3 }' | head -n 1 > /home/pi/gateway
 curl ifconfig.me > /home/pi/ext_ip
 
 #echo /home/pi/ansible/hosts
