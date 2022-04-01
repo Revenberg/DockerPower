@@ -39,17 +39,7 @@
 #    group: pi
 #  with_items:
 #  - { src: "files/env/env.grafana", dest: "/var/docker-compose/grafana/env/env.grafana" }
-
-- name: copy Grafana dashboards files
-  copy:
-    src: "{{ item }}"
-    dest: "/var/docker-compose/data/grafana/dashboards/"
-    mode: 0755
-    owner: pi
-    group: pi
-  with_fileglob:
-    - "files/dashboards/*"
-  
+ 
 - name: get_facts
   include_tasks: get_facts.yaml
 

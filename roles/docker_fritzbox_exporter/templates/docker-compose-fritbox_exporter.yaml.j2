@@ -1,0 +1,13 @@
+  {{ containter_name }}:
+    image: docker.io/sealife/fritzbox-exporter:latest
+    container_name: {{ containter_name }}
+    privileged: true
+    restart: unless-stopped
+    ports:
+      - {{ containter_expose_port }}:8765
+    expose:
+      - {{ containter_expose_port }}
+    environment:
+      FRITZ_HOST: {{ gateway_ip_address }}
+      FRITZ_USER: monitoring
+      FRITZ_PASS: {{ FRITZ_PASS }}

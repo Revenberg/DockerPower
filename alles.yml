@@ -36,3 +36,4 @@
     
   - role: docker_nginx
   - role: docker_compose  
+  - role: docker_fritzbox_exporter
