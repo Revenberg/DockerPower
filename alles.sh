@@ -10,7 +10,9 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         sleep 30
         exit 255
     fi
-
+ 
+    sudo apt-get remove --purge minecraft-pi -y 
+    sudo apt-get clean -y
     sudo apt-get update -y
     sudo apt-get autoremove -y
 
