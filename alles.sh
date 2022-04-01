@@ -10,8 +10,8 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         sleep 30
         exit 255
     fi
- 
-    sudo apt-get remove --purge minecraft-pi -y 
+
+    sudo apt-get remove --purge minecraft-pi -y
     sudo apt-get clean -y
     sudo apt-get update -y
     sudo apt-get autoremove -y
@@ -20,7 +20,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     sudo apt-get install docker-compose -y
 
 #    git clone https://github.com/Revenberg/powercontainers.git
-#    
+#
 #    if [ "$(whoami)" == "pirate" ]; then
 #        cd /home/pirate/powercontainers
 #        git pull
@@ -29,7 +29,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 #        ansible-playbook  /home/pirate/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/alles.log
 #        echo "Reconnect as pi and your password"
 #        sudo cp $0 /home/pi/
-#        sudo chown pi:pi /home/pi/$0        
+#        sudo chown pi:pi /home/pi/$0
 #        sudo mv /home/pirate/.pswrd /home/pi/.pswrd
 #        sudo chown pi:pi /home/pi/.pswrd
 #        sudo chsh -s /bin/bash pi
