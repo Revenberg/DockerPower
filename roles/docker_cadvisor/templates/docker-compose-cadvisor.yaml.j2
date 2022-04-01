@@ -13,6 +13,7 @@
       - '--docker_only'
       - '--disable_metrics=disk,diskIO,tcp,udp,percpu,sched,process,hugetlb'
       - '--housekeeping_interval=10s'
+      - '--disable_metrics=hugetlb'
     devices:
       - /dev/kmsg
     ports:

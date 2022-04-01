@@ -21,7 +21,7 @@
   - role: docker_solar2mqtt
   
   - role: docker_zigbeemqttexporter
-  - role: docker_cadvisor
+#  - role: docker_cadvisor currently failing
   - role: docker_node_exporter
   - role: docker_mqtt_exporter
 #  - role: docker_portainer
