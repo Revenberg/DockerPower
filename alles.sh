@@ -106,7 +106,5 @@ ret=$?
 if [ $ret -ne 0 ]; then
     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 else
-    #ping -n 1 -w 1 rpipower | grep 'bytes of data' | cut -d'(' -f2 | cut -d')' -f1
-
     docker ps -a
 fi
