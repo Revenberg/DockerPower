@@ -7,5 +7,5 @@
     ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
     openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
     dropbox_access_token: "{{lookup('file', '/home/pi/dropbox_access_token') }}"
-    FRITZ_PASS: "{{lookup('file', '/home/pi/FRITZ_PASS') }}"
+    FRITZ_PASS: "{{lookup('file', '/home/pi/fritzbox') }}"
     gateway_ip_address: "{{lookup('file', '/home/pi/gateway') }}"
