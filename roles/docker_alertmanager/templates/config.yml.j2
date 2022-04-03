@@ -6,11 +6,13 @@ route:
   match_re:
     - name: Deuren
   receiver: 'mqtt-slack-notifications'
-    match_re:
+  match_re:
     - name: Power
+  receiver: 'power-slack-notifications'
+  match_re:
+    - name: AllInstances
+
   receiver: 'system-slack-notifications'
-#    match_re:
-#    - name: AllInstances
 
 
 receivers:
@@ -25,6 +27,13 @@ receivers:
   slack_configs:
   - channel: '#mqtt'
     slack_api_url: '{| slack_mqtt_webhook |}'
+    title: '{{ .Annotations.title }} {% endraw %}'
+    text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
+    send_resolved: true      
+- name: 'power-slack-notifications'
+  slack_configs:
+  - channel: '#system'
+    slack_api_url: '{| slack_power_webhook |}'
     title: '{{ .Annotations.title }} {% endraw %}'
     text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
     send_resolved: true      
