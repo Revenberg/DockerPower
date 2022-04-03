@@ -22,7 +22,7 @@
   - { src: "config.yml.j2",           dest: "/var/docker-compose/data/alertmanager/config.yml" }
   
 - name: get_facts
-  include_tasks: get_facts.yaml
+  include_tasks: ../../../tasks/get_facts.yaml
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
