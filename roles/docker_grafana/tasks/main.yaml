@@ -41,7 +41,7 @@
 #  - { src: "files/env/env.grafana", dest: "/var/docker-compose/grafana/env/env.grafana" }
  
 - name: get_facts
-  include_tasks: get_facts.yaml
+  include_tasks: ../../../tasks/get_facts.yaml
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

@@ -23,7 +23,7 @@
   - { src: "synchronisch.sh.j2", dest: "/var/docker-compose/data/rclone/scripts/synchronisch.sh" }
   
 - name: get_facts
-  include_tasks: get_facts.yaml
+  include_tasks: ../../../tasks/get_facts.yaml
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml

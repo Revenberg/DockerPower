@@ -20,7 +20,7 @@
   - { src: "env.mqtt2influxdb.j2",           dest: "/var/docker-compose/data/mqtt2influxdb/env.mqtt2influxdb" }
 
 - name: get_facts
-  include_tasks: get_facts.yaml
+  include_tasks: ../../../tasks/get_facts.yaml
 
 - name: add to docker-compose
   include_tasks: docker-compose.yaml
