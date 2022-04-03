@@ -1,7 +1,10 @@
 ---
 - name: get keys
   set_fact:
-    slack_webhook: "{{lookup('file', '/home/pi/slack.webhook') }}"
+    slack_mqtt_webhook: "{{lookup('file', '/home/pi/slack_mqtt.webhook') }}"
+    slack_deuren_webhook: "{{lookup('file', '/home/pi/slack_deuren.webhook') }}"
+    slack_power_webhook: "{{lookup('file', '/home/pi/slack_power.webhook') }}"
+    slack_system_webhook: "{{lookup('file', '/home/pi/slack_system.webhook') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
     ip_address: "{{lookup('file', '/home/pi/ip') }}"
     ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
