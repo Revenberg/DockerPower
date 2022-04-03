@@ -6,7 +6,10 @@
     slack_power_webhook: "{{lookup('file', '/home/pi/slack_power.webhook') }}"
     slack_system_webhook: "{{lookup('file', '/home/pi/slack_system.webhook') }}"
     pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
+    gateway_ip_address: "{{lookup('file', '/home/pi/gateway') }}"gateway_delete_set_fact
     ip_address: "{{lookup('file', '/home/pi/ip') }}"
     ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
     openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
     dropbox_access_token: "{{lookup('file', '/home/pi/dropbox_access_token') }}"
+    FRITZ_PASS: "{{lookup('file', '/home/pi/fritzbox') }}"
+    
