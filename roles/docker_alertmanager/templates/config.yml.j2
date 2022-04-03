@@ -1,19 +1,19 @@
 global:
   resolve_timeout: 1m
 #  slack_api_url: '{| slack_system_webhook |}'
-    
+
 route:
 - receiver: 'deuren-slack-notifications'
   matchers:
-  - alertname=~"Deur"
+    - alertname =~ "Deur"
 
 - receiver: 'mqtt-slack-notifications'
   matchers:
-  - alertname=~"Solar"
-  
+    - alertname =~ "Solar"
+
 - receiver: 'power-slack-notifications'
   matchers:
-  - alertname=~"InstanceDown"
+    - alertname =~ "InstanceDown"
 
 - receiver: 'system-slack-notifications'
 
@@ -25,25 +25,25 @@ receivers:
     api_url: '{| slack_deuren_webhook |}'
     title: '{{ .Annotations.title }} http://{| ext_ip |}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}'
     text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}http://{| ext_ip |}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}"
-    send_resolved: true      
+    send_resolved: true
 - name: 'mqtt-slack-notifications'
   slack_configs:
   - channel: '#mqtt'
     api_url: '{| slack_mqtt_webhook |}'
     title: '{{ .Annotations.title }}'
     text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
-    send_resolved: true      
+    send_resolved: true
 - name: 'power-slack-notifications'
   slack_configs:
   - channel: '#system'
     api_url: '{| slack_power_webhook |}'
     title: '{{ .Annotations.title }}'
     text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
-    send_resolved: true      
+    send_resolved: true
 - name: 'system-slack-notifications'
   slack_configs:
   - channel: '#system'
     api_url: '{| slack_system_webhook |}'
     title: '{{ .Annotations.title }}'
     text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
-    send_resolved: true      
+    send_resolved: true
