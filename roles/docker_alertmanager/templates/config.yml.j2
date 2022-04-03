@@ -5,15 +5,15 @@ global:
 route:
   receiver: 'deuren-slack-notifications'
   matchers:
-    - "alertname" =~ "Deur"
+  - "alertname"=~"Deur"
 
   receiver: 'mqtt-slack-notifications'
   matchers:
-    - "alertname" =~ "Solar"
+  - "alertname"=~"Solar"
   
   receiver: 'power-slack-notifications'
   matchers:
-    - "alertname" =~ "InstanceDown"
+  - "alertname"=~ "InstanceDown"
 
   receiver: 'system-slack-notifications'
 
