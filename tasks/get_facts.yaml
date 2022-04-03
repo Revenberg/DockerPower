@@ -5,7 +5,7 @@
     slack_deuren_webhook: "{{lookup('file', '/home/pi/slack_deuren.webhook') }}"
     slack_power_webhook: "{{lookup('file', '/home/pi/slack_power.webhook') }}"
     slack_system_webhook: "{{lookup('file', '/home/pi/slack_system.webhook') }}"
-    pi_password: "{{lookup('file', ''/home/pi/.pswrd') }}"
+    pi_password: "{{lookup('file', '/home/pi/.pswrd') }}"
     gateway_ip_address: "{{lookup('file', '/home/pi/gateway') }}"gateway_delete_set_fact
     ip_address: "{{lookup('file', '/home/pi/ip') }}"
     ext_ip: "{{lookup('file', '/home/pi/ext_ip') }}"
