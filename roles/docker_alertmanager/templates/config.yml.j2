@@ -4,13 +4,13 @@ global:
 route:
   receiver: 'deuren-slack-notifications'
   match_re:
-    - name: Deuren
+    - alertname: Deur.*
   receiver: 'mqtt-slack-notifications'
   match_re:
-    - name: Power
+    - alertname: Solar.*
   receiver: 'power-slack-notifications'
   match_re:
-    - name: AllInstances
+    - alertname: InstanceDown
 
   receiver: 'system-slack-notifications'
 
