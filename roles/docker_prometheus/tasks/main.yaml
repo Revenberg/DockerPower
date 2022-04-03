@@ -51,4 +51,4 @@
   with_items:         
   - "/var/docker-compose/prometheus.links"
   - "/var/docker-compose/prometheus.targets"
-  
+  - "/var/docker-compose/data/prometheus/data/wal"
