@@ -3,19 +3,19 @@ global:
 #  slack_api_url: '{| slack_system_webhook |}'
     
 route:
-  receiver: 'deuren-slack-notifications'
+- receiver: 'deuren-slack-notifications'
   matchers:
   - alertname =~ Deur
 
-  receiver: 'mqtt-slack-notifications'
+-  receiver: 'mqtt-slack-notifications'
   matchers:
   - alertname =~ Solar
   
-  receiver: 'power-slack-notifications'
+- receiver: 'power-slack-notifications'
   matchers:
   - alertname =~ InstanceDown
 
-  receiver: 'system-slack-notifications'
+- receiver: 'system-slack-notifications'
 
 
 receivers:
