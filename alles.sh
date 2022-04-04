@@ -4,6 +4,9 @@ cd ~
 sudo apt update -y
 #sudo apt full-upgrade -y
 
+sudo swapoff --all  
+sudo apt-get remove dphys-swapfile -y
+
 if [ ! -f "/home/pi/.pswrd" ]; then
     if [ $# -ne 1 ]; then
         echo $0: usage: $0  password
