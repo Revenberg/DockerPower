@@ -5,11 +5,14 @@
 
 - name: create /media/usb
   file:
-    path: /media/usb
+    path: "{{ item }}"
     recurse: yes
     mode: 0755
     owner: pi
     group: pi
+  with_items:
+  - "/media/usb"
+  - "/var/docker-compose/data"
   
 - name: Mount up device by label DATA
   mount:

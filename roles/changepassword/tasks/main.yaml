@@ -3,9 +3,10 @@
   debug: 
     msg: "{{lookup('pipe','date \"+%Y-%m-%d %H:%M\"')}}"
 
-- name: get_facts
-  include_tasks: ../../../tasks/get_facts.yaml
-
+- name: get keys
+  set_fact:
+    pi_password:           "{{lookup('file', '/home/pi/.pswrd') }}"
+    
 - name: password_hash sha512
   set_fact:
     pi_passwrd: "{{ pi_password | password_hash('sha512' ) }}"

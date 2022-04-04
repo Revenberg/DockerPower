@@ -46,7 +46,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 
     mkdir /home/pi/ansible
     echo $1 > /home/pi/.pswrd
-    ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pirate/.pswrd" | tee /home/pi/alles.log
+    ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pi/.pswrd" | tee /home/pi/alles.log
 
 else
     cd ~/powercontainers
