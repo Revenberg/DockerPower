@@ -50,13 +50,9 @@
     group: pi
   with_items:         
     - "/var/docker-compose/data/portainer"    
-
+    - "/media/docker"
+    
 - name: 'prepare default daemon configuration'
   copy:
     src: 'daemon.json'
     dest: '/etc/docker/daemon.json'
-
-- name: remove /var/docker-compose/prometheus
-  ansible.builtin.file:
-    path: /var/docker-compose/prometheus
-    state: absent  
