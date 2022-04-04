@@ -12,6 +12,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: AllInstances
 - name: Power
   rules:
   - alert: PowerL1
@@ -25,6 +26,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Power
   - alert: PowerL2
     # Condition for alerting
     expr: reading_INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED > 1
@@ -36,6 +38,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Power
   - alert: PowerL3
     # Condition for alerting
     expr: reading_INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED > 1
@@ -47,6 +50,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Power
 - name: Solar
   rules:
   - alert: Solar
@@ -60,6 +64,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Power
 - name: Deuren
   rules:
   - alert: DeurOpenHeit_en_mem
@@ -73,6 +78,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Deuren
   - alert: DeurJelmar
     # Condition for alerting
     expr: zigbee2mqtt_Jelmar_reading_contact == 0
@@ -84,6 +90,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Deuren
   - alert: DeurRoan
     # Condition for alerting
     expr: zigbee2mqtt_Roan_reading_contact == 0
@@ -95,6 +102,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Deuren
   - alert: DeurSenne
     # Condition for alerting
     expr: zigbee2mqtt_Senne_reading_contact == 0
@@ -106,6 +114,7 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Deuren
   - alert: DeurSchuur
     # Condition for alerting
     expr: zigbee2mqtt_Schuur_reading_contact == 0
@@ -117,3 +126,5 @@ groups:
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
+      group: Deuren
+      

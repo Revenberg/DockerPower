@@ -1,19 +1,18 @@
 global:
   resolve_timeout: 1m
-#  slack_api_url: '{| slack_system_webhook |}'
 
 route:
 - receiver: 'deuren-slack-notifications'
   matchers:
-    - alertname =~ "Deur"
+    - group: Deuren
 
 - receiver: 'mqtt-slack-notifications'
   matchers:
-    - alertname =~ "Solar"
+    - group: Power
 
 - receiver: 'power-slack-notifications'
   matchers:
-    - alertname =~ "InstanceDown"
+    - group: AllInstances
 
 - receiver: 'system-slack-notifications'
 
