@@ -12,7 +12,6 @@
     group: pi
   with_items:
   - "/media/usb"
-  - "/var/docker-compose/data"
   
 - name: Mount up device by label DATA
   mount:
