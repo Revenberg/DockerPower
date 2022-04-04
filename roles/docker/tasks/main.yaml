@@ -13,7 +13,7 @@
   user:
     name: pi
     shell: /bin/bash
-    groups: 
+    groups:
     - docker
     append: yes
 
@@ -34,12 +34,12 @@
 
 - name: Install docker-compose
   shell:
-    cmd: "pip3 -v install docker-compose"    
+    cmd: "pip3 -v install docker-compose"
 
 - name: systemctl enable docker
   shell:
-    cmd: "systemctl enable docker"    
-    
+    cmd: "systemctl enable docker"
+
 - name: create /var/docker-compose
   file:
     path: "{{  item }}"
@@ -48,11 +48,19 @@
     #owner: postgres
     owner: pi
     group: pi
-  with_items:         
-    - "/var/docker-compose/data/portainer"    
+  with_items:
+    - "/var/docker-compose/data/portainer"
     - "/media/docker"
-    
+
+- name: service docker stop
+  shell:
+    cmd: "service docker stop"
+
 - name: 'prepare default daemon configuration'
   copy:
     src: 'daemon.json'
     dest: '/etc/docker/daemon.json'
+
+- name: service docker start
+  shell:
+    cmd: "service docker start"
