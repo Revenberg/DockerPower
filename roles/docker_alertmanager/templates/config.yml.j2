@@ -2,20 +2,19 @@ global:
   resolve_timeout: 1m
 
 route:
-- match:
+  - match:
     - group: Deuren
   receiver: 'deuren-slack-notifications'
   
-- match:
+  - match:
     - group: Power
   receiver: 'mqtt-slack-notifications'
   
-- match:
+  - match:
     - group: AllInstances
   receiver: 'power-slack-notifications'
   
-- receiver: 'system-slack-notifications'
-
+  - receiver: 'system-slack-notifications'
 
 receivers:
 - name: 'deuren-slack-notifications'
