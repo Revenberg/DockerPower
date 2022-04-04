@@ -12,6 +12,7 @@
     group: pi
   with_items:
   - "/media/usb"
+  - "/var/docker-compose"
   
 - name: Mount up device by label DATA
   mount:
@@ -26,7 +27,7 @@
 - name: Create symbolic link to /var/docker-compose/data
   file:
     src: /media/usb
-    path: /var/docker-compose/data
+    path: "/var/docker-compose/data"
     state: link
     mode: 0755
     owner: pi
