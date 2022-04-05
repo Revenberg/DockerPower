@@ -1,6 +1,6 @@
 #!/bin/bash
-cd ~
-
+cd ~    
+    
 sudo apt update -y
 #sudo apt full-upgrade -y
 
@@ -83,8 +83,13 @@ done
 /sbin/ip route | awk '/default/ { print $3 }' | head -n 1 > /home/pi/gateway
 curl ifconfig.me > /home/pi/ext_ip
 
-#echo /home/pi/ansible/hosts
-#ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd '$pswrd' --name ' ansible_ssh_pass'  >> /home/pi/ansible/hosts
+touch /home/pi/slack_mqtt.webhook
+touch /home/pi/slack_deuren.webhook
+touch /home/pi/slack_power.webhook
+touch /home/pi/slack_system.webhook
+touch /home/pi/.pswrd
+touch /home/pi/openweathermap.apikey
+touch /home/pi/fritzbox
 
 cd /home/pi/powercontainers
 git pull

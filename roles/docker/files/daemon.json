@@ -1,4 +1,4 @@
 {
     "exec-opts": ["native.cgroupdriver=systemd"],
-    "data-root": "/media/docker"
+    "data-root": "/media/usb/docker"
 }
