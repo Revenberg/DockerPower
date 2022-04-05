@@ -2,6 +2,7 @@
 - name: create /var/docker-compose/data/rclone/
   file:
     path: "{{  item }}"
+    state: directory
     recurse: yes
     mode: 0755
     owner: pi

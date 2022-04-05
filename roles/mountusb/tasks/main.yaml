@@ -6,6 +6,7 @@
 - name: create /media/usb
   file:
     path: "{{ item }}"
+    state: directory
     recurse: yes
     mode: 0755
     owner: pi
