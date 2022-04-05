@@ -12,7 +12,6 @@
     owner: pi
     group: pi
   with_items:
-  - "/media/usb/data"
   - "/var/docker-compose"
   
 - name: Mount up device by label DATA
@@ -22,6 +21,7 @@
     fstype: ntfs
     opts: auto,nofail,noatime,user,rw,exec,gid=pi,umask=0000
     state: mounted
+    boot: yes
   ignore_errors: True
   register: mount
 
