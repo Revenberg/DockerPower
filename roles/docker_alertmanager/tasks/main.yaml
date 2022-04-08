@@ -9,6 +9,18 @@
     group: pi
   with_items:         
   - "/var/docker-compose/data/alertmanager"
+  - "/var/docker-compose/data/prometheus/config"
+
+- name: copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+    owner: pi
+    group: pi
+  with_items:
+  - { src: "rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
+
 
 - name: Template alertmanager files
   template:
@@ -21,7 +33,7 @@
     group: pi
   with_items:
   - { src: "config.yml.j2",           dest: "/var/docker-compose/data/alertmanager/config.yml" }
-  
+    
 - name: get_facts
   include_tasks: ../../../tasks/get_facts.yaml
 

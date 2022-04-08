@@ -19,16 +19,6 @@
     var_targets: "{{lookup('file', '/var/docker-compose/prometheus.targets') }}"
     var_links: "{{lookup('file', '/var/docker-compose/prometheus.links') }}"
    
-- name: copy files
-  copy:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    mode: 0755
-    owner: pi
-    group: pi
-  with_items:
-  - { src: "rules.yml",  dest: "/var/docker-compose/data/prometheus/config/rules.yml" }
-
 - name: Template prometheus files
   template:
     src: "{{ item.src }}"

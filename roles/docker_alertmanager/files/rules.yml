@@ -127,4 +127,18 @@ groups:
     labels:
       severity: 'critical'
       group: Deuren
+- name: Fritzbox
+  rules:
+  - alert: Fritzboxwifi
+    # Condition for alerting
+    expr: gateway_host_active > 0
+#    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: '{{ $labels.hostname }} on the network'
+      description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network for more than 1 minute.'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+      group: Fritzbox
       

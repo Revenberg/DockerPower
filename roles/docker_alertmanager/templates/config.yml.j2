@@ -80,7 +80,7 @@ receivers:
   slack_configs:
   - channel: '#system'
     api_url: '{| slack_system_webhook |}'
-    title: 'system2'
-    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }} "
+    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{{ end }}"
     send_resolved: true
 
