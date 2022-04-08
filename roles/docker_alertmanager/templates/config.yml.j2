@@ -25,6 +25,8 @@ route:
   routes:
     - receiver: "deuren-slack-notifications"
       group_wait: 10s
+#      matchers:
+#        - group = deuren-slack-notifications
       match_re:
         group: 'deuren-slack-notifications'
       continue: true
@@ -53,7 +55,7 @@ receivers:
 - name: 'deuren-slack-notifications'
   slack_configs:
   - channel: '#deuren'
-    api_url: 'https://hooks.slack.com/services/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'
+    api_url: '{| slack_deuren_webhook |}'
     title: '{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}'
     text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }}"
     send_resolved: true
@@ -61,7 +63,7 @@ receivers:
 - name: 'mqtt-slack-notifications'
   slack_configs:
   - channel: '#mqtt'
-    api_url: 'https://hooks.slack.com/services/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'
+    api_url: '{| slack_mqtt_webhook |}'
     title: 'mqtt'
     text: "<!channel> \nsummary: \ndescription: "
     send_resolved: true
@@ -69,7 +71,7 @@ receivers:
 - name: 'power-slack-notifications'
   slack_configs:
   - channel: '#system'
-    api_url: 'https://hooks.slack.com/services/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'
+    api_url: '{| slack_power_webhook |}'
     title: 'system'
     text: "<!channel> \nsummary: \ndescription: "
     send_resolved: true
@@ -77,7 +79,7 @@ receivers:
 - name: 'system-slack-notifications'
   slack_configs:
   - channel: '#system'
-    api_url: 'https://hooks.slack.com/services/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'
+    api_url: '{| slack_system_webhook |}'
     title: 'system2'
     text: "<!channel> \nsummary: \ndescription: "
     send_resolved: true
