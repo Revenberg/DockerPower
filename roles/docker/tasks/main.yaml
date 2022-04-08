@@ -64,6 +64,7 @@
 - name: service docker stop
   shell:
     cmd: "service docker stop"
+  warn: false
 
 - name: 'prepare default daemon configuration'
   copy:
