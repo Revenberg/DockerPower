@@ -57,23 +57,23 @@ receivers:
   - channel: '#deuren'
     api_url: '{| slack_deuren_webhook |}'
     title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
-    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{{ end }}"
     send_resolved: true
 
 - name: 'mqtt-slack-notifications'
   slack_configs:
   - channel: '#mqtt'
     api_url: '{| slack_mqtt_webhook |}'
-    title: 'mqtt'
-    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }} "
+    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
     send_resolved: true
 
 - name: 'power-slack-notifications'
   slack_configs:
   - channel: '#power'
     api_url: '{| slack_power_webhook |}'
-    title: 'power'
-    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }} "
+    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
     send_resolved: true
 
 - name: 'system-slack-notifications'
