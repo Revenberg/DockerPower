@@ -55,5 +55,5 @@
 
 - name: remove reboot file prometheus
   shell:
-    cmd: "rm -rf "/var/docker-compose/data/prometheus/data/wal"
+    cmd: "rm -rf '/var/docker-compose/data/prometheus/data/wal'"
   ignore_errors: True
