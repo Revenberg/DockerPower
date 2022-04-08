@@ -131,12 +131,13 @@ groups:
   rules:
   - alert: Fritzboxwifi
     # Condition for alerting
-    expr: gateway_host_active{interfacetype="802.11",hostname!="rtthread",hostname!~"pc.*",hostname!~"fritz.*"} > 0
+    # gateway_host_active{interfacetype="802.11",hostname!="rtthread",hostname!~"pc.*",hostname!~"fritz.*} > 0
+    expr: gateway_host_active{ipaddress=~"192.168.2.16*"} > 0
 #    for: 1m
     # Annotation - additional informational labels to store more information
     annotations:
       title: '{{ $labels.hostname }} on the network'
-      description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network for more than 1 minute.'
+      description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network'
     # Labels - additional labels to be attached to the alert
     labels:
       severity: 'critical'
