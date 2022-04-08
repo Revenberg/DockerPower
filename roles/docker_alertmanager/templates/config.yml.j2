@@ -2,46 +2,82 @@ global:
   resolve_timeout: 1m
 
 route:
-  - match:
-    - group: Deuren
-  receiver: 'deuren-slack-notifications'
-  
-  - match:
-    - group: Power
-  receiver: 'mqtt-slack-notifications'
-  
-  - match:
-    - group: AllInstances
-  receiver: 'power-slack-notifications'
-  
-  - receiver: 'system-slack-notifications'
+  # When a new group of alerts is created by an incoming alert, wait at
+  # least 'group_wait' to send the initial notification.
+  # This way ensures that you get multiple alerts for the same group that start
+  # firing shortly after another are batched together on the first
+  # notification.
+  group_wait: 10s
+
+  # When the first notification was sent, wait 'group_interval' to send a batch
+  # of new alerts that started firing for that group.
+  group_interval: 5m
+
+  # If an alert has successfully been sent, wait 'repeat_interval' to
+  # resend them.
+  repeat_interval: 30m
+
+  # A default receiver
+  receiver: "system-slack-notifications"
+
+  # All the above attributes are inherited by all child routes and can
+  # overwritten on each.
+  routes:
+    - receiver: "deuren-slack-notifications"
+      group_wait: 10s
+      match_re:
+        group: 'deuren-slack-notifications'
+      continue: true
+
+    - receiver: "mqtt-slack-notifications"
+      group_wait: 10s
+      match_re:
+        group: 'mqtt-slack-notifications'
+      continue: true
+
+    - receiver: "mqtt-slack-notifications"
+      group_wait: 10s
+      match_re:
+        group: 'mqtt-slack-notifications'
+      continue: true
+
+    - receiver: "power-slack-notifications"
+      group_wait: 10s
+      match_re:
+        alertname: "Solar"
+      continue: true
+
+    - receiver: "system-slack-notifications"
 
 receivers:
 - name: 'deuren-slack-notifications'
   slack_configs:
   - channel: '#deuren'
-    api_url: '{| slack_deuren_webhook |}'
-    title: '{{ .Annotations.title }} http://{| ext_ip |}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}'
-    text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}http://{| ext_ip |}:3000/d/IY_TzAggk/deuren {% raw %}{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{% endraw %}"
+    api_url: 'https://hooks.slack.com/services/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'
+    title: '{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}'
+    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }}"
     send_resolved: true
+
 - name: 'mqtt-slack-notifications'
   slack_configs:
   - channel: '#mqtt'
-    api_url: '{| slack_mqtt_webhook |}'
-    title: '{{ .Annotations.title }}'
-    text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
+    api_url: 'https://hooks.slack.com/services/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'
+    title: 'mqtt'
+    text: "<!channel> \nsummary: \ndescription: "
     send_resolved: true
+
 - name: 'power-slack-notifications'
   slack_configs:
   - channel: '#system'
-    api_url: '{| slack_power_webhook |}'
-    title: '{{ .Annotations.title }}'
-    text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
+    api_url: 'https://hooks.slack.com/services/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'
+    title: 'system'
+    text: "<!channel> \nsummary: \ndescription: "
     send_resolved: true
+
 - name: 'system-slack-notifications'
   slack_configs:
   - channel: '#system'
-    api_url: '{| slack_system_webhook |}'
-    title: '{{ .Annotations.title }}'
-    text: "<!channel> \n{% raw %}summary: {{ .Annotations.summary }}\ndescription: {{ .Annotations.description }}{% endraw %}"
+    api_url: 'https://hooks.slack.com/services/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'
+    title: 'system2'
+    text: "<!channel> \nsummary: \ndescription: "
     send_resolved: true
