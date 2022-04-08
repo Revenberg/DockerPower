@@ -28,7 +28,7 @@ route:
 #      matchers:
 #        - group = deuren-slack-notifications
       match_re:
-        group: 'deuren-slack-notifications'
+        group: 'Deuren'
       continue: true
 
     - receiver: "mqtt-slack-notifications"
@@ -46,7 +46,13 @@ route:
     - receiver: "power-slack-notifications"
       group_wait: 10s
       match_re:
-        alertname: "Solar"
+        group: "Power"
+      continue: true
+
+    - receiver: "fritzbox-slack-notifications"
+      group_wait: 10s
+      match_re:
+        group: "Fritzbox"
       continue: true
 
     - receiver: "system-slack-notifications"
@@ -84,3 +90,10 @@ receivers:
     text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{{ end }}"
     send_resolved: true
 
+- name: 'fritzbox-slack-notifications'
+  slack_configs:
+  - channel: '#fritzbox'
+    api_url: '{| slack_fritzbox_webhook |}'
+    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ .GroupLabels.alertname }} {{ .GroupLabels.app }}{{ end }}"
+    send_resolved: true

@@ -5,6 +5,8 @@
     slack_deuren_webhook:  "{{lookup('file', '/home/pi/slack_deuren.webhook') }}"
     slack_power_webhook:   "{{lookup('file', '/home/pi/slack_power.webhook') }}"
     slack_system_webhook:  "{{lookup('file', '/home/pi/slack_system.webhook') }}"
+    slack_fritzbox_webhook: "{{lookup('file', '/home/pi/slack_fritzbox.webhook') }}"
+    
     pi_password:           "{{lookup('file', '/home/pi/.pswrd') }}"
     openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
     FRITZ_PASS:            "{{lookup('file', '/home/pi/fritzbox') }}"
