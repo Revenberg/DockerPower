@@ -36,6 +36,6 @@
 
 - name: Recursively remove directory /var/docker-compose/fragments
   ansible.builtin.file:
-    path: /var/docker-compose/fragments
+    path: /var/docker-compose/fragments/
     state: absent  
     

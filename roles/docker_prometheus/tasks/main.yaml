@@ -52,4 +52,8 @@
   with_items:         
   - "/var/docker-compose/prometheus.links"
   - "/var/docker-compose/prometheus.targets"
-  - "/var/docker-compose/data/prometheus/data/wal"
+
+- name: remove reboot file prometheus
+  shell:
+    cmd: "rm -rf "/var/docker-compose/data/prometheus/data/wal"
+  ignore_errors: True
