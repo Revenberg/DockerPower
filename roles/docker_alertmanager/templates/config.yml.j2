@@ -65,7 +65,7 @@ receivers:
   - channel: '#mqtt'
     api_url: '{| slack_mqtt_webhook |}'
     title: 'mqtt'
-    text: "<!channel> \nsummary: \ndescription: "
+    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }} "
     send_resolved: true
 
 - name: 'power-slack-notifications'
@@ -73,7 +73,7 @@ receivers:
   - channel: '#system'
     api_url: '{| slack_power_webhook |}'
     title: 'system'
-    text: "<!channel> \nsummary: \ndescription: "
+    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }} "
     send_resolved: true
 
 - name: 'system-slack-notifications'
@@ -81,5 +81,5 @@ receivers:
   - channel: '#system'
     api_url: '{| slack_system_webhook |}'
     title: 'system2'
-    text: "<!channel> \nsummary: \ndescription: "
+    text: "<!channel> {{ .GroupLabels.alertname }} {{ .GroupLabels.app }} "
     send_resolved: true
