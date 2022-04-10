@@ -65,6 +65,18 @@ groups:
     labels:
       severity: 'critical'
       group: Power
+  - alert: NoSolar
+    # Condition for alerting
+    expr: reading_AC_Watts_W == 0
+    for: 1m
+    # Annotation - additional informational labels to store more information
+    annotations:
+      title: 'Solar is providing power'
+      description: 'Solar is not providing power'
+    # Labels - additional labels to be attached to the alert
+    labels:
+      severity: 'critical'
+      group: Power
 - name: Deuren
   rules:
   - alert: DeurOpenHeit_en_mem
@@ -127,19 +139,19 @@ groups:
     labels:
       severity: 'critical'
       group: Deuren
-- name: Fritzbox
-  rules:
-  - alert: Fritzboxwifi
-    # Condition for alerting
-    # gateway_host_active{interfacetype="802.11",hostname!="rtthread",hostname!~"pc.*",hostname!~"fritz.*} > 0
-    expr: gateway_host_active{ipaddress=~"192.168.2.16.*"} > 0
-#    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: '{{ $labels.hostname }} on the network'
-      description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Fritzbox
+#- name: Fritzbox
+#  rules:
+#  - alert: Fritzboxwifi
+#    # Condition for alerting
+#    # gateway_host_active{interfacetype="802.11",hostname!="rtthread",hostname!~"pc.*",hostname!~"fritz.*} > 0
+#    expr: gateway_host_active{ipaddress=~"192.168.2.16.*"} > 0
+##    for: 1m
+#    # Annotation - additional informational labels to store more information
+#    annotations:
+#      title: '{{ $labels.hostname }} on the network'
+#      description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network'
+#    # Labels - additional labels to be attached to the alert
+#    labels:
+#      severity: 'critical'
+#      group: Fritzbox
       
