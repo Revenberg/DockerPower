@@ -1,6 +1,5 @@
 #!/bin/bash
-cd ~    
-    
+   
 cd ~/powercontainers
 git pull
 cd ~
