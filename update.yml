@@ -1,0 +1,34 @@
+---
+- hosts: rpi
+  become_user: root
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  roles:
+  - role: docker_mqtt
+#    vars:
+#      mqtthost: rpipower
+  - role: docker_p1mqtt
+  - role: docker_mqtt_water
+  - role: docker_openweathermapmqtt
+  - role: docker_zigbee
+  - role: docker_solar2mqtt
+
+  - role: docker_zigbeemqttexporter
+  - role: docker_cadvisor
+  - role: docker_node_exporter
+  - role: docker_mqtt_exporter
+  #- role: docker_portainer
+  - role: docker_alertmanager
+  - role: docker_grafana
+  - role: docker_influxdb
+  - role: docker_mqtt2influxdb
+#  - role: docker_influxdb_export
+#  - role: docker_rclone
+  - role: docker_fritzbox_exporter
+
+  - role: docker_prometheus
+
+  - role: docker_nginx
+  - role: docker_compose
