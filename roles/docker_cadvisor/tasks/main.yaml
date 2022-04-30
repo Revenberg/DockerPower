@@ -8,7 +8,7 @@
 - include_tasks: cmdline.yml
   vars:
     key: cgroup_enable
-    value: memory
+    value: true 
     update: false
     # will add the argument if the key-value-pair doesn't exist
 
@@ -17,7 +17,7 @@
   vars:
     key: cgroup_enable
     value: cpuset
-    update: false
+    update: true
 
 - name: cmdline.yml update cgroup_memory
   include_tasks: cmdline.yml

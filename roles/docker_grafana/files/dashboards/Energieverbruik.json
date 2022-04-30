@@ -871,7 +871,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
+        "h": 15,
         "w": 8,
         "x": 0,
         "y": 10
@@ -880,7 +880,8 @@
       "options": {
         "legend": {
           "calcs": [
-            "last"
+            "last",
+            "sum"
           ],
           "displayMode": "table",
           "placement": "bottom"
@@ -1190,7 +1191,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 15,
         "w": 8,
         "x": 16,
         "y": 10
@@ -1198,8 +1199,11 @@
       "id": 41,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "last",
+            "sum"
+          ],
+          "displayMode": "table",
           "placement": "bottom"
         },
         "tooltip": {
@@ -1265,6 +1269,18 @@
           "interval": "",
           "legendFormat": "Electra normaal tarief",
           "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED+reading_INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED+reading_INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED-reading_INSTANTANEOUS_ACTIVE_POWER_L1_DELIVERED-reading_INSTANTANEOUS_ACTIVE_POWER_L2_DELIVERED-reading_INSTANTANEOUS_ACTIVE_POWER_L3_DELIVERED",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Power",
+          "refId": "F"
         }
       ],
       "timeShift": "1m",
@@ -1621,8 +1637,8 @@
       "gridPos": {
         "h": 3,
         "w": 4,
-        "x": 16,
-        "y": 19
+        "x": 8,
+        "y": 22
       },
       "id": 27,
       "links": [],
@@ -1774,8 +1790,8 @@
       "gridPos": {
         "h": 3,
         "w": 4,
-        "x": 20,
-        "y": 19
+        "x": 12,
+        "y": 22
       },
       "id": 19,
       "links": [],
@@ -1817,13 +1833,13 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Energieverbruik",
   "uid": "5nkT6iRRz",
-  "version": 28,
+  "version": 34,
   "weekStart": ""
 }
