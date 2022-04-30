@@ -104,6 +104,9 @@ chmod +x /home/pi/build.sh;
 cp /home/pi/powercontainers/build.sh /home/pi/run.sh;
 chmod +x /home/pi/run.sh;
 
+cp /home/pi/powercontainers/update.sh /home/pi/update.sh;
+chmod +x /home/pi/update.sh;
+
 #ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/ansible.log
 ansible-playbook  /home/pi/powercontainers/alles.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/alles.log
 
