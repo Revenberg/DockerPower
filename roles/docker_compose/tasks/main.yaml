@@ -29,7 +29,7 @@
 
 - name: docker-compose pull
   shell:
-    cmd: "docker image prune -a -f"
+    cmd: "docker image prune -f"
   args:
     chdir:  /var/docker-compose
 
