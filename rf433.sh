@@ -101,6 +101,7 @@ touch /home/pi/slack_mqtt.webhook
 touch /home/pi/slack_deuren.webhook
 touch /home/pi/slack_power.webhook
 touch /home/pi/slack_system.webhook
+touch /home/pi/slack_fritzbox.webhook
 touch /home/pi/.pswrd
 touch /home/pi/openweathermap.apikey
 touch /home/pi/fritzbox
