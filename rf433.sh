@@ -112,7 +112,7 @@ cd /home/pi
 cp /home/pi/powercontainers/alles.sh /home/pi/alles.sh;
 chmod +x /home/pi/alles.sh;
 
-cp /home/pi/powercontainers/rf433.sh /home/pi/alles.sh;
+cp /home/pi/powercontainers/rf433.sh /home/pi/rf433.sh;
 chmod +x /home/pi/rf433.sh;
 
 cp /home/pi/powercontainers/build.sh /home/pi/build.sh;
