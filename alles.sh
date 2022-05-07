@@ -80,6 +80,14 @@ do
   echo "$line" > /home/pi/ip
 done
 
+ifconfig wlan0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | while read line;
+do
+  echo "    $line:" >> /home/pi/ansible/hosts
+  echo "      ansible_user: pi" >> /home/pi/ansible/hosts
+
+  echo "$line" > /home/pi/ip
+done
+
 /sbin/ip route | awk '/default/ { print $3 }' | head -n 1 > /home/pi/gateway
 curl ifconfig.me > /home/pi/ext_ip
 
