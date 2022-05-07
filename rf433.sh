@@ -112,8 +112,8 @@ cd /home/pi
 cp /home/pi/powercontainers/alles.sh /home/pi/alles.sh;
 chmod +x /home/pi/alles.sh;
 
-cp /home/pi/powercontainers/rs433.sh /home/pi/alles.sh;
-chmod +x /home/pi/rs433.sh;
+cp /home/pi/powercontainers/rf433.sh /home/pi/alles.sh;
+chmod +x /home/pi/rf433.sh;
 
 cp /home/pi/powercontainers/build.sh /home/pi/build.sh;
 chmod +x /home/pi/build.sh;
@@ -125,7 +125,7 @@ cp /home/pi/powercontainers/update.sh /home/pi/update.sh;
 chmod +x /home/pi/update.sh;
 
 #ansible-playbook  /home/pi/powercontainers/docker-install.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/ansible.log
-ansible-playbook  /home/pi/powercontainers/rs433.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/alles.log
+ansible-playbook  /home/pi/powercontainers/rf433.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts | tee /home/pi/alles.log
 
 ret=$?
 if [ $ret -ne 0 ]; then
