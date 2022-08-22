@@ -132,3 +132,6 @@ if [ $ret -ne 0 ]; then
 else
     docker ps -a
 fi
+
+echo "prometheus exporters:"
+cat docker-compose.yml | grep '\- 9' | grep -v ':'
