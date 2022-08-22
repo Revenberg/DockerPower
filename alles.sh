@@ -45,6 +45,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     echo $1 > /home/pi/.pswrd
     ansible-playbook  /home/pi/powercontainers/changepassword.yml --connection=local --extra-vars "passwordfile=/home/pi/.pswrd" | tee /home/pi/alles.log
 
+    echo "127.0.0.1" > /home/pi/mqtt_address
 else
     cd ~/powercontainers
     git pull
@@ -83,8 +84,7 @@ do
   echo "    $line:" >> /home/pi/ansible/hosts
   echo "      ansible_user: pi" >> /home/pi/ansible/hosts
 
-  echo "$line" > /home/pi/ip
-  echo "$line" > /home/pi/mqtt_address
+  echo "$line" > /home/pi/ip  
 done
 
 ifconfig wlan0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | while read line;
