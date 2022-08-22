@@ -16,7 +16,7 @@
 #      mqtthost: rpipower
   - role: docker_p1mqtt
   - role: docker_mqtt_water
-  - role: docker_openweathermapmqtt
+#  - role: docker_openweathermapmqtt
   - role: docker_zigbee
   - role: docker_solar2mqtt
 
