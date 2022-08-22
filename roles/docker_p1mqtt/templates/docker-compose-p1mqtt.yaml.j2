@@ -6,10 +6,6 @@
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/p1
     restart: always
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
   

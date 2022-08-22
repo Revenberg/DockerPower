@@ -7,10 +7,6 @@
       - {{ containter_expose_port }}:8088
     volumes:
       - /var/docker-compose/data/zigbee:/app/data
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"
     restart: always

@@ -6,7 +6,3 @@
       - {{ containter_expose_port }}:9100
     expose:
       - {{ containter_expose_port }}
-    depends_on:
-      - mqtt
-    links:
-      - mqtt

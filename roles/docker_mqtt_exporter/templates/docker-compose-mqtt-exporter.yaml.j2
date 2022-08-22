@@ -12,7 +12,4 @@
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
       - PROMETHEUS_PORT={{ containter_expose_port }}
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
+

@@ -23,8 +23,6 @@ services:
       - zigbeemqttexporter:zigbeemqttexporter
       - mqtt
       - alertmanager:alertmanager
-    depends_on:
-      - mqtt
 
   alertmanager:
     image: prom/alertmanager:latest
@@ -46,10 +44,6 @@ services:
       - 8088:8088
     volumes:
       - /data/zigbee:/app/data
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"
     restart: always
@@ -60,10 +54,6 @@ services:
     restart: always
     expose:
       - 9100
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
 
   mqtt-exporter:
     image: kpetrem/mqtt-exporter:latest
@@ -78,10 +68,6 @@ services:
       - MQTT_TOPIC=reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
 
   mqtt-water:
     image: revenberg/mqtt-exporter:latest
@@ -98,10 +84,6 @@ services:
       - PROMETHEUS_PORT=9002
       - TOPIC_LABEL=reading
       - LOG_LEVEL=WARN
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
 
   zigbeemqttexporter:
     image: revenberg/zigbeemqttexporter
@@ -118,10 +100,6 @@ services:
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
       - LOG_LEVEL=WARN  
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
 
   cadvisor:
     image: braingamer/cadvisor-arm:latest
@@ -137,10 +115,6 @@ services:
       - /dev/kmsg
     expose:
       - 8080
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
 
   p1mqtt:
     image: revenberg/dockerp1mqtt:latest
@@ -150,10 +124,6 @@ services:
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/p1
     restart: always
-    depends_on:
-      - mqtt
-    links:
-      - mqtt
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
 
@@ -166,11 +136,8 @@ services:
       - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/solar
-    depends_on:
-      - mqtt
+
     restart: always
-    links:
-      - mqtt
 
   openweathermapmqtt:
     image: revenberg/openweathermapmqtt:latest
@@ -183,11 +150,6 @@ services:
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/weather
     restart: always
-    depends_on:
-      - mqtt
-    restart: always
-    links:
-      - mqtt
 
   grafana:
     image: revenberg/grafana:latest

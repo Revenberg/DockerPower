@@ -7,8 +7,4 @@
       - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/solar
-    depends_on:
-      - mqtt
     restart: always
-    links:
-      - mqtt
