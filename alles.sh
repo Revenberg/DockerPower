@@ -84,6 +84,7 @@ do
   echo "      ansible_user: pi" >> /home/pi/ansible/hosts
 
   echo "$line" > /home/pi/ip
+  echo "$line" > /home/pi/mqtt_address
 done
 
 ifconfig wlan0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | while read line;
@@ -97,14 +98,14 @@ done
 /sbin/ip route | awk '/default/ { print $3 }' | head -n 1 > /home/pi/gateway
 curl ifconfig.me > /home/pi/ext_ip
 
-touch /home/pi/slack_mqtt.webhook
-touch /home/pi/slack_deuren.webhook
-touch /home/pi/slack_power.webhook
-touch /home/pi/slack_system.webhook
-touch /home/pi/slack_fritzbox.webhook
+#touch /home/pi/slack_mqtt.webhook
+#touch /home/pi/slack_deuren.webhook
+#touch /home/pi/slack_power.webhook
+#touch /home/pi/slack_system.webhook
+#touch /home/pi/slack_fritzbox.webhook
 touch /home/pi/.pswrd
-touch /home/pi/openweathermap.apikey
-touch /home/pi/fritzbox
+#touch /home/pi/openweathermap.apikey
+#touch /home/pi/fritzbox
 
 cd /home/pi/powercontainers
 git pull

@@ -13,5 +13,6 @@
     
     gateway_ip_address:    "{{lookup('file', '/home/pi/gateway') }}"
     ip_address:            "{{lookup('file', '/home/pi/ip') }}"
+    mqtt_address:          "{{lookup('file', '/home/pi/mqtt_address') }}"
     ext_ip:                "{{lookup('file', '/home/pi/ext_ip') }}"
     

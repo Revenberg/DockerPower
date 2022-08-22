@@ -74,7 +74,7 @@ services:
     expose:
       - 9000
     environment:
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_TOPIC=reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
@@ -92,7 +92,7 @@ services:
     expose:
       - 9002
     environment:
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_TOPIC=watermeter/reading/#
       - PROMETHEUS_PREFIX=reading_
       - PROMETHEUS_PORT=9002
@@ -112,7 +112,7 @@ services:
     expose:
       - 9004
     environment:
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_TOPIC=zigbee2mqtt/#
       - MQTT_IGNORED_TOPICS=bridge
       - PROMETHEUS_PREFIX=reading_
@@ -146,7 +146,7 @@ services:
     image: revenberg/dockerp1mqtt:latest
     container_name: p1mqtt
     environment:
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/p1
     restart: always
@@ -163,7 +163,7 @@ services:
     environment:
       - RS485_ADDRESS=192.168.2.40
       - RS485_PORT=8899
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/solar
     depends_on:
@@ -179,7 +179,7 @@ services:
       - apikey={{ openweathermap_apikey }}
       - WEATHER_COUNTRY=Surhuisterveen,NL
       - WEATHER_LANGUAGE=nl
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/weather
     restart: always

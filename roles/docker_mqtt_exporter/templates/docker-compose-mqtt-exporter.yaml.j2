@@ -7,7 +7,7 @@
     expose:
       - {{ containter_expose_port }}
     environment:
-      - MQTT_ADDRESS={{ ip_address }}
+      - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_TOPIC=reading/#
       - PROMETHEUS_PREFIX=reading_
       - TOPIC_LABEL=reading
