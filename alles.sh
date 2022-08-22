@@ -117,7 +117,7 @@ chmod +x /home/pi/alles.sh;
 cp /home/pi/powercontainers/build.sh /home/pi/build.sh;
 chmod +x /home/pi/build.sh;
 
-cp /home/pi/powercontainers/build.sh /home/pi/run.sh;
+cp /home/pi/powercontainers/run.sh /home/pi/run.sh;
 chmod +x /home/pi/run.sh;
 
 cp /home/pi/powercontainers/update.sh /home/pi/update.sh;
