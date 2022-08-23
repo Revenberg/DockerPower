@@ -8,7 +8,7 @@
 #    slack_fritzbox_webhook: "{{lookup('file', '/home/pi/slack_fritzbox.webhook') }}"
     
     pi_password:           "{{lookup('file', '/home/pi/.pswrd') }}"
-#    openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
+    openweathermap_apikey: "{{lookup('file', '/home/pi/openweathermap.apikey') }}"
 #    FRITZ_PASS:            "{{lookup('file', '/home/pi/fritzbox') }}"
     
     gateway_ip_address:    "{{lookup('file', '/home/pi/gateway') }}"
