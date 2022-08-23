@@ -17,7 +17,7 @@
   - role: docker_p1mqtt
   - role: docker_mqtt_water
 #  - role: docker_openweathermapmqtt
-  - roel: openweathermapexporter
+  - role: openweathermapexporter
   - role: docker_zigbee
   - role: docker_solar2mqtt
 
