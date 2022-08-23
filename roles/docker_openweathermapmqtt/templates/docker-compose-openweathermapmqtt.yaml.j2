@@ -2,11 +2,10 @@
     image: revenberg/openweathermapmqtt:latest
     container_name: openweathermapmqtt
     environment:
-      - apikey={{ openweathermap_apikey }}
+      - APIKEY={{ openweathermap_apikey }}
       - WEATHER_COUNTRY=Surhuisterveen,NL
       - WEATHER_LANGUAGE=nl
       - MQTT_ADDRESS={{ mqtt_address }}
       - MQTT_PORT=1883
       - MQTT_TOPIC=reading/weather
-    restart: always
     restart: always

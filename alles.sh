@@ -134,4 +134,4 @@ else
 fi
 
 echo "prometheus exporters:"
-cat docker-compose.yml | grep '\- 9' | grep -v ':'
+cat /var/docker-compose/docker-compose.yml | grep '\- 9' | grep -v ':'

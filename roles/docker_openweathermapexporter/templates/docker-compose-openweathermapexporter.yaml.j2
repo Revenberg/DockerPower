@@ -1,10 +1,13 @@
-  openweathermapexporter:
+  {{ containter_name }}:
     image: revenberg/openweathermapexporter:latest
     container_name: openweathermapexporter
     environment:
-      - apikey={{ openweathermap_apikey }}
+      - APIKEY={{ openweathermap_apikey }}
       - WEATHER_COUNTRY=Surhuisterveen,NL
       - WEATHER_LANGUAGE=nl
-      - PROMETHEUS_PORT=9003
+      - PROMETHEUS_PORT={{ containter_expose_port }}
     restart: always
-    restart: always
+    ports:
+      - {{ containter_expose_port }}:{{ containter_expose_port }}
+    expose:
+      - {{ containter_expose_port }}
