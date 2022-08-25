@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -92,9 +95,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED",
           "format": "time_series",
@@ -176,9 +183,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED",
           "format": "time_series",
@@ -260,9 +271,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED",
           "format": "time_series",
@@ -343,9 +358,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "delta(reading_watermeter_reading_current_value[2m])/1000",
           "format": "time_series",
@@ -372,6 +391,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -427,14 +448,20 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_watermeter_reading_current_value/1000",
           "interval": "",
@@ -442,6 +469,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_GAS_READING",
           "hide": false,
@@ -450,6 +481,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_Generated_All_time",
           "hide": false,
@@ -458,6 +493,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_ELECTRICITY_DELIVERED_TO_CLIENT_LOW_TARIFF",
           "hide": false,
@@ -466,6 +505,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_ELECTRICITY_DELIVERED_TO_CLIENT_NORMAL_TARIFF",
           "hide": false,
@@ -544,9 +587,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L1_DELIVERED",
           "format": "time_series",
@@ -628,9 +675,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L2_DELIVERED",
           "format": "time_series",
@@ -712,9 +763,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "reading_INSTANTANEOUS_ACTIVE_POWER_L3_DELIVERED",
           "format": "time_series",
@@ -796,9 +851,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "delta(reading_GAS_READING[1h])",
           "format": "time_series",
@@ -824,6 +883,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -884,10 +945,12 @@
             "sum"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1044,13 +1107,19 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_temp",
+          "expr": "openweathermap_temp",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1122,13 +1191,19 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_wind_speed",
+          "expr": "openweathermap_wind_speed",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1146,6 +1221,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1204,10 +1281,12 @@
             "sum"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1349,13 +1428,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_sunrise",
+          "expr": "openweathermap_sunrise",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1424,13 +1509,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_sunset",
+          "expr": "openweathermap_sunset",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1501,13 +1592,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_clouds",
+          "expr": "openweathermap_clouds",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1578,13 +1675,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_uvi",
+          "expr": "openweathermap_uvi",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1658,13 +1761,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_pressure",
+          "expr": "openweathermap_pressure",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1811,13 +1920,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "9.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "reading_wind_direction_deg",
+          "expr": "openweathermap_wind_direction_deg",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1826,7 +1941,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 33,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1840,6 +1955,6 @@
   "timezone": "",
   "title": "Energieverbruik",
   "uid": "5nkT6iRRz",
-  "version": 34,
+  "version": 1,
   "weekStart": ""
 }
