@@ -1,0 +1,3 @@
+---
+containter_name: "watermetergatewayexporter"
+containter_expose_port: 9009
