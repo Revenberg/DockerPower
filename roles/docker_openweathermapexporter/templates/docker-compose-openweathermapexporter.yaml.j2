@@ -1,6 +1,6 @@
   {{ containter_name }}:
     image: revenberg/openweathermapexporter:latest
-    container_name: openweathermapexporter
+    container_name: {{ containter_name }}
     environment:
       - APIKEY={{ openweathermap_apikey }}
       - WEATHER_COUNTRY=Surhuisterveen,NL

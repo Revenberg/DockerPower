@@ -14,7 +14,8 @@
 #  - role: docker_mqtt
 #    vars:
 #      mqtthost: rpipower
-  - role: docker_p1mqtt
+#  - role: docker_p1mqtt
+  - role: docker_p1exporter
   - role: docker_mqtt_water
 #  - role: docker_openweathermapmqtt
   - role: docker_openweathermapexporter
