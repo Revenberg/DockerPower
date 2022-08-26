@@ -1,6 +1,6 @@
   {{ containter_name }}:
     image: revenberg/p1exporter
-    container_name: {{ containter_name }}:
+    container_name: {{ containter_name }}
     environment:
       - PROMETHEUS_PORT={{ containter_expose_port }}
       - P1_DEVICE=/dev/ttyUSB0
