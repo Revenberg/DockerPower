@@ -1,3 +1,3 @@
 ---
 containter_name: "solarrs485exporter"
-containter_expose_port: 9009
+containter_expose_port: 9008
