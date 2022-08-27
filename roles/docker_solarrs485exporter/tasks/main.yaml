@@ -1,0 +1,3 @@
+--- 
+- name: add to docker-compose
+  include_tasks: docker-compose.yaml

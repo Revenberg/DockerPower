@@ -1,0 +1,13 @@
+  {{ containter_name }}:
+    image: revenberg/solarrs485exporter:latest
+    container_name: {{ containter_name }}
+    environment:
+      - RS485_ADDRESS=192.168.2.40
+      - RS485_PORT=8899
+      - PROMETHEUS_PORT={{ containter_expose_port }}
+    restart: always
+    ports:
+      - {{ containter_expose_port }}:{{ containter_expose_port }}
+    expose:
+      - {{ containter_expose_port }}
+      
