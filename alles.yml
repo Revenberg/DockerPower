@@ -21,8 +21,9 @@
   - role: docker_openweathermapexporter
   - role: docker_watermetergatewayexporter
   - role: docker_zigbee
-  - role: docker_solar2mqtt
-
+#  - role: docker_solar2mqtt
+  - role: docker_solarrs485exporter
+  
   - role: docker_zigbeemqttexporter
 #  - role: docker_cadvisor
   - role: docker_node_exporter
