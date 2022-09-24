@@ -1,157 +1,157 @@
-groups:
-- name: AllInstances
-  rules:
-  - alert: InstanceDown
-    # Condition for alerting
-    expr: up == 0
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Instance {{ $labels.instance }} down'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: AllInstances
-- name: Power
-  rules:
-  - alert: PowerL1
-    # Condition for alerting
-    expr: reading_INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED > 1
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Power L1 high'
-      description: 'L1 high power consumpotion for more than 1 minute.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Power
-  - alert: PowerL2
-    # Condition for alerting
-    expr: reading_INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED > 1
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Power L2 high'
-      description: 'L2 high power consumpotion for more than 1 minute.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Power
-  - alert: PowerL3
-    # Condition for alerting
-    expr: reading_INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED > 1
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Power L3 high'
-      description: 'L3 high power consumpotion for more than 1 minute.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Power
-- name: Solar
-  rules:
-  - alert: Solar
-    # Condition for alerting
-    expr: reading_AC_Watts_W > 0
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Solar is providing power'
-      description: 'Solar is providing power'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Power
-  - alert: NoSolar
-    # Condition for alerting
-    expr: reading_AC_Watts_W == 0
-    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Solar is providing power'
-      description: 'Solar is not providing power'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Power
-- name: Deuren
-  rules:
-  - alert: DeurOpenHeit_en_mem
-    # Condition for alerting
-    expr: zigbee2mqtt_Heit_en_mem_reading_contact == 0
-    for: 2m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Deur Heit en mem open'
-      description: 'Deur Heit en mem open meer 2 minuten.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Deuren
-  - alert: DeurJelmar
-    # Condition for alerting
-    expr: zigbee2mqtt_Jelmar_reading_contact == 0
-    for: 2m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Deur Jelmar open'
-      description: 'Deur Jelmar open meer dan 2 minuten.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Deuren
-  - alert: DeurRoan
-    # Condition for alerting
-    expr: zigbee2mqtt_Roan_reading_contact == 0
-    for: 2m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Deur Roan open'
-      description: 'Deur Roan open meer dan 2 minuten.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Deuren
-  - alert: DeurSenne
-    # Condition for alerting
-    expr: zigbee2mqtt_Senne_reading_contact == 0
-    for: 2m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Deur Senne open'
-      description: 'Deur Senne open meer dan 2 minuten.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Deuren
-  - alert: DeurSchuur
-    # Condition for alerting
-    expr: zigbee2mqtt_Schuur_reading_contact == 0
-    for: 10m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: 'Deur Schuur open'
-      description: 'Deur Schuur open meer dan 10 minuten.'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Deuren
-- name: Fritzbox
-  rules:
-  - alert: Fritzboxwifi
-    # Condition for alerting
-    # gateway_host_active{interfacetype="802.11",hostname!="rtthread",hostname!~"pc.*",hostname!~"fritz.*} > 0
-    expr: gateway_host_active{hostname=~'mob-.*'}==1
-#    for: 1m
-    # Annotation - additional informational labels to store more information
-    annotations:
-      title: '{{ $labels.hostname }} on the network'
-      description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network'
-    # Labels - additional labels to be attached to the alert
-    labels:
-      severity: 'critical'
-      group: Fritzbox
-      
+    groups:
+    - name: AllInstances
+      rules:
+      - alert: InstanceDown
+        # Condition for alerting
+        expr: up == 0
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Instance {{ $labels.instance }} down'
+          description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: AllInstances
+    - name: Power
+      rules:
+      - alert: PowerL1
+        # Condition for alerting
+        expr: reading_INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED > 1
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Power L1 high'
+          description: 'L1 high power consumpotion for more than 1 minute.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Power
+      - alert: PowerL2
+        # Condition for alerting
+        expr: reading_INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED > 1
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Power L2 high'
+          description: 'L2 high power consumpotion for more than 1 minute.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Power
+      - alert: PowerL3
+        # Condition for alerting
+        expr: reading_INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED > 1
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Power L3 high'
+          description: 'L3 high power consumpotion for more than 1 minute.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Power
+    - name: Solar
+      rules:
+      - alert: Solar
+        # Condition for alerting
+        expr: reading_AC_Watts_W > 0
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Solar is providing power'
+          description: 'Solar is providing power'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Power
+      - alert: NoSolar
+        # Condition for alerting
+        expr: reading_AC_Watts_W == 0
+        for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Solar is providing power'
+          description: 'Solar is not providing power'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Power
+    - name: Deuren
+      rules:
+      - alert: DeurOpenHeit_en_mem
+        # Condition for alerting
+        expr: zigbee2mqtt_Heit_en_mem_reading_contact == 0
+        for: 2m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Deur Heit en mem open'
+          description: 'Deur Heit en mem open meer 2 minuten.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Deuren
+      - alert: DeurJelmar
+        # Condition for alerting
+        expr: zigbee2mqtt_Jelmar_reading_contact == 0
+        for: 2m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Deur Jelmar open'
+          description: 'Deur Jelmar open meer dan 2 minuten.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Deuren
+      - alert: DeurRoan
+        # Condition for alerting
+        expr: zigbee2mqtt_Roan_reading_contact == 0
+        for: 2m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Deur Roan open'
+          description: 'Deur Roan open meer dan 2 minuten.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Deuren
+      - alert: DeurSenne
+        # Condition for alerting
+        expr: zigbee2mqtt_Senne_reading_contact == 0
+        for: 2m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Deur Senne open'
+          description: 'Deur Senne open meer dan 2 minuten.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Deuren
+      - alert: DeurSchuur
+        # Condition for alerting
+        expr: zigbee2mqtt_Schuur_reading_contact == 0
+        for: 10m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: 'Deur Schuur open'
+          description: 'Deur Schuur open meer dan 10 minuten.'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Deuren
+    - name: Fritzbox
+      rules:
+      - alert: Fritzboxwifi
+        # Condition for alerting
+        # gateway_host_active{interfacetype="802.11",hostname!="rtthread",hostname!~"pc.*",hostname!~"fritz.*} > 0
+        expr: gateway_host_active{hostname=~'mob-.*'}==1
+    #    for: 1m
+        # Annotation - additional informational labels to store more information
+        annotations:
+          title: '{{ $labels.hostname }} on the network'
+          description: '{{ $labels.hostname }} - {{ $labels.macaddress }} is on the network'
+        # Labels - additional labels to be attached to the alert
+        labels:
+          severity: 'critical'
+          group: Fritzbox
+          

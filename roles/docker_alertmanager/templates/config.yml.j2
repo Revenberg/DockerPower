@@ -1,93 +1,77 @@
-global:
-  resolve_timeout: 1m
+    global:
+      resolve_timeout: 1m
 
-route:
-  # When a new group of alerts is created by an incoming alert, wait at
-  # least 'group_wait' to send the initial notification.
-  # This way ensures that you get multiple alerts for the same group that start
-  # firing shortly after another are batched together on the first
-  # notification.
-  group_wait: 10s
-
-  # When the first notification was sent, wait 'group_interval' to send a batch
-  # of new alerts that started firing for that group.
-  group_interval: 24h
-
-  # If an alert has successfully been sent, wait 'repeat_interval' to
-  # resend them.
-  repeat_interval: 24h
-
-  # A default receiver
-  receiver: "system-slack-notifications"
-
-  # All the above attributes are inherited by all child routes and can
-  # overwritten on each.
-  routes:
-    - receiver: "deuren-slack-notifications"
+    route:
+      # When a new group of alerts is created by an incoming alert, wait at
+      # least 'group_wait' to send the initial notification.
+      # This way ensures that you get multiple alerts for the same group that start
+      # firing shortly after another are batched together on the first
+      # notification.
       group_wait: 10s
-#      matchers:
-#        - group = 'Deuren'
-      match_re:
-        group: 'Deuren'
-      continue: true
 
-    - receiver: "mqtt-slack-notifications"
-      group_wait: 10s
-      match_re:
-        group: 'mqtt'
-      continue: true
+      # When the first notification was sent, wait 'group_interval' to send a batch
+      # of new alerts that started firing for that group.mqtt
+      group_interval: 24h
 
-    - receiver: "power-slack-notifications"
-      group_wait: 10s
-      match_re:
-        group: "Power"
-      continue: true
+      # If an alert has successfully been sent, wait 'repeat_interval' to
+      # resend them.
+      repeat_interval: 24h
 
-    - receiver: "fritzbox-slack-notifications"
-      group_wait: 10s
-      match_re:
-        group: "Fritzbox"
-      continue: true
+      # A default receiver
+      receiver: "system-slack-notifications"
 
-    - receiver: "system-slack-notifications"
+      # All the above attributes are inherited by all child routes and can
+      # overwritten on each.
+      routes:
+        - receiver: "deuren-slack-notifications"
+          group_wait: 10s
+          match_re:
+            group: 'Deuren'
+          continue: true
 
-receivers:
-- name: 'deuren-slack-notifications'
-  slack_configs:
-  - channel: '#deuren'
-    api_url: '{| slack_deuren_webhook |}'
-    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
-    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
-    send_resolved: true
+        - receiver: "power-slack-notifications"
+          group_wait: 10s
+          match_re:
+            group: "Power"
+          continue: true
 
-- name: 'mqtt-slack-notifications'
-  slack_configs:
-  - channel: '#mqtt'
-    api_url: '{| slack_mqtt_webhook |}'
-    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
-    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
-    send_resolved: true
+        - receiver: "fritzbox-slack-notifications"
+          group_wait: 10s
+          match_re:
+            group: "Fritzbox"
+          continue: true
 
-- name: 'power-slack-notifications'
-  slack_configs:
-  - channel: '#power'
-    api_url: '{| slack_power_webhook |}'
-    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
-    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
-    send_resolved: true
+        - receiver: "system-slack-notifications"
 
-- name: 'system-slack-notifications'
-  slack_configs:
-  - channel: '#system'
-    api_url: '{| slack_system_webhook |}'
-    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
-    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
-    send_resolved: true
+    receivers:
+    - name: 'deuren-slack-notifications'
+      slack_configs:
+      - channel: '#deuren'
+        api_url: 'https://hooks.slack.com/services/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'
+        title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
 
-- name: 'fritzbox-slack-notifications'
-  slack_configs:
-  - channel: '#fritzbox'
-    api_url: '{| slack_fritzbox_webhook |}'
-    title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
-    text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
-    send_resolved: true
+    - name: 'power-slack-notifications'
+      slack_configs:
+      - channel: '#power'
+        api_url: 'https://hooks.slack.com/services/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'
+        title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
+
+    - name: 'system-slack-notifications'
+      slack_configs:
+      - channel: '#system'
+        api_url: 'https://hooks.slack.com/services/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'
+        title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
+
+    - name: 'fritzbox-slack-notifications'
+      slack_configs:
+      - channel: '#fritzbox'
+        api_url: 'https://hooks.slack.com/services/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'
+        title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
